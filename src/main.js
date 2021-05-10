@@ -7,11 +7,13 @@ import '@/assets/font/iconfont.css'
 import '@/assets/style/init.less'
 import 'element-ui/lib/theme-chalk/display.css';
 // 按需引入element-ui
-import { Carousel, CarouselItem, Pagination } from "element-ui";
+import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem } from "element-ui";
 
 // 首页element-ui轮播图
 Vue.use(Carousel);
 Vue.use(CarouselItem);
+Vue.use(Breadcrumb);
+Vue.use(BreadcrumbItem);
 // 行业资讯element-ui分页器
 // Vue.use(Pagination);
 // 引入vue-meta-info用于动态设置网页meta

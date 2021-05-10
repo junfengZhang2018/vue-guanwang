@@ -3,8 +3,11 @@
     <!-- 顶部导航组件 -->
     <Nav :contacts="contacts"></Nav>
     <div class="container mainbody">
-      <Sidebar />
-      <router-view class="view" />
+      <Sidebar v-if="!exclude.includes($route.name)" />
+      <div class="view">
+        <Breadcrumb v-if="!exclude.includes($route.name)" />
+        <router-view />
+      </div>
     </div>
     <!-- 底部联系方式及版权信息 -->
     <Footer :contacts="contacts"></Footer>
@@ -14,13 +17,15 @@
 import Nav from "@/components/Nav.vue";
 import Footer from "@/components/Footer.vue";
 import Sidebar from '@/components/Sidebar.vue';
+import Breadcrumb from '@/components/Breadcrumb.vue';
 
 export default {
   name: "App",
   components: {
     Nav,
     Footer,
-    Sidebar
+    Sidebar,
+    Breadcrumb
   },
   data() {
     return {
@@ -31,7 +36,8 @@ export default {
         site: "吉林省长春市经济开发区世纪大街长春总部基地D地块B座1单元1042号室",
         siteImg: "https://www.qjtco.com/assets/image/site.jpg",
         weChat: "https://www.qjtco.com/assets/image/WeChat.png"
-      }
+      },
+      exclude: ['Home']
     };
   },
   created() {
@@ -84,6 +90,7 @@ blockquote {
 body {
   margin: 0;
   padding: 0;
+  background-color: #fafafa;
   font: 1em/1 Helvetica, Tahoma, "Microsoft YaHei", "微软雅黑",
     \5fae\8f6f\96c5\9ed1, Arial, STXihei, "华文细黑", SimSun, "宋体", Heiti,
     "黑体", sans-serif;
@@ -100,9 +107,8 @@ ol {
   list-style: none;
 }
 a {
+  cursor: pointer;
   text-decoration: none;
-}
-a {
   color: #000;
   transition: color 0.5s;
   -moz-transition: color 0.5s;
@@ -117,6 +123,9 @@ a {
   min-height: calc(100vh - 460px);
   .view{
     flex: 1;
+    >div{
+      position: relative;
+    }
   }
 }
 </style>

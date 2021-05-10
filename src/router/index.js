@@ -9,83 +9,60 @@ const routes = [
     // 首页
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: { title: '首页' }
   },
   {
-    // 品牌
-    path: '/brand',
-    name: 'Brand',
-    // 路由懒加载
-    component: () => import('../views/Brand.vue')
+    // 运费价格
+    path: '/freightPrice',
+    component: () => import('../views/freight.vue'),
+    meta: { title: '运费价格' },
+    children: [
+      {
+        path: '',
+        name: 'freightPrice',
+        component: () => import('../views/freightPrice.vue'),
+      },
+      {
+        path: 'calculation',
+        name: 'calculation',
+        component: () => import('../views/calculation.vue'),
+        meta: { title: '计算运费' }
+      }
+    ]
   },
   {
-    // 魅力青玖
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About.vue')
+    // 帮助中心
+    path: '/helpCenter',
+    name: 'helpCenter',
+    component: () => import('../views/helpCenter.vue'),
+    meta: { title: '帮助中心' }
   },
   {
-    // 工具集
-    path: '/kit',
-    name: 'Kit',
-    component: () => import('../views/Kit.vue')
+    // 如何代运
+    path: '/howToForwarding',
+    name: 'howToForwarding',
+    component: () => import('../views/howToForwarding.vue'),
+    meta: { title: '如何代运' }
   },
   {
-    // 行业资讯
-    path: '/news',
-    name: 'News',
-    component: () => import('../views/News.vue')
+    // 登录
+    path: '/signIn',
+    name: 'signIn',
+    component: () => import('../views/signIn.vue'),
+    meta: { title: '用户登录' }
   },
   {
-    // 资讯详情
-    path: '/newsDetails/:newsId',//  必须写相对而言parmas比query更严格，如果不写/:newsId刷新页面后将丢失传递过来的数据
-    name: 'NewsDetails',
-    props: true, //解耦
-    // query更加类似于我们ajax中get传参，params则类似于post，说的再简单一点，前者在浏览器地址栏中显示参数，后者则不显示，这里用到的是params，必须写name
-    component: () => import('../views/NewsDetails.vue')
+    // 注册
+    path: '/signUp',
+    name: 'signUp',
+    component: () => import('../views/signUp.vue'),
+    meta: { title: '账号注册' }
   },
-  {
-    // 招募令
-    path: '/employ',
-    name: 'Employ',
-    component: () => import('../views/Employ.vue')
-  },
-  {
-    // 联系我们
-    path: '/contacts',
-    name: 'Contacts',
-    component: () => import('../views/Contacts.vue')
-  },
-  // 以下为定制网站小程序公众号APP介绍页路由
-  {
-    // 网站定制
-    path: '/webSite',
-    name: 'WebSite',
-    component: () => import('../views/WebSite.vue')
-  },
-  {
-    // 小程序定制
-    path: '/applet',
-    name: 'Applet',
-    component: () => import('../views/Applet.vue')
-  },
-  {
-    // 公众号定制
-    path: '/account',
-    name: 'Account',
-    component: () => import('../views/Account.vue')
-  },
-  {
-    // app定制
-    path: '/appDevelopment',
-    name: 'AppDevelopment',
-    component: () => import('../views/AppDevelopment.vue')
-  }
-  ,
   {
     // 路径错误时访问首页
     path: '*',
-    component: Home
+    redirect: { name: 'Home' }
   }
 ]
 

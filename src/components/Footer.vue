@@ -94,6 +94,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .wrapper {
+  background-color: #fff;
   // footer公共样式
   #footer {
     width: 100%;
@@ -178,7 +179,6 @@ export default {
     }
   }
   #m-footer{
-    height: 56px;
     .tabbar{
       display: flex;
       position: fixed;
@@ -186,6 +186,7 @@ export default {
       bottom: 0;
       width: 100%;
       background-color: #fff;
+      padding-bottom: env(safe-area-inset-bottom);
       .tabbar-item{
         display: block;
         flex: 1;

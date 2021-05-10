@@ -106,6 +106,9 @@
         position: relative;
         width: 250px;
         margin-right: 20px;
+        >div{
+            background-color: #fff;
+        }
         .icon{
             border: 1px solid #000;
             height: 24px;
@@ -114,7 +117,6 @@
         .panel{
             border: 1px solid #eee;
             margin: 8px 0;
-            background-color: #fff;
             .text-link{
                 color: #007fff;
                 text-decoration: underline;
