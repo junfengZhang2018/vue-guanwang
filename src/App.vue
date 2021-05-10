@@ -89,7 +89,6 @@ body {
   font: 1em/1 Helvetica, Tahoma, "Microsoft YaHei", "微软雅黑",
     \5fae\8f6f\96c5\9ed1, Arial, STXihei, "华文细黑", SimSun, "宋体", Heiti,
     "黑体", sans-serif;
-    box-sizing: border-box;
 }
 img {
   border: 0;
@@ -112,9 +111,7 @@ a {
   -webkit-transition: color 0.5s;
   -o-transition: color 0.5s;
 }
-div{
-  box-sizing: border-box;
-}
+
  .clearfix:after{/*伪元素是行内元素 正常浏览器清除浮动方法*/
     content: "";
     display: block;

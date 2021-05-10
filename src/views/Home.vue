@@ -316,6 +316,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+div{
+  box-sizing: border-box;
+}
 .wrapper {
   // 解决轮播图ie低版本滚动条问题
   .el-carousel {
