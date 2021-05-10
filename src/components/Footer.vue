@@ -20,7 +20,7 @@
           </li>
         </ul>
         <div class="weChat">
-          <img v-lazy="contactWay.weChat" alt="青玖科技官方微信服务号" />
+          <img v-lazy="contactWay.weChat" alt="智腾达微信服务号" />
           <h3>官方微信服务号</h3>
         </div>
         <div class="partner">
@@ -98,10 +98,14 @@ export default {
   #footer {
     width: 100%;
     overflow: hidden;
+    margin-top: 32px;
+    background-color: #fff;
+    border-top: 1px solid #eeeeee;
     .contactWay {
       overflow: hidden;
       display: flex;
       justify-content: space-between;
+      padding: 36px 0 0;
       .weChat {
         margin-top: 25px;
         margin-bottom: 15px;

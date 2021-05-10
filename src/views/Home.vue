@@ -1,100 +1,129 @@
 <template>
   <div class="wrapper">
-    <el-carousel :height="bannerHeight">
-      <el-carousel-item v-for="(item,index) in homeBanner" :key="index">
-        <img class="homeBanner" :src="item.src" :alt="item.alt" />
-      </el-carousel-item>
-    </el-carousel>
+   
     <!-- bodyer开始 -->
     <div id="homeBodyer">
-      <div class="ourService">
-        <h2>我们的服务1</h2>
-        <h3>Our Service</h3>
-        <ul>
-          <li>
-            <router-link to="/webSite">
-              <i class="iconfont icon-wangzhan"></i>
-              <h3>网站定制</h3>
-              <p>Website custom</p>
+      <div class="home-intro hidden-xs-only">
+        <h1>马来西亚，新加坡，中国淘宝代运专家 & 包税清关，免抛重，送货到家</h1>
+        <p>MuluPost 服务范围包含仓储物流、空运与海运等增值服务，从清关到快递派送，无需担心一切繁琐的过程</p>
+        <p>智能化物流系统实时追踪包裹位置信息，精准预测包裹送达时间，安全便捷准时收货</p>
+        <p>价格优惠，空运每公斤低至 10RM，高效快速，三天完成跨境物流派送</p>
+        <div class="home-btn">
+          <div class="signin"> <router-link to="/">账号登录</router-link></div>
+          <div class="signup"> <router-link to="/">立即注册</router-link></div>
+        </div>
+      </div>
+      <div class="home-banner hidden-sm-and-up" >
+        <div style="width:100%"></div>
+         <el-carousel :height="bannerHeight" >
+          <el-carousel-item v-for="(item,index) in homeBanner" :key="index">
+            <img class="homeBanner" :src="item.src" :alt="item.alt" />
+          </el-carousel-item>
+        </el-carousel>
+      </div>
+      <div class="home-banner hidden-xs-only" >
+          <ul class="home-banner-list">
+            <li class="home-banner-item">
+              <a class="home-banner-img" href="javascript:void(0)" target="_blank">
+                <img src="https://c.mulupost.com/banner/7b918cb5-acb6-4671-a40e-58f23a950c19.png-600" alt="马来西亚商业海运">
+              </a>
+            </li>
+            <li class="home-banner-item">
+              <a class="home-banner-img" href="javascript:void(0)" target="_blank">
+                <img src="https://c.mulupost.com/banner/f96e333c-b608-47c8-b55f-92f18ee52ab4.jpeg-600" alt="空运包机运输">
+              </a>
+            </li>
+            <li class="home-banner-item">
+              <a class="home-banner-img" href="javascript:void(0)" target="_blank">
+                <img src="https://c.mulupost.com/banner/85aec6ac-889a-4284-bb1a-feb49d3e1e47.jpeg-600" alt="马来西亚海运立方，大货商家首选">
+              </a>
+            </li>
+          </ul>
+      </div>
+      <div class="m-card sticky-top">
+        <div class="main">
+          <router-link class="item" v-for="(item, index) in mainCard" :key="index" to="">
+            <div class="icon"></div>
+            <div class="title">{{item.title}}</div>
+          </router-link>
+        </div>
+      </div>
+      <div class="home-portion">
+        <div class="home-portion-hd">
+          <h2>代运流程如何工作</h2>
+          <p>
+            <router-link  to="">
+              how mulupost works
             </router-link>
-          </li>
-          <li>
-            <router-link to="/applet">
-              <i class="iconfont icon-xiaochengxu"></i>
-              <h3>小程序定制</h3>
-              <p>Applet customization</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/account">
-              <i class="iconfont icon-gongzhonghaoguanli"></i>
-              <h3>公众号定制</h3>
-              <p>Customized public account</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/appDevelopment">
-              <i class="iconfont icon-ruanjiankaifabao"></i>
-              <h3>APP定制</h3>
-              <p>APP development</p>
-            </router-link>
+          </p>
+        </div>
+        <div class="home-portion-bd hidden-xs-only">
+          <p>MuluPost 基于智能化仓储物流技术，助您轻松完成国际货运、中国代运、淘宝集运</p>
+          <p>专业服务，价格优惠，效率第一</p>
+        </div>
+      </div>
+      <div class="home-process">
+        <ul class="list clearfix">
+          <li v-for="(item, index) in processList" :key="index">
+            <div class="wrap">
+              <div class="icon"></div>
+              <div class="content">
+                <p class="title">{{item.title}}</p>
+                <p class="desc">{{item.desc}}</p>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
-      <div class="discounts">
-        <h2>优惠活动</h2>
-        <h3>Discounts</h3>
-        <ul>
-          <li>
-            <i class="iconfont icon-yun"></i>
-            <strong>首年赠服务器</strong>
-          </li>
-          <li>
-            <i class="iconfont icon-shiwuzhongxin_yumingshenqingfuwu"></i>
-            <strong>首年赠.com域名</strong>
-          </li>
-          <li>
-            <i class="iconfont icon-houqiweihuweihuweihuguanli"></i>
-            <strong>免费运维3个月</strong>
-          </li>
-          <li>
-            <i class="iconfont icon-peixun"></i>
-            <strong>免费培训使用方法</strong>
+      <div class="home-portion">
+        <div class="home-portion-hd">
+          <h2>集运增值服务</h2>
+          <p>
+            <router-link  to="">
+              add-ons services
+            </router-link>
+          </p>
+        </div>
+        <div class="home-portion-bd hidden-xs-only">
+          <p>除了提供基础代运与集运服务，还提供人性化的增值服务，让运输过程中更有保障</p>
+          <p>以下是我们提供的增值服务，MuluPost 致力让整个运输体验更加完善</p>
+        </div>
+      </div>
+      <div class="home-services">
+        <ul class="list clearfix">
+          <li v-for="(item, index) in servicesList" :key="index">
+            <div class="wrap">
+              <div class="title">{{item.title}}</div>
+              <div class="icon"></div>
+              <div class="price">{{item.price}}</div>
+              <div class="desc">{{item.desc}}</div>
+            </div>
           </li>
         </ul>
       </div>
-      <div class="workFlow">
-        <h2>工作流程</h2>
-        <h3>Work Flow</h3>
-        <ul>
-          <li>
-            <i class="iconfont icon-jishuhezuoqiatanhezuohuitan"></i>
-            <h3>商务洽谈</h3>
-          </li>
-          <li>
-            <i class="iconfont icon-hetong"></i>
-            <h3>签订合同</h3>
-          </li>
-          <li>
-            <i class="iconfont icon-qian4"></i>
-            <h3>支付定金</h3>
-          </li>
-          <li>
-            <i class="iconfont icon-yanshou"></i>
-            <h3>项目交付</h3>
-          </li>
-          <li>
-            <i class="iconfont icon-zhifuweikuan"></i>
-            <h3>支付尾款</h3>
-          </li>
-        </ul>
+      <div class="home-portion">
+        <div class="home-portion-hd">
+          <h2>新闻动态</h2>
+          <p>
+            <router-link  to="">
+              news tendency
+            </router-link>
+          </p>
+        </div>
       </div>
-      <div class="ourFriends">
-        <h2>我们的伙伴</h2>
-        <h3>Our Friends</h3>
-        <ul>
-          <li v-for="(item,index) in ourFriends" :key="index">
-            <img v-lazy="item.src" :alt="item.alt" />
+      <div class="home-news">
+        <ul class="list">
+          <li v-for="(item,index) in newsList" :key="index">
+            <div class="wrap">
+              <router-link   to="">
+                <div class="front"><img src=""  alt=""></div>
+              </router-link>
+               <router-link to="">
+              <h3 class="title">{{item.title}}</h3>
+              </router-link>
+              <div class="summary">{{item.summary}}</div>
+            </div>
+           
           </li>
         </ul>
       </div>
@@ -121,7 +150,8 @@ export default {
           name: "description",
           content: this.meta.description
         }
-      ]
+      ],
+      
     };
   },
   data() {
@@ -181,7 +211,84 @@ export default {
           src: "https://www.qjtco.com/assets/image/friends8.png",
           alt: "微软"
         }
-      ]
+      ],
+      mainCard:[{
+          title: '运费价格',
+          url: ''
+      },{
+          title: '帮助中心',
+          url: ''
+      },{
+          title: '物流查询',
+          url: ''
+      }],
+      processList:[{
+        title:'1. 包裹入库',
+        desc:'邮寄您的包裹到我们的广州仓库，仓库会通知你包裹状态及包裹重量。',
+        url:'',
+        icon:''
+      },
+      {
+        title:'2. 运单配货',
+        desc:'当您提交运单，我们将分配和包装货物，完成后即可出货代运至马来西亚。',
+        url:'',
+        icon:''
+      },
+      {
+        title:'3. 邮寄运单',
+        desc:'根据您选择的运输方式，包裹将通过空运或海运邮寄给您，并提供追踪单号。',
+        url:'',
+        icon:''
+      },
+      {
+        title:'4. 签收包裹',
+        desc:'我们的本地快递员将准时地将包裹寄送给您指定的收货地址，简单且快速。',
+        url:'',
+        icon:''
+      }],
+      servicesList:[{
+         title:'空运拆外包装',
+         desc:'空运可拆开包裹的外包装，以减轻整体的重量。',
+         icon:'',
+         price:'FREE / 免费'
+        },{
+         title:'空运拆内包装',
+         desc:'空运可拆开包裹的内外包装，以减轻整体的重量。',
+         icon:'',
+         price:'FREE / 免费'
+        },{
+         title:'易碎标签',
+         desc:'贴上易碎标签，避免包裹里的货品在运输途中破碎。',
+         icon:'',
+         price:'FREE / 免费'
+        },{
+         title:'拍照验货',
+         desc:'拆开包裹并拍照包裹里的商品，会提供2至5张照片。',
+         icon:'',
+         price:'¥5/件'
+        }
+      ],
+      newsList:[{
+        icon:'',
+        url:'',
+        title:'2021国际劳动节放假公告',
+        summary:'劳动节放假三天，仓库暂停出货，请合理安排出货时间'
+      },{
+        icon:'',
+        url:'',
+        title:'运费降价公告',
+        summary:'大货海运下调 90RMB/CMB，Mar 19 2021 开始生效'
+      },{
+        icon:'',
+        url:'',
+        title:'元宵节 · 宜降价',
+        summary:'海运小包下调 1-3 人民币每公斤，大货海运下调 50 人民币每立方'
+      },{
+        icon:'',
+        url:'',
+        title:'年前截止发货倒计时',
+        summary:'年前发货工作安排已经接近尾声，发货截止时间为 04 Feb 18:00:00'
+      }]
     };
   },
   created() {
@@ -221,6 +328,270 @@ export default {
   }
   // 其他样式
   #homeBodyer {
+    .sticky-top {
+      position: sticky;
+      z-index: 3;
+      top: 0px;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(2px);
+    }
+    .home-intro{
+      margin: 36px 0;
+      text-align: center;
+      background-color: #fff;
+      h1{
+        color: #000000;
+        font-family: "Noto Serif", "PT Serif", "source-han-serif-sc", "Songti SC", serif;
+        font-size: 26px;
+        line-height: 40px;
+        margin-bottom: 20px;
+        text-shadow: 0 1px 0 #fff;
+      }
+      p{
+        color: #333333;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 8px;
+      }
+      .home-btn{
+        margin-top: 24px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .signin,.signup{
+          cursor: pointer;
+          display: inline-block;
+          height: 46px;
+          line-height: 46px;
+          width: 200px;
+          max-width: 40%;
+          vertical-align: middle;
+          border-radius: 4px;
+          border: 1px solid #007fff;
+          font-size: 17px;
+          font-weight: 500;
+        }
+        .signin{
+          background-color: #007fff;
+          margin-right: 12px;
+          a{
+          color: #ffffff;
+          }
+        }
+         .signup{
+           a{
+            color: #007fff;
+           }
+          background-color: #ffffff;
+          margin-right: 12px;
+        }
+      }
+    }
+    // banner轮播图
+    .home-banner{
+      background-color: #fff;
+      position: relative;
+      margin: 32px 0;
+      z-index: 1;
+      .home-banner-list{
+        display: flex;
+        .home-banner-item{
+          margin-right: 20px;
+          flex: 1;
+        }
+      }
+    }
+    .m-card{
+      margin: 8px 0;
+      border: 1px solid #eeeeee;
+      background-color: #fff;
+      a{
+        color:#333
+      }
+      .main{
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+        .item{
+          flex: 1;
+          text-align: center;
+          padding: 12px 0;
+          position: relative;
+          border-left: 1px solid #eeeeee;
+        }
+        .item:first-child {
+            border-left: none;
+        }
+        .icon{
+          width: 32px;
+          height: 32px;
+          margin: 0 auto;
+        }
+        .title{
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 18px;
+          margin-top:6px;
+        }
+      }
+    }
+    .home-portion{
+      background-color: #fff;
+      margin: 36px 0;
+      text-align: center;
+      .home-portion-hd{
+        margin-bottom: 24px;
+        font-family: "Noto Serif", "PT Serif", "source-han-serif-sc", "Songti SC", serif;
+        text-shadow: 0 1px 0 #fff;
+        h2{
+        color: #000000;
+        font-size: 26px;
+        line-height: 32px;
+        margin: 0;
+      }
+      p{
+        color: #666666;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 10px;
+        font-weight: normal;
+        a{
+          color: inherit;
+        }
+      }
+      }
+      .home-portion-bd{
+        p{
+          color: #000000;
+          font-size: 16px;
+          line-height: 20px;
+          margin-bottom: 8px;
+          font-weight: 500;
+        }
+      }
+    }
+    .home-process{
+      background-color: #fff;
+      ul{
+        li{
+          float: left;
+          width: 50%;
+          padding-bottom: 40px;
+          .wrap{
+            display: flex;
+            padding: 0 12px;
+            align-items: center;
+            .icon{
+              width: 48px;
+              height: 48px;
+              margin-right: 12px;
+            }
+            .content{
+              flex: 1;
+              .title{
+                color: #000000;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 4px;
+              }
+              .desc {
+                color: #666666;
+                font-size: 16px;
+                line-height: 22px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .home-services{
+      text-align: center;
+      background-color: #fff;
+      ul{
+        li{
+          float: left;
+          width: 25%;
+          margin-bottom: 32px;
+          .wrap{
+            width: 100%;
+            height: 100%;
+            .title{
+              color: #000000;
+              font-weight: 500;
+              font-size: 18px;
+              line-height: 24px;
+            }
+            .icon{
+              width: 72px;
+              height: 72px;
+              margin: 16px auto;
+              display: block;
+              border-radius: 4px;
+            }
+            .price{
+              color: #007fff;
+              font-size: 14px;
+              line-height: 20px;
+            }
+            .desc{
+              color: #999999;
+              font-size: 14px;
+              padding: 0 12px;
+              line-height: 20px;
+              height: 40px;
+              overflow: hidden;
+            }
+          }
+        }
+      }
+    }
+    .home-news{
+      background-color: #fff;
+      ul.list{
+        display: flex;
+        li{
+          flex: 1;
+          margin-right: 16px;
+        .wrap{
+          text-align: center;
+           .front{
+            position: relative;
+            // width:100%;
+            padding-top: 60%;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #eeeeee;
+            >img{
+              position: absolute;
+              left: 0;
+              width: 100%;
+              top: 0;
+            }
+          }
+          .title{
+            color: #000000;
+            font-family: "Noto Serif", "PT Serif", "source-han-serif-sc", "Songti SC", serif;
+            font-size: 18px;
+            line-height: 24px;
+            height: 24px;
+            overflow: hidden;
+            text-align: center;
+            margin: 6px 0;
+          }
+          .summary {
+            color: #666666;
+            font-size: 14px;
+            line-height: 20px;
+            height: 40px;
+            overflow: hidden;
+            text-align: center;
+        }
+        }
+        }
+      }
+    }
     // 隐藏给百度爬虫看的内容
     .homeSeo {
       width: 0px;
@@ -229,302 +600,145 @@ export default {
       z-index: 9999;
     }
     overflow: hidden;
-    .ourService {
-      margin: auto;
-      text-align: center;
-      overflow: hidden;
-      h2 {
-        margin: 30px auto 10px;
-        line-height: 40px;
-        color: #3b3c3f;
-        font-size: 1.8em;
-      }
-      h3 {
-        color: #6390d1;
-      }
-      ul {
+  }
+    // 首页响应式
+  @media screen and (max-width: 768px) {
+    #homeBodyer {
+    background-color: #fafafa;
+      .home-banner{
         overflow: hidden;
-        li {
-          a {
-            display: block;
-            width: 100%;
-            height: 100%;
-          }
-          width: 220px;
-          height: auto;
-          display: block;
-          float: left;
-          margin: 0 40px;
-          padding-top: 30px;
-          i {
-            font-size: 6em;
-            color: #6390d1;
-          }
-          h3 {
-            line-height: 40px;
-            color: #2c2c2c;
+        margin: 8px 0;
+        display: block;
+      }
+      .sticky-top {
+          top: 60px!important;
+      }
+      .home-portion{
+        background-color: #fff;
+        margin:8px 0 0;
+        // border-top: 8px solid #fafafa;
+        padding: 8px 12px;
+        background-color: #ffffff;
+        position: relative;
+        .home-portion-hd{
+          margin-bottom: 0;
+          h2 {
+              font-size: 20px;
+              line-height: 24px;
           }
           p {
-            line-height: 20px;
-            color: #808080;
+            margin-bottom: 0;
+            font-size: 14px;
+            line-height: 16px;
+            margin-top: 4px;
           }
-          &:hover {
-            i {
-              color: #ffb400;
+        }
+      }
+      .home-portion:after {
+          content: " ";
+          position: absolute;
+          z-index: 2;
+          pointer-events: none;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          height: 1px;
+          border-bottom: 1px solid #eeeeee;
+          color: #eeeeee;
+          transform-origin: 0 100%;
+          transform: scaleY(0.5);
+      }
+      .home-process{
+        ul{
+          li{
+            float: none;
+            width: auto;
+            padding-bottom: 14px;
+            .wrap{
+              margin-left: 0;
+              .content{
+                  .title{
+                    font-size: 16px;
+                    line-height: 22px;
+                  }
+                  .desc {
+                    font-size: 14px;
+                    line-height: 18px;
+                  }
+              }
             }
-            h3 {
-              color: #6390d1;
+          }
+        }
+     
+      }
+      .home-services{
+        ul{
+          li{
+            width: 50%;
+            margin: 16px 0 0;
+            .wrap{
+              .title{
+                font-size: 16px;
+                line-height: 22px;
+              }
+              .icon{
+                width: 64px;
+                height: 64px;
+              }
+              .desc{
+                font-size: 13px;
+                line-height: 20px;
+                padding: 0 6px;
+              }
             }
           }
         }
       }
-    }
-    // 优惠活动
-    .discounts {
-      margin: auto;
-      text-align: center;
-      overflow: hidden;
-      h2 {
-        margin: 30px auto 10px;
-        line-height: 40px;
-        color: #3b3c3f;
-        font-size: 1.8em;
-      }
-      h3 {
-        color: #6390d1;
-      }
-      ul {
-        margin: 30px 0;
-        overflow: hidden;
-        li {
+      .home-news{
+      background-color: #fff;
+      padding: 0 6px;
+      background-color: #ffffff;
+      margin-bottom: 8px;
+      position: relative;
+      ul.list{
+        display: block;
+        li{
           float: left;
-          width: 280px;
-          margin: 10px 10px;
-          height: 140px;
-          line-height: 140px;
-          background: #495a80;
-          color: #ffffff;
-          font-size: 1.3em;
-          border-bottom: #ffb400 solid 5px;
-          i {
-            font-size: 1.5em;
-            margin-right: 15px;
-          }
-          &:hover {
-            color: #ffb400;
-          }
-        }
-      }
-    }
-    // 工作流程
-    .workFlow {
-      margin: auto;
-      text-align: center;
-      overflow: hidden;
-      h2 {
-        margin: 30px auto 10px;
-        line-height: 40px;
-        color: #3b3c3f;
-        font-size: 1.8em;
-      }
-      h3 {
-        color: #6390d1;
-      }
-      ul {
-        text-align: center;
-        margin: 30px 0;
-        overflow: hidden;
-        li {
-          background: #e7791a;
-          padding: 30px 0;
-          margin: 0 20px;
-          width: 200px;
-          float: left;
-          i {
-            font-size: 4em;
-            color: #ffffff;
-          }
-          h3 {
-            color: #ffffff;
-            line-height: 40px;
-            margin-top: 20px;
-          }
-          &:nth-child(2),
-          &:nth-child(4) {
-            background: #196193;
-            margin-top: 50px;
-          }
-          // 合作流程鼠标移入旋转
-          -moz-transition: all 1s; /* Firefox 4 */
-          -webkit-transition: all 1s; /* Safari and Chrome */
-          -o-transition: all 1s; /* Opera */
-          transition: all 1s; /* ie9+及其他 */
-          &:hover {
-            // 鼠标移入旋转
-            -moz-transform: rotate(360deg);
-            -webkit-transform: rotate(360deg);
-            -o-transform: rotate(360deg);
-            transform: rotate(360deg);
-          }
-        }
-      }
-    }
-    // 合作伙伴
-    .ourFriends {
-      margin: auto;
-      text-align: center;
-      h2 {
-        margin: 30px auto 10px;
-        line-height: 40px;
-        color: #3b3c3f;
-        font-size: 1.8em;
-      }
-      h3 {
-        color: #6390d1;
-      }
-      ul {
-        background: #f2efe6;
-        overflow: hidden;
-        margin: 30px auto;
-        li {
-          width: 220px;
-          height: 100px;
-          margin: 20px 40px;
-          float: left;
-          border-radius: 10px;
-          overflow: hidden;
-          img {
+          width: 50%;
+          max-width: auto;
+          flex: auto;
+          margin: 12px 0;
+        .wrap{
+          padding: 0 6px;
+           .front{
+            position: relative;
             width: 100%;
-            height: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #eeeeee;
+            >img{
+              position: absolute;
+              left: 0;
+              width: 100%;
+              top: 0;
+            }
           }
-          -moz-transition: all 1s; /* Firefox 4 */
-          -webkit-transition: all 1s; /* Safari and Chrome */
-          -o-transition: all 1s; /* Opera */
-          transition: all 1s; /* ie9+及其他 */
-          &:hover {
-            // 鼠标移入放大
-            -moz-transform: scale(1.2);
-            -webkit-transform: scale(1.2);
-            -o-transform: scale(1.2);
-            transform: scale(1.2);
+          .title{
+            font-size: 16px;
+            line-height: 22px;
+            height: 22px;
+            text-align: center;
+
+          }
+          .summary {
+         
+           }
           }
         }
       }
+    }
     }
   }
 
-  // 首页响应式
-  // @media screen and (max-width: 1200px) {
-  //   #homeBodyer {
-  //     .ourService {
-  //       width: 93%;
-  //       h2 {
-  //         margin: 20px auto 10px;
-  //         line-height: 30px;
-  //       }
-  //       h3 {
-  //         font-size: 1em;
-  //       }
-  //       ul {
-  //         li {
-  //           padding-top: 20px;
-  //           width: 50%;
-  //           margin: 0;
-  //           i {
-  //             font-size: 4em;
-  //           }
-  //           h3 {
-  //             font-size: 1em;
-  //             line-height: 25px;
-  //           }
-  //           p {
-  //             font-size: 0.8em;
-  //             line-height: 12px;
-  //           }
-  //         }
-  //       }
-  //     }
-  //     // 优惠活动
-  //     .discounts {
-  //       width: 93%;
-  //       ul {
-  //         margin: 30px 0 0;
-  //         display: -webkit-flex;
-  //         display: flex;
-  //         justify-content: space-between;
-  //         flex-wrap: wrap;
-  //         li {
-  //           width: 45%;
-  //           margin: 10px 0;
-  //           font-size: 1em;
-  //           height: 100px;
-  //           line-height: 50px;
-  //           background: #6491d1;
-  //           i {
-  //             display: block;
-  //             font-size: 2em;
-  //             margin: 0;
-  //           }
-  //         }
-  //       }
-  //     }
-  //     // 工作流程
-  //     .workFlow {
-  //       width: 93%;
-  //       ul {
-  //         margin: 30px 0;
-  //         display: -webkit-flex;
-  //         display: flex;
-  //         justify-content: space-around;
-  //         align-items: flex-start;
-  //         li {
-  //           padding: 0;
-  //           margin: 0;
-  //           width: 18%;
-  //           overflow: hidden;
-  //           padding-top: 15px;
-  //           i {
-  //             font-size: 2em;
-  //           }
-  //           h3 {
-  //             font-size: 0.8em;
-  //             margin-top: 0;
-  //           }
-  //         }
-  //       }
-  //     }
-  //     // 合作伙伴
-  //     .ourFriends {
-  //       width: 93%;
-  //       ul {
-  //         width: 93%;
-  //         overflow: hidden;
-  //         margin: 30px auto;
-  //         padding: 15px 0;
-  //         display: -webkit-flex;
-  //         display: flex;
-  //         flex-wrap: wrap;
-  //         justify-content: space-around;
-  //         li {
-  //           width: 40%;
-  //           height: auto;
-  //           margin: 5px auto;
-  //           border-radius: 4px;
-  //           img {
-  //             width: 100%;
-  //             height: 100%;
-  //           }
-  //           &:hover {
-  //             // 取消鼠标移入放大动画
-  //             -moz-transform: none;
-  //             -webkit-transform: none;
-  //             -o-transform: none;
-  //             transform: none;
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 }
 </style>

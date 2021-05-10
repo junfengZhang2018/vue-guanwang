@@ -3,11 +3,13 @@
     <!-- 顶部导航组件 -->
     <Nav :contacts="contacts"></Nav>
     <div class="container mainbody">
-      <Sidebar />
+      <!-- <Sidebar /> -->
       <router-view class="view" />
+
     </div>
     <!-- 底部联系方式及版权信息 -->
     <Footer :contacts="contacts"></Footer>
+
   </div>
 </template>
 <script>
@@ -87,6 +89,7 @@ body {
   font: 1em/1 Helvetica, Tahoma, "Microsoft YaHei", "微软雅黑",
     \5fae\8f6f\96c5\9ed1, Arial, STXihei, "华文细黑", SimSun, "宋体", Heiti,
     "黑体", sans-serif;
+    box-sizing: border-box;
 }
 img {
   border: 0;
@@ -109,6 +112,19 @@ a {
   -webkit-transition: color 0.5s;
   -o-transition: color 0.5s;
 }
+div{
+  box-sizing: border-box;
+}
+ .clearfix:after{/*伪元素是行内元素 正常浏览器清除浮动方法*/
+    content: "";
+    display: block;
+    height: 0;
+    clear:both;
+    visibility: hidden;
+  }
+  .clearfix{
+    *zoom: 1;/*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
+  }
 .mainbody{
   display: flex;
   justify-content: space-between;
@@ -119,4 +135,10 @@ a {
     flex: 1;
   }
 }
+ @media screen and (max-width: 768px) {
+    .container{
+      width: 100%!important;
+      padding: 0!important;
+    }
+  }
 </style>

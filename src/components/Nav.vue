@@ -135,6 +135,7 @@ export default {
     }
   }
   #m-nav {
+    height: 60px;
       .m-header-inner {
         position: fixed;
         background-color: #ffffff;
