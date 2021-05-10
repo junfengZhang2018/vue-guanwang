@@ -4,7 +4,7 @@
             <div class="panel-hd">
                 <div class="panel-title">
                     <div>
-                        下午好，请 <a href="" class="text-link">登录/注册</a>
+                        下午好，请 <a @click.prevent="$router.push('/signIn')" class="text-link">登录/注册</a>
                     </div>
                 </div>
             </div>

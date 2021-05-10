@@ -1,5 +1,5 @@
 <template>
-   <div class='breadcrumb'>
+   <div class='breadcrumb hidden-xs-only'>
        <div class="subhead-left">
             <el-breadcrumb separator-class="el-icon-arrow-right">
                 <el-breadcrumb-item v-for="item in levelList" :key="item.path">
