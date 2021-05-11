@@ -6,14 +6,18 @@ import '@/assets/font/iconfont.css'
 // 初始化样式
 import '@/assets/style/init.less'
 import 'element-ui/lib/theme-chalk/display.css';
-// 按需引入element-ui
-import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem } from "element-ui";
 
+// 全局弹窗
+import Dialog from '@/components/Dialog'
+Vue.use(Dialog);
+// 按需引入element-ui
+import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem, Checkbox } from "element-ui";
 // 首页element-ui轮播图
 Vue.use(Carousel);
 Vue.use(CarouselItem);
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
+Vue.use(Checkbox);
 // 行业资讯element-ui分页器
 // Vue.use(Pagination);
 // 引入vue-meta-info用于动态设置网页meta

@@ -163,17 +163,6 @@ export default {
                 display: flex;
                 align-items: center;
                 height: 60px;
-                .btn {
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 4px;
-                    text-align: center;
-                    line-height: 24px;
-                    font-size: 16px;
-                    padding: 4px 8px;
-                    white-space: nowrap;
-                }
                 .headleft {
                     flex: 1;
                     display: flex;

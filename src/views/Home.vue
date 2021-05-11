@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-   
     <!-- bodyer开始 -->
     <div id="homeBodyer">
       <div class="home-intro hidden-xs-only">
@@ -309,9 +308,6 @@ export default {
   },
   mounted() {
     // 动态设置meta
-    setTimeout(() => {
-      this.pageName = "home";
-    }, 2000);
   }
 };
 </script>

@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{'bgc':!exclude.includes($route.name)}">
+    <Dialog />
     <!-- 顶部导航组件 -->
     <Nav :contacts="contacts"></Nav>
     <div class="container mainbody">
@@ -19,6 +20,7 @@ import Nav from "@/components/Nav.vue";
 import Footer from "@/components/Footer.vue";
 import Sidebar from '@/components/Sidebar.vue';
 import Breadcrumb from '@/components/Breadcrumb.vue';
+import Dialog from '@/components/Dialog/dialog'
 
 export default {
   name: "App",
@@ -26,7 +28,8 @@ export default {
     Nav,
     Footer,
     Sidebar,
-    Breadcrumb
+    Breadcrumb,
+    Dialog
   },
   data() {
     return {
@@ -91,10 +94,12 @@ blockquote {
 body {
   margin: 0;
   padding: 0;
-  background-color: #fafafa;
   font: 1em/1 Helvetica, Tahoma, "Microsoft YaHei", "微软雅黑",
     \5fae\8f6f\96c5\9ed1, Arial, STXihei, "华文细黑", SimSun, "宋体", Heiti,
     "黑体", sans-serif;
+}
+.bgc{
+  background-color: #fafafa;
 }
 img {
   border: 0;
@@ -132,7 +137,7 @@ a {
   justify-content: space-between;
   max-width: 960px;
   margin: 0 auto;
-  min-height: calc(100vh - 460px);
+  min-height: calc(100vh - 60px);
   .view{
     flex: 1;
     >div{
@@ -140,10 +145,4 @@ a {
     }
   }
 }
- @media screen and (max-width: 768px) {
-    .container{
-      width: 100%!important;
-      padding: 0!important;
-    }
-  }
 </style>

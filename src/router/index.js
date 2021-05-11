@@ -10,23 +10,23 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-    meta: { title: '首页' }
+    meta: { title: '网站首页' }
   },
   {
     // 运费价格
     path: '/freightPrice',
-    component: () => import('../views/freight.vue'),
+    component: () => import('../views/freight'),
     meta: { title: '运费价格' },
     children: [
       {
         path: '',
         name: 'freightPrice',
-        component: () => import('../views/freightPrice.vue'),
+        component: () => import('../views/freight/freightPrice.vue'),
       },
       {
         path: 'calculation',
         name: 'calculation',
-        component: () => import('../views/calculation.vue'),
+        component: () => import('../views/freight/calculation.vue'),
         meta: { title: '计算运费' }
       }
     ]
@@ -58,6 +58,13 @@ const routes = [
     name: 'signUp',
     component: () => import('../views/signUp.vue'),
     meta: { title: '账号注册' }
+  },
+  {
+    // 注册
+    path: '/forgetPassword',
+    name: 'forgetPassword',
+    component: () => import('../views/forgetPassword.vue'),
+    meta: { title: '忘记密码' }
   },
   {
     // 路径错误时访问首页

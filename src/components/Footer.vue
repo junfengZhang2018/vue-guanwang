@@ -41,9 +41,9 @@
     </div>
     <div id="m-footer" class="hidden-sm-and-up">
       <div class="tabbar">
-        <router-link class="tabbar-item" v-for="(item, index) in barList" :key="index" to="">
-          <div class="icon"></div>
-          <div>{{item.title}}</div>
+        <router-link exact class="tabbar-item" v-for="(item, index) in barList" :key="index" :to="item.url">
+          <div class="icon md" :class="item.iconClass"></div>
+          <div class="title">{{item.title}}</div>
         </router-link>
       </div>
     </div>
@@ -72,18 +72,22 @@ export default {
           url: ''
       }],
       barList: [{
-          title: '网站首页',
-          url: ''
-      },{
-          title: '网站首页',
-          url: ''
-      },{
-          title: '网站首页',
-          url: ''
-      },{
-          title: '网站首页',
-          url: ''
-      },]
+          title: 'MuluPost',
+          url: '/',
+          iconClass: 'icon-tabbar-home'
+      }, {
+          title: '运费价格',
+          url: '/freightPrice',
+          iconClass: 'icon-tabbar-pricing'
+      }, {
+          title: '帮助中心',
+          url: '/helpCenter',
+          iconClass: 'icon-tabbar-how'
+      }, {
+          title: '会员中心',
+          url: '/signIn',
+          iconClass: 'icon-tabbar-my'
+      }]
     };
   },
   created(){
@@ -186,24 +190,25 @@ export default {
     .tabbar{
       display: flex;
       position: fixed;
-      z-index: 10000;
+      z-index: 1000;
       bottom: 0;
       width: 100%;
       background-color: #fff;
       padding-bottom: env(safe-area-inset-bottom);
+      font-size: 11px;
       .tabbar-item{
         display: block;
         flex: 1;
         padding: 4px 0 2px;
         height: 50px;
-        color: #666666;
+        color: #333;
         text-align: center;
         .icon{
           margin: 0 auto;
-          margin-bottom: 6px;
-          width: 24px;
-          height: 24px;
-          border: 1px solid #000;
+          margin-bottom: 2px;
+        }
+        &.router-link-active{
+          color: #007fff;
         }
       }
     }

@@ -1,48 +1,25 @@
 <template>
-   <div class='signUp'>
+   <div class='forgetPassword'>
         <div class="subhead-right">
-            <a @click.prevent="$router.push('/signIn')" class="breadBtn breadBtn-primary">
-                <span>用户登录</span>
-            </a>
             <div class="user-sign">
                 <div class="quick-sign">
-                    <div class="user-sign-title">快速注册</div>
-                    <div class="user-sign-way">
-                        <div class="way-item" v-for="(item, index) in wayList" :key="index">
-                            <div class="icon lg" :class="item.iconClass"></div>
-                            <div class="sign-text">{{item.name}}</div>
-                        </div>
-                    </div>
+                    <div class="user-sign-title">输入邮箱，重置密码</div>
                 </div>
                 <form action="" id="sign" class="sign-form" method="POST">
-                    <div class="input-row">
-                        <label class="input-label">
-                            <div class="input-title">用户昵称</div>
-                            <input v-model="form.name" autocomplete="off" type="name" maxlength="32" name="name" placeholder="请输入昵称">
-                        </label>
-                    </div>
                     <div class="input-row">
                         <label class="input-label">
                             <div class="input-title">注册邮箱</div>
                             <input v-model="form.email" type="email" name="email" placeholder="登录电子邮箱">
                         </label>
                     </div>
-                    <div class="input-row">
+                    <!-- <div class="input-row">
                         <label class="input-label">
                             <div class="input-title">登录密码</div>
                             <input v-model="form.password" type="password" name="password" maxlength="32" placeholder="登录密码">
                         </label>
-                    </div>
+                    </div> -->
                     <div class="btn-submit">
-                        <div class="flex-item">
-                            <div class="input-checkbox">
-                                <el-checkbox v-model="checked"></el-checkbox>
-                                <span class="input-checked">
-                                    已阅读并同意<a @click="" style="text-decoration: underline">《服务条款》</a>
-                                </span>
-                            </div>
-                        </div>
-                        <button class="btn breadBtn-primary" @click.prevent="signUp">账号注册</button>
+                        <button class="btn breadBtn-primary" @click.prevent="">下一步</button>
                     </div>
                     <div class="btn-submit">
                         <div class="tips">
@@ -50,7 +27,7 @@
                                 <a @click="$router.push('/signIn')">已有账户？立即登录</a>
                             </div>
                             <div class="flex-item tr">
-                                <a @click="$router.push('/forgetPassword')">忘记密码？</a>
+                                <a @click="$router.push('/signUp')">账号注册</a>
                             </div>
                         </div>
                     </div>
@@ -68,32 +45,20 @@
         data() {
         //这里存放数据
             return {
-                wayList: [{
-                    iconClass: 'icon-o-facebook',
-                    name: 'facebook'
-                }, {
-                    iconClass: 'icon-o-google',
-                    name: 'google'
-                }],
                 form: {
-                    name: '',
                     email: '',
-                    password: ''
+                    // password: ''
                 },
                 rules: {
-                    name: [
-                        { required: true, message: '用户昵称不能为空' }
-                    ],
                     email: [
                         { required: true, message: '电子邮箱地址不能为空' },
                         { pattern: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/, message: '电子邮箱输入错误' }
                     ],
-                    password: [
-                        { required: true, message: '密码不能为空' },
-                        { pattern: /.{6,32}/, message: '密码输入有误' }
-                    ]
-                },
-                checked: true
+                    // password: [
+                    //     { required: true, message: '密码不能为空' },
+                    //     { pattern: /.{6,32}/, message: '密码输入有误' }
+                    // ]
+                }
             };
         },
         //监听属性 类似于data概念
@@ -133,16 +98,4 @@
 </script>
 <style lang='less' scoped>
     @import '../assets/style/sign.less';
-    .input-checkbox{
-        padding: 8px 10px 8px 0;
-        line-height: 20px;
-        /deep/.el-checkbox__inner{
-            width: 16px;
-            height: 16px;
-            &:after{
-                left: 5px;
-                top: 2px;
-            }
-        }
-    }
 </style>

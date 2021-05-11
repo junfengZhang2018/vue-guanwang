@@ -18,14 +18,26 @@
         </div>
         <div class="card">
             <div class="body">
-                <router-link to="" class="item">
-                    <div class="icon"></div>
-                    <div class="title">运费价格</div>
-                </router-link>
-                <router-link to="" class="item">
-                    <div class="icon"></div>
-                    <div class="title">帮助中心</div>
-                </router-link>
+                <template v-if="$route.name === 'freightPrice' || $route.name === 'helpCenter'">
+                    <router-link to="/freightPrice" class="item">
+                        <div class="icon icon-card-pricing md"></div>
+                        <div class="title">运费价格</div>
+                    </router-link>
+                    <router-link to="/helpCenter" class="item">
+                        <div class="icon icon-card-helper md"></div>
+                        <div class="title">帮助中心</div>
+                    </router-link>
+                </template>
+                <template v-else>
+                    <router-link to="/signIn" class="item">
+                        <div class="icon icon-card-pricing md"></div>
+                        <div class="title">账号登录</div>
+                    </router-link>
+                    <router-link to="/signUp" class="item">
+                        <div class="icon icon-card-helper md"></div>
+                        <div class="title">立即注册</div>
+                    </router-link>
+                </template>
             </div>
         </div>
         <div class="panel">
@@ -109,11 +121,6 @@
         >div{
             background-color: #fff;
         }
-        .icon{
-            border: 1px solid #000;
-            height: 24px;
-            width: 24px;
-        }
         .panel{
             border: 1px solid #eee;
             margin: 8px 0;
@@ -145,29 +152,20 @@
                     display: flex;
                     align-items: center;
                     padding: 12px;
-                    >div{
-                        height: 16px;
-                    }
                     .icon{
                         margin-right: 6px;
-                    }
-                    .icon-rate{
-                        border: 1px solid #000;
-                        height: 24px;
-                        width: 24px;
                     }
                     .cell-bd{
                         flex: 1;
                     }
                     .cell-ft{
                         padding-right: 12px;
-                        min-height: 20px;
                         position: relative;
                         &:after{
                             content: '';
                             position: absolute;
                             right: 0px;
-                            top: 50%;
+                            top: 58%;
                             width: 10px;
                             height: 10px;
                             margin-top: -8px;
@@ -198,7 +196,13 @@
                     margin: 0 auto;
                     &+.title{
                         margin-top: 6px;
+                        font-size: 14px;
                     }
+                }
+            }
+            .router-link-active{
+                .title{
+                    color: #007fff;
                 }
             }
         }

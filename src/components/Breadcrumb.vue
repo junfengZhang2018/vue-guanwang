@@ -33,7 +33,7 @@
         methods: {
             getBreadcrumb() {
                 let matched = this.$route.matched.filter(item => item.meta && item.meta.title);
-                matched = [{ path: '/', meta: { title: '首页' }}].concat(matched);
+                matched = [{ path: '/', meta: { title: '网站首页' }}].concat(matched);
                 this.levelList = matched.filter(item => item.meta && item.meta.title);
             },
             handleLink(item) {
