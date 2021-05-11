@@ -331,6 +331,7 @@ div{
   }
   // 其他样式
   #homeBodyer {
+        background-color: #fff;
     .sticky-top {
       position: sticky;
       z-index: 3;

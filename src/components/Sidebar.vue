@@ -39,7 +39,7 @@
             <div class="panel-menu">
                 <div class="menuList">
                     <div class="list-item" v-for="(item, i) in serviceList" :key="i">
-                        <div class="mlist-bd">{{item.title}}</div>
+                        <div class="mlist-bd" @click.prevent="$router.push(item.url)" >{{item.title}}</div>
                     </div>
                 </div>
             </div>
@@ -69,13 +69,13 @@
             return {
                 serviceList: [{
                     title: '自动入库',
-                    url: ''
+                    url: '/automaticStorage'
                 }, {
                     title: '仓库地址',
-                    url: ''
+                    url: '/warehouseAddress'
                 }, {
                     title: '增值服务',
-                    url: ''
+                    url: '/addedServices'
                 }, {
                     title: '赔偿说明',
                     url: ''

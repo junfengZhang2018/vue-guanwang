@@ -53,6 +53,27 @@ const routes = [
     meta: { title: '用户登录' }
   },
   {
+    // 自动入库
+    path: '/automaticStorage',
+    name: 'automaticStorage',
+    component: () => import('../views/automaticStorage.vue'),
+    meta: { title: '自动入库' }
+  },
+  {
+    // 自动入库
+    path: '/warehouseAddress',
+    name: 'warehouseAddress',
+    component: () => import('../views/warehouseAddress.vue'),
+    meta: { title: '仓库地址' }
+  },
+  {
+    // 自动入库
+    path: '/addedServices',
+    name: 'addedServices',
+    component: () => import('../views/addedServices.vue'),
+    meta: { title: '仓库地址' }
+  },
+  {
     // 注册
     path: '/signUp',
     name: 'signUp',
