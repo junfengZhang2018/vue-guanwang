@@ -5,19 +5,38 @@
                 <span>计算运费</span>
             </a>
         </div>
-        1111111
+        <div class="top">
+            <div class="tab-nav">
+                <div class="nav-item tc">
+                    <div>西马</div>
+                    <div class="desc">West Malaysia</div>
+                </div>
+                <div class="nav-item tc">
+                    <div>东马</div>
+                    <div class="desc">East Malaysia</div>
+                </div>
+                <div class="nav-item tc">
+                    <div>新加坡</div>
+                    <div class="desc">Singapore</div>
+                </div>
+            </div>
+        </div>
+        <a-table :data="data" v-for="(data, i) in tableData" :key="i" />
    </div>
 </template>
 
 <script>
-   // import 《组件名称》 from '《组件路径》';
+    import ATable from '@/components/ATable';
+    import tableData from './data'
 
     export default {
-        components: {},
+        components: {
+            ATable
+        },
         data() {
         //这里存放数据
             return {
-            
+                tableData
             };
         },
         //监听属性 类似于data概念
@@ -46,5 +65,34 @@
     }
 </script>
 <style lang='less' scoped>
-    
+    .top{
+        position: sticky;
+        z-index: 3;
+        top: 0px;
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(2px);
+        .tab-nav{
+            border: 1px solid #eee;
+            display: flex;
+            .nav-item{
+                flex: 1;
+                padding: 6px;
+                user-select: none;
+                font-size: 18px;
+                line-height: 24px;
+                cursor: pointer;
+                &:hover{
+                    color: #007fff;
+                }
+                &+.nav-item{
+                    border-left: 1px solid #eee;
+                }
+                .desc{
+                    margin-top: 2px;
+                    font-size: 13px;
+                    line-height: 16px;
+                }
+            }
+        }
+    }
 </style>

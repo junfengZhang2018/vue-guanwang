@@ -28,7 +28,13 @@ const routes = [
         name: 'calculation',
         component: () => import('../views/freight/calculation.vue'),
         meta: { title: '计算运费' }
-      }
+      },
+      {
+        path: 'detail',
+        name: 'freightDetail',
+        component: () => import('../views/freight/detail.vue'),
+        meta: { title: '运价详情' }
+      },
     ]
   },
   {
