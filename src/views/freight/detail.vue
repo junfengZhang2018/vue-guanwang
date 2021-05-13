@@ -1,17 +1,18 @@
 <template>
    <div class='freightDetail'>
        <a-table :showLink="false" :data="data" v-for="(data, i) in tableData" :key="i" />
-       
+       <b-table :data="data" v-for="(data, i) in tableData" :key="i" />
    </div>
 </template>
 
 <script>
     import ATable from '@/components/ATable';
+    import BTable from '@/components/BTable';
     import tableData from './data'
 
     export default {
         components: {
-            ATable
+            ATable, BTable
         },
         data() {
         //这里存放数据
@@ -29,11 +30,18 @@
         },
         //生命周期 - 创建完成（可以访问当前this实例）
         created() {
-            this.tableData = this.tableData.reduce((total, item) => {
-                return total.concat(item.price.map(val => {
-                    return { ...item, price: [val] }
-                }))
-            }, [])
+            scrollTo(0, 0);
+            let { id } = this.$route.params;
+            this.tableData = this.tableData[Number(id)];
+            let tableData = [];
+            let price = this.tableData.price;
+            price.forEach((item, i) => {
+                tableData.push({
+                    ...this.tableData,
+                    price: [item]
+                });
+            });
+            this.tableData = tableData;
         },
         //生命周期 - 挂载完成（可以访问DOM元素）
         mounted() {

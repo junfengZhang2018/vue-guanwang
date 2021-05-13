@@ -7,7 +7,7 @@
                         <div class="icon icon-air"></div>
                         <h3 class="flex-item price-title">{{data.title}}</h3>
                         <div v-if="showLink">
-                            <a class="price-table" @click="$router.push('/freightPrice/detail')">
+                            <a class="price-table" @click="$router.push(`/freightPrice/detail/${tableId}`)">
                                 <span>价格表</span>
                             </a>
                         </div>
@@ -26,8 +26,17 @@
                     <strong>派送公司</strong>
                 </td>
                 <td class="text-info" v-for="(item, i) in data.range" :key="i">
-                    <strong>{{item}}</strong>
+                    <strong>
+                        <template v-if="item.length === 2">
+                            {{item[0]}}~{{item[1]}}
+                        </template>
+                        <template v-else>
+                            > {{item[0]}}
+                        </template>
+                        {{data.priceType?'m³':'kg'}}
+                    </strong>
                 </td>
+                <td v-if="!data.range.length"></td>
             </tr>
             <tr v-for="(item, i) in data.price" :key="i">
                 <td>
@@ -35,8 +44,15 @@
                         <u><strong>{{val}}</strong></u>
                     </div>
                 </td>
-                <td v-for="(val, index) in item.perKg" :key="index">
-                    <div v-for="per in val" :key="per">{{per}}</div>
+                <td v-for="(val, index) in item.per" :key="index">
+                    <template v-if="Array.isArray(val)">
+                        <div v-for="(a, index) in val" :key="index">
+                            {{index?'续':'首'}} {{a.price}}/<template v-if="a.weight!=1">{{a.weight}}</template>{{data.priceType?'m³':'kg'}}
+                        </div>
+                    </template>
+                    <template v-else>
+                        {{val}}/{{data.priceType?'0.1m³':'kg'}}
+                    </template>
                 </td>
             </tr>
             <tr>
@@ -54,7 +70,8 @@
     export default {
         props: {
             data: { type: Object },
-            showLink: { type: Boolean, default: true }
+            showLink: { type: Boolean, default: true },
+            tableId: { type: Number }
         },
         components: {},
         data() {
@@ -64,7 +81,9 @@
             };
         },
         //监听属性 类似于data概念
-        computed: {},
+        computed: {
+
+        },
         //监控data中的数据变化
         watch: {},
         //方法集合
@@ -73,7 +92,7 @@
         },
         //生命周期 - 创建完成（可以访问当前this实例）
         created() {
-        
+            
         },
         //生命周期 - 挂载完成（可以访问DOM元素）
         mounted() {
@@ -89,70 +108,5 @@
     }
 </script>
 <style lang='less' scoped>
-    .table{
-        border-spacing: 0;
-        overflow: hidden;
-        width: 100%;
-        margin: 8px 0 12px;
-        font-size: 14px;
-        line-height: 20px;
-        &.table-border{
-            border-bottom: 1px solid #eee;
-            border-right: 1px solid #eee;
-            td{
-                border-top: 1px solid #eee;
-                border-left: 1px solid #eee;
-            }
-        }
-        thead > tr{
-            background-color: #fafcff;
-        }
-        td{
-            padding: 10px;
-        }
-        .th-title{
-            display: flex;
-            align-items: center;
-            .icon{
-                margin-right: 8px;
-            }
-            .price-title{
-                font-size: 18px;
-                line-height: 24px;
-                flex: 1;
-            }
-        }
-        .price-table{
-            display: block;
-            position: relative;
-            padding-right: 18px;
-            color: #007fff;
-            &:after{
-                content: '';
-                position: absolute;
-                top: 50%;
-                right: 9px;
-                margin-top: -4px;
-                width: 7px;
-                height: 7px;
-                border-left: 1px solid #007fff;
-                border-top: 1px solid #007fff;
-                transform: rotate(135deg);
-            }
-        }
-        tbody{
-            background-color: #fff;
-            td{
-                padding: 6px 10px;
-            }
-            .text-info {
-                color: #586C94;
-            }
-            .table-desc{
-                font-size: 13px;
-                line-height: 16px;
-                margin: 4px 0;
-            }
-        }
-    }
+    @import '../assets/style/table.less';
 </style>

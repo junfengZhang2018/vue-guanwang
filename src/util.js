@@ -11,5 +11,17 @@ export default {
                 }
             }
         }
+    },
+    dealFloat(value, n=1) {
+        var f = Math.round(value*Math.pow(10,n))/Math.pow(10,n);
+        var s = f.toString();
+        var rs = s.indexOf('.');   
+        if (rs < 0) {     
+            s += '.';   
+        } 
+        for(var i = s.length - s.indexOf('.'); i <= n; i++){
+          s += "0";
+        }
+        return n ? s : s.slice(0, -1);
     }
 }
