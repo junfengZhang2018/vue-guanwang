@@ -30,7 +30,7 @@ const routes = [
         meta: { title: '计算运费' }
       },
       {
-        path: 'detail',
+        path: 'detail/:id',
         name: 'freightDetail',
         component: () => import('../views/freight/detail.vue'),
         meta: { title: '运价详情' }

@@ -7,21 +7,15 @@
         </div>
         <div class="top">
             <div class="tab-nav">
-                <div class="nav-item tc">
-                    <div>西马</div>
-                    <div class="desc">West Malaysia</div>
-                </div>
-                <div class="nav-item tc">
-                    <div>东马</div>
-                    <div class="desc">East Malaysia</div>
-                </div>
-                <div class="nav-item tc">
-                    <div>新加坡</div>
-                    <div class="desc">Singapore</div>
+                <div class="nav-item tc" v-for="(item, i) in regionList" :key="i">
+                    <a :href="'#table'+i+'0'">
+                        <div>{{item.name}}</div>
+                        <div class="desc">{{item.engName}}</div>
+                    </a>
                 </div>
             </div>
         </div>
-        <a-table :data="data" v-for="(data, i) in tableData" :key="i" />
+        <a-table :id="'table'+data.region+data.index" :tableId="i" :data="data" v-for="(data, i) in tableData" :key="i" />
    </div>
 </template>
 
@@ -36,7 +30,12 @@
         data() {
         //这里存放数据
             return {
-                tableData
+                tableData,
+                regionList: [
+                    { name: '西马', engName: 'West Malaysia' },
+                    { name: '东马', engName: 'East Malaysia' },
+                    { name: '新加坡', engName: 'Singapore' }
+                ]
             };
         },
         //监听属性 类似于data概念
@@ -81,7 +80,7 @@
                 font-size: 18px;
                 line-height: 24px;
                 cursor: pointer;
-                &:hover{
+                &:hover div{
                     color: #007fff;
                 }
                 &+.nav-item{
@@ -95,4 +94,10 @@
             }
         }
     }
+    @media only screen and (max-width: 768px){
+        .top {
+            top: 60px;
+        }
+    }
+
 </style>
