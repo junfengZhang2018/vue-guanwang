@@ -1,5 +1,5 @@
 <template>
-   <div class='automaticStorage'>
+   <div class='warehouseAddress'>
        <div class="subhead-right">
 					<a @click.prevent="" class="breadBtn breadBtn-success">
 						<span>帮助中心</span>
@@ -122,7 +122,7 @@
                 background-color: #fafcff;
               }
             }
-            th,td{
+            th,td{ 
               padding: 10px;
               vertical-align: middle;
               border: 1px solid #eeeeee;
