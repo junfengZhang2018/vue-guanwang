@@ -73,12 +73,34 @@ const routes = [
     meta: { title: '仓库地址' }
   },
   {
-    // 自动入库
+    // 增值服务
     path: '/addedServices',
     name: 'addedServices',
     component: () => import('../views/addedServices.vue'),
-    meta: { title: '仓库地址' }
+    meta: { title: '代运增值服务' }
   },
+  {
+    // 赔偿说明
+    path: '/compensateExplain',
+    name: 'compensateExplain',
+    component: () => import('../views/compensateExplain.vue'),
+    meta: { title: '货运赔偿说明' }
+  },
+  {
+    // 赔偿说明
+    path: '/halfFullNoThrow',
+    name: 'halfFullNoThrow',
+    component: () => import('../views/halfFullNoThrow.vue'),
+    meta: { title: '全抛、免抛、半抛' }
+  },
+  {
+    // 赔偿说明
+    path: '/cargoTransportAdvice',
+    name: 'cargoTransportAdvice',
+    component: () => import('../views/cargoTransportAdvice.vue'),
+    meta: { title: '货运建议' }
+  },
+  
   {
     // 注册
     path: '/signUp',
