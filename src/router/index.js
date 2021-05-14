@@ -87,20 +87,40 @@ const routes = [
     meta: { title: '货运赔偿说明' }
   },
   {
-    // 赔偿说明
+    // 全抛、免抛、半抛
     path: '/halfFullNoThrow',
     name: 'halfFullNoThrow',
     component: () => import('../views/halfFullNoThrow.vue'),
     meta: { title: '全抛、免抛、半抛' }
   },
   {
-    // 赔偿说明
+    // 货运建议
     path: '/cargoTransportAdvice',
     name: 'cargoTransportAdvice',
     component: () => import('../views/cargoTransportAdvice.vue'),
     meta: { title: '货运建议' }
   },
-  
+  {
+    // 敏感货物
+    path: '/sensitiveGoods',
+    name: 'sensitiveGoods',
+    component: () => import('../views/sensitiveGoods.vue'),
+    meta: { title: '敏感货物' }
+  },
+  {
+    // 敏感货物
+    path: '/prohibitedGoods',
+    name: 'prohibitedGoods',
+    component: () => import('../views/prohibitedGoods.vue'),
+    meta: { title: '禁运货物' }
+  },
+  {
+    // 敏感货物
+    path: '/distinguishGoods',
+    name: 'distinguishGoods',
+    component: () => import('../views/distinguishGoods.vue'),
+    meta: { title: '敏感货与普货分辨' }
+  },
   {
     // 注册
     path: '/signUp',
