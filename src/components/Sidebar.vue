@@ -90,13 +90,13 @@
                     url: '/addedServices'
                 }, {
                     title: '赔偿说明',
-                    url: ''
+                    url: '/compensateExplain'
                 }, {
                     title: '免抛半抛全抛',
-                    url: ''
+                    url: '/halfFullNoThrow'
                 }, {
                     title: '货物运输建议',
-                    url: ''
+                    url: '/cargoTransportAdvice'
                 }],
                 pkgList: [{
                     title: '敏感货物',

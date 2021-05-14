@@ -1,5 +1,5 @@
 <template>
-   <div class='automaticStorage'>
+   <div class='addedServices'>
        <div class="subhead-right">
 					<a @click.prevent="" class="breadBtn breadBtn-success">
 						<span>帮助中心</span>
@@ -11,7 +11,16 @@
 						<div class="text-success">MuluPost 除了提供基础运输服务，还提供人性化的增值服务，让运输更有保障，以下是我们提供的代运增值服务</div>
 					</div>
 					<div class="content">
-            
+            <ul class="list clearfix">
+              <li v-for="(item, index) in servicesList" :key="index">
+                <div class="wrap">
+                  <div class="title">{{item.title}}</div>
+                  <div class="icon"></div>
+                  <div class="price" :class="item.priceStyle">{{item.price}}</div>
+                  <div class="desc">{{item.desc}}</div>
+                </div>
+              </li>
+            </ul>
 					</div>
         </div>
    </div>
@@ -25,7 +34,44 @@
         data() {
         //这里存放数据
             return {
-            
+               servicesList:[{
+                title:'空运拆外包装',
+                desc:'空运可拆开包裹的外包装，以减轻整体的重量。',
+                icon:'',
+                price:'FREE / 免费',
+                priceStyle:'text-success'
+                },{
+                title:'空运拆内包装',
+                desc:'空运可拆开包裹的内外包装，以减轻整体的重量。',
+                icon:'',
+                price:'FREE / 免费',
+                priceStyle:'text-success'
+                },{
+                title:'易碎标签',
+                desc:'贴上易碎标签，避免包裹里的货品在运输途中破碎。',
+                icon:'',
+                price:'FREE / 免费',
+                priceStyle:'text-success'
+                },{
+                title:'拍照验货',
+                desc:'拆开包裹并拍照包裹里的商品，会提供2至5张照片。',
+                icon:'',
+                price:'¥5/件',
+                priceStyle:'text-warning'
+                },{
+                title:'拍照验货',
+                desc:'拆开包裹并拍照包裹里的商品，会提供2至5张照片。',
+                icon:'',
+                price:'¥5/件',
+                priceStyle:'text-warning'
+                },{
+                title:'拍照验货',
+                desc:'拆开包裹并拍照包裹里的商品，会提供2至5张照片。',
+                icon:'',
+                price:'¥5/件',
+                priceStyle:'text-warning'
+                }
+              ],
             };
         },
         //监听属性 类似于data概念
@@ -83,15 +129,84 @@
         .text-success{
           color: #059603;
         }
+        .text-warning {
+          color: #d46419;
+        }
         .text-gray{
           color: #666666;
           font-size: 13px;
         }
 				.content{
 					text-align: justify;
-					>p{
-						margin-top: 16px;
-					}
+          background-color: #fff;
+          ul{
+            padding-left: 20px;
+            margin-top: 16px;
+            text-align: center;
+            li{
+              float: left;
+              width: 33.3333%;
+              padding: 20px 0;
+              margin: 6px 0;
+              line-height: 20px;
+              .wrap{
+                width: 100%;
+                height: 100%;
+                .title{
+                  color: #007fff;
+                  font-size: 18px;
+                  line-height: 24px;
+                }
+                .icon{
+                  width: 64px;
+                  height: 64px;
+                  margin: 14px auto;
+                  display: block;
+                  border-radius: 4px;
+                }
+                .price{
+                  font-size: 14px;
+                  padding: 0 8px;
+                  line-height: 20px;
+                  overflow: hidden;
+                  margin-bottom: 4px;
+                }
+                .desc{
+                  color: #999999;
+                  font-size: 14px;
+                  padding: 0 8px;
+                  line-height: 20px;
+                  height: 60px;
+                  overflow: hidden;
+                }
+              }
+            }
+          }
 				}
     }
+  @media screen and (max-width: 768px) {
+    .main{
+      padding: 12px;
+      .content{
+
+        ul{
+          li{
+            width: 50%!important;
+            margin: 16px 0 0;
+            .wrap{
+              .title{
+              
+              }
+              .icon{
+             
+              }
+              .desc{
+           
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 </style>
