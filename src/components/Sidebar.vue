@@ -4,7 +4,7 @@
             <div class="panel-hd">
                 <div class="panel-title">
                     <div>
-                        下午好，请 <a @click.prevent="$router.push('/signIn')" class="text-link">登录/注册</a>
+                        {{sayHello}}，请 <a @click.prevent="$router.push('/signIn')" class="text-link">登录/注册</a>
                     </div>
                 </div>
             </div>
@@ -43,6 +43,7 @@
         <div class="panel">
             <div class="panel-hd">
                 <div class="panel-title">
+                    <div class="icon icon-transport"></div>
                     <strong>
                         运输服务
                     </strong>
@@ -50,15 +51,18 @@
             </div>
             <div class="panel-menu">
                 <div class="menuList">
-                    <div class="list-item" v-for="(item, i) in serviceList" :key="i">
-                        <div class="mlist-bd" @click.prevent="$router.push(item.url)" >{{item.title}}</div>
-                    </div>
+                    <router-link class="routerLink" :to="item.url" v-for="(item, i) in serviceList" :key="i">
+                        <div class="list-item">
+                            <div class="mlist-bd">{{item.title}}</div>
+                        </div>
+                    </router-link>
                 </div>
             </div>
         </div>
         <div class="panel">
             <div class="panel-hd">
                 <div class="panel-title">
+                    <div class="icon icon-box"></div>
                     <strong>
                         包裹说明
                     </strong>
@@ -66,9 +70,11 @@
             </div>
             <div class="panel-menu">
                 <div class="menuList">
-                    <div class="list-item" v-for="(item, i) in pkgList" :key="i">
-                        <div class="mlist-bd">{{item.title}}</div>
-                    </div>
+                    <router-link class="routerLink" :to="item.url" v-for="(item, i) in pkgList" :key="i">
+                        <div class="list-item">
+                            <div class="mlist-bd">{{item.title}}</div>
+                        </div>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -100,16 +106,30 @@
                 }],
                 pkgList: [{
                     title: '敏感货物',
-                    url: ''
+                    url: '/aa'
                 }, {
                     title: '禁运物品',
-                    url: ''
+                    url: '/bb'
                 }, {
                     title: '普货敏感货分辨',
-                    url: ''
-                }]
+                    url: '/cc'
+                }],
+                sayHello: ''
             }
         },
+        methods: {
+            initDate() {
+                let hour = new Date().getHours();
+                if (0 <= hour && hour <= 6) this.sayHello = '凌晨好';
+                if (7 <= hour && hour <= 11) this.sayHello = '早上好';
+                if (12 <= hour && hour <= 13) this.sayHello = '中午好';
+                if (14 <= hour && hour <= 18) this.sayHello = '下午好';
+                if (19 <= hour && hour <= 23) this.sayHello = '晚上好';
+            },
+        },
+        created(){
+            this.initDate();
+        }
     }
 </script>
 
@@ -124,25 +144,42 @@
         .panel{
             border: 1px solid #eee;
             margin: 8px 0;
-            .text-link{
-                color: #007fff;
-                text-decoration: underline;
-            }
             .panel-hd{
                 border-bottom: 1px solid #eee;
                 display: flex;
                 align-items: center;
                 padding: 0px 12px;
                 min-height: 44px;
+                .panel-title{
+                    display: flex;
+                    align-items: center;
+                    font-size: 17px;
+                    line-height: 24px;
+                    min-height: 32px;
+                    .icon{
+                        margin-right: 8px;
+                    }
+                    strong{
+                        transform: translateY(2px);
+                    }
+                }
             }
             .panel-menu{
-                .menuList{
+                .router-link-active{
                     .list-item{
-                        &:first-child{
+                        color: #007fff;
+                        background-color: #fafcff;
+                    }
+                }
+                .menuList{
+                    .routerLink:first-child{
+                        .list-item{
                             border-top: none;
                         }
+                    }
+                    .list-item{
                         cursor: pointer;
-                        padding: 12px;
+                        padding: 15px;
                         border-top: 1px dashed #eeeeee;
                     }
                 }

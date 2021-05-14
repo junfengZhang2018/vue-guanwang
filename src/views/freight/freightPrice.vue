@@ -2,6 +2,7 @@
    <div class='freightPrice'>
         <div class="subhead-right">
             <a @click.prevent="$router.push('/freightPrice/calculation')" class="breadBtn breadBtn-success">
+                <div class="icon icon-calculator"></div>
                 <span>计算运费</span>
             </a>
         </div>
@@ -64,40 +65,5 @@
     }
 </script>
 <style lang='less' scoped>
-    .top{
-        position: sticky;
-        z-index: 3;
-        top: 0px;
-        background-color: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(2px);
-        .tab-nav{
-            border: 1px solid #eee;
-            display: flex;
-            .nav-item{
-                flex: 1;
-                padding: 6px;
-                user-select: none;
-                font-size: 18px;
-                line-height: 24px;
-                cursor: pointer;
-                &:hover div{
-                    color: #007fff;
-                }
-                &+.nav-item{
-                    border-left: 1px solid #eee;
-                }
-                .desc{
-                    margin-top: 2px;
-                    font-size: 13px;
-                    line-height: 16px;
-                }
-            }
-        }
-    }
-    @media only screen and (max-width: 768px){
-        .top {
-            top: 60px;
-        }
-    }
-
+    @import './sticky.less';
 </style>

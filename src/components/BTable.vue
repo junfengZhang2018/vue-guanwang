@@ -66,10 +66,10 @@
                         <strong v-else>{{$util.dealFloat((i+1)*0.1)}}m³</strong>
                     </td>
                     <td width="22%" style="padding:4px">
-                        {{$util.dealFloat(getPrice(i+1), 0)}}
+                        {{rmbList[i]}}
                     </td>
                     <td width="22%" style="padding:4px">
-                        
+                        {{rmList[i]}}
                     </td>
                 </tr>
             </tbody>
@@ -88,7 +88,9 @@ export default {
     data() {
         //这里存放数据
         return {
-            rate: 1.52
+            rate: 1.52,
+            rmbList: Array.from(Array(20), (v,k) => k+1),
+            rmList: []
         };
     },
     //监听属性 类似于data概念
@@ -113,10 +115,16 @@ export default {
                 }
             }
             return this.data.price[0].per[rangeIndex] * i * base;
+        },
+        getCurrencyList(){
+            this.rmbList = this.rmbList.map(item => util.dealFloat(this.getPrice(item), 0));
+            this.rmList = this.rmbList.map(item => util.dealFloat(util.accDiv(item, this.rate), 2));
         }
     },
     //生命周期 - 创建完成（可以访问当前this实例）
-    created() {},
+    created() {
+        this.getCurrencyList();
+    },
     //生命周期 - 挂载完成（可以访问DOM元素）
     mounted() {},
     beforeCreate() {}, //生命周期 - 创建之前
@@ -132,12 +140,6 @@ export default {
 @import "../assets/style/table.less";
 td:not(.td-title){
     text-align: center;
-}
-.text-success{
-    color: #059603;
-}
-.text-primary{
-    color: #007fff;
 }
 .table-sticky {
     margin-bottom: 12px;
