@@ -38,6 +38,19 @@ const routes = [
     ]
   },
   {
+    // 会员中心
+    path: '/my',
+    component: () => import('../views/my'),
+    meta: { title: '会员中心' },
+    children: [
+      {
+        path: '',
+        name: 'memberCenter',
+        component: () => import('../views/my/memberCenter.vue'),
+      },
+    ]
+  },
+  {
     // 帮助中心
     path: '/helpCenter',
     name: 'helpCenter',
