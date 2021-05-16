@@ -111,6 +111,11 @@
                     })
                 }else{
                     // 注册
+                    this.$diaolog({
+                        title: '注册成功',
+                        content: '欢迎使用MuluPost'
+                    })
+                    // this.$router.push('')
                 }
             }
         },

@@ -7,6 +7,19 @@
 .tr{
     text-align: right;
 }
+.text-success{
+    color: #059603;
+}
+.text-primary{
+    color: #007fff;
+}
+.text-danger{
+    color: #ea3838;
+}
+.text-link{
+    color: #007fff;
+    text-decoration: underline;
+}
 .container{
     width: 960px;
     padding: 0 12px;
@@ -38,6 +51,9 @@
     font-size: 16px;
     padding: 4px 8px;
     white-space: nowrap;
+    >.icon{
+        margin-right: 6px;
+    }
 }
 .breadBtn-success{
     background-color: #1ea11c;
@@ -274,5 +290,23 @@
         position: fixed;
         right: 10px;
         top: 14px;
+    }
+}
+// element样式
+.el-radio{
+    .el-radio__inner{
+        width: 16px;
+        height: 16px;
+        &:after{
+            width: 6px;
+            height: 6px;
+        }
+    }
+    .el-radio__input.is-checked .el-radio__inner{
+        background-color: #007fff;
+        border-color: #007fff;
+    }
+    .el-radio__label{
+        font-size: 16px;
     }
 }

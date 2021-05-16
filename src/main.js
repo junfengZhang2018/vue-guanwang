@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from './vuex'
 // 引入iconfont字体库
 import '@/assets/font/iconfont.css'
 // 初始化样式
@@ -10,13 +11,18 @@ import 'element-ui/lib/theme-chalk/display.css';
 // 全局弹窗
 import Dialog from '@/components/Dialog'
 Vue.use(Dialog);
+// 缺省组件
+import Default from '@/components/default'
+Vue.component(Default.name, Default);
 // 按需引入element-ui
-import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem, Checkbox } from "element-ui";
+import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem, Radio, RadioGroup, Checkbox } from "element-ui";
 // 首页element-ui轮播图
 Vue.use(Carousel);
 Vue.use(CarouselItem);
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
+Vue.use(Radio);
+Vue.use(RadioGroup);
 Vue.use(Checkbox);
 // 行业资讯element-ui分页器
 // Vue.use(Pagination);
@@ -42,6 +48,7 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App),
   mounted() {
     // seo优化预渲染
