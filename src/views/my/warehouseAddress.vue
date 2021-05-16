@@ -11,7 +11,7 @@
                     <p class="value">{{item.value}}</p>
                 </div>
                 <div class="cell-check">
-                    <a class="btn btn-primary">复制</a>
+                    <a v-clipboard:copy="item.value" v-clipboard:success="copySuccess" class="btn btn-primary">复制</a>
                 </div>
             </div>
         </div>
@@ -42,6 +42,11 @@
                 ]
             }
         },
+        methods: {
+            copySuccess(){
+                this.$message.success("复制成功");
+            }
+        }
     }
 </script>
 

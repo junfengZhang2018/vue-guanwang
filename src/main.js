@@ -15,7 +15,7 @@ Vue.use(Dialog);
 import Default from '@/components/default'
 Vue.component(Default.name, Default);
 // 按需引入element-ui
-import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem, Radio, RadioGroup, Checkbox } from "element-ui";
+import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem, Radio, RadioGroup, Checkbox, Message } from "element-ui";
 // 首页element-ui轮播图
 Vue.use(Carousel);
 Vue.use(CarouselItem);
@@ -24,6 +24,9 @@ Vue.use(BreadcrumbItem);
 Vue.use(Radio);
 Vue.use(RadioGroup);
 Vue.use(Checkbox);
+Vue.prototype.$message = Message;
+import VueClipBoard from 'vue-clipboard2'
+Vue.use(VueClipBoard);
 // 行业资讯element-ui分页器
 // Vue.use(Pagination);
 // 引入vue-meta-info用于动态设置网页meta
