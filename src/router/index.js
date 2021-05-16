@@ -48,6 +48,12 @@ const routes = [
         name: 'memberCenter',
         component: () => import('../views/my/memberCenter.vue'),
       },
+      {
+        path: 'warehouseAddress',
+        name: 'warehouseAddress',
+        component: () => import('../views/my/warehouseAddress.vue'),
+        meta: { title: '仓库地址' },
+      },
     ]
   },
   {
