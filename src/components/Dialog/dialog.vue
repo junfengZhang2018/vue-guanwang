@@ -12,14 +12,14 @@
                 </div>
                 <div class="dialog-foot">
                     <a
-                        @click="onConfirm"
+                        @click="action('confirm')"
                         :class="confirmButtonClass"
                         class="dialog-btn dialog-btn-default"
                         >{{btnText}}</a
                     >
                     <a
                         v-if="cancelText"
-                        @click="onCancel"
+                        @click="action('cancel')"
                         class="dialog-btn dialog-btn-default"
                         >{{cancelText}}</a
                     >
@@ -41,16 +41,20 @@ export default {
             cancelText: "",
             imgUrl: "",
             confirmButtonClass: "",
-            onConfirm: () => {
-                this.show = false;
-            },
-            onCancel: () => {
-                this.show = false;
-            },
+            onConfirm: null,
+            onCancel: null,
         };
     },
     created() {},
     methods: {
+        action(type){
+            if(type === 'confirm' && typeof this.onConfirm === 'function'){
+                this.onConfirm();
+            }else if(type === 'cancel' && typeof this.onCancel === 'function'){
+                this.onCancel();
+            }
+            this.show = false;
+        }
     },
 };
 </script>

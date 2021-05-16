@@ -107,13 +107,13 @@
                 if(errMsg){
                     this.$dialog({
                         title: errMsg,
-                        content: errMsg,
+                        content: errMsg
                     })
                 }else{
                     // 注册
                     this.$diaolog({
                         title: '注册成功',
-                        content: '欢迎使用MuluPost'
+                        content: '欢迎使用MuluPost',
                     })
                     // this.$router.push('')
                 }
