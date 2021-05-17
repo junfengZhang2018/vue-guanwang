@@ -22,7 +22,7 @@
                     </div>
                     <div class="title">我的包裹</div>
                 </a>
-                <a class="item">
+                <a class="item" @click="$router.push('/my/wallet')">
                     <div class="number">
                         <b>￥0.00</b>
                     </div>
@@ -140,9 +140,6 @@
             padding: 4px 12px;
             font-weight: bold;
             border-width: 2px;
-        }
-        .icon{
-            margin-right: 6px;
         }
     }
     .input{

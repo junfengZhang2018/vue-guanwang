@@ -1,23 +1,38 @@
 <template>
-   <div class='wallet'>
-       <div class="subhead-right">
-            <a @click.prevent="$router.push('/freightPrice/calculation')" class="breadBtn breadBtn-success">
-                <div class="icon icon-balance"></div>
-                <span>余额充值</span>
-            </a>
+   <div class='finance'>
+       <div class="main">
+            <TabNav v-if="$store.state.levelList.length === 3" :tabsList="tabsList"></TabNav>
+            <div class="content">
+                <router-view/>
+            </div>
         </div>
    </div>
 </template>
 
 <script>
-   // import 《组件名称》 from '《组件路径》';
+    import TabNav from '@/components/TabNav';
 
     export default {
-        components: {},
+        components: { TabNav },
         data() {
         //这里存放数据
             return {
-            
+                tabsList:[{
+                    name:'钱包',
+                    url:'/my/wallet',
+                    num:'0',
+                    Symbol:'￥'
+                }, {
+                    name:'积分',
+                    url:'/my/integral',
+                    num:'0',
+                    Symbol:''
+                }, {
+                    name:'优惠券',
+                    url:'/my/coupon',
+                    num:'0',
+                    Symbol:''
+                }],
             };
         },
         //监听属性 类似于data概念
@@ -45,6 +60,6 @@
         activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
     }
 </script>
-<style lang='scss' scoped>
+<style lang='less' scoped>
 
 </style>

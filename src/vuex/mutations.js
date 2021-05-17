@@ -1,8 +1,8 @@
 import * as types from './mutation-types';
 
 const mutations = {
-    [types.GET_USER_INFO] (state, parm) {  //登录用户信息
-        state.userInfo = parm;
+    [types.SET_LEVEL_LIST] (state, parm) {
+        state.levelList = parm;
     },
 }
 export default mutations;

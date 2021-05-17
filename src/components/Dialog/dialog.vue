@@ -8,7 +8,7 @@
                 </div>
                 <div class="dialog-content">
                     <slot />
-                    {{content}}
+                    <div class="word-content" :class="contentClass">{{content}}</div>
                     <img v-if="imgUrl" :src="imgUrl" alt="">
                 </div>
                 <div class="dialog-foot">
@@ -21,6 +21,7 @@
                     <a
                         v-if="cancelText"
                         @click="action('cancel')"
+                        :class="cancelButtonClass"
                         class="dialog-btn dialog-btn-default"
                         >{{cancelText}}</a
                     >
@@ -45,21 +46,40 @@ export default {
         btnText: { type: String, default: "确定" },
         cancelText: { type: String },
         imgUrl: { type: String },
+        contentClass: { type: String },
         confirmButtonClass: { type: String },
+        cancelButtonClass: { type: String },
         onConfirm: { type: Function },
         onCancel: { type: Function },
+        closeWhenConfirm: { type: Boolean, default: true },
+        closeWhenCancel: { type: Boolean, default: true },
     },
     watch: {
-        visible(val){ this.show = val }
+        visible: { 
+            handler(val){
+                this.show = val;
+            },
+            immediate: true
+        }
     },
-    created() {},
+    created() {
+        
+    },
     methods: {
         action(type){
-            if(type === 'confirm' && typeof this.onConfirm === 'function'){
-                this.onConfirm();
-            }else if(type === 'cancel' && typeof this.onCancel === 'function'){
-                this.onCancel();
+            if(type === 'confirm'){
+                this.onConfirm && this.onConfirm();
+                if(this.closeWhenConfirm){
+                    this.closeDialog();
+                }
+            }else if(type === 'cancel'){
+                this.onCancel && this.onCancel();
+                if(this.closeWhenCancel){
+                    this.closeDialog();
+                }
             }
+        },
+        closeDialog(){
             this.$emit('update:visible', false);
             this.show = false;
         }
@@ -114,6 +134,9 @@ export default {
         text-align: center;
         font-size: 16px;
         line-height: 24px;
+        .word-content + img{
+            margin-top: 26px;
+        }
         img{
             width: 160px;
             height: 160px;

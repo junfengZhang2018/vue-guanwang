@@ -70,10 +70,11 @@
             </div>
             <div class="panel-menu">
                 <div class="menuList">
-                    <div class="list-item" v-for="(item, i) in pkgList" :key="i">
-                        <div class="mlist-bd"  @click.prevent="$router.push(item.url)">{{item.title}}</div>
-                    </div>
-
+                    <router-link class="routerLink" :to="item.url" v-for="(item, i) in pkgList" :key="i">
+                        <div class="list-item">
+                            <div class="mlist-bd" @click.prevent="$router.push(item.url)">{{item.title}}</div>
+                        </div>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -140,14 +141,7 @@
             background-color: #fff;
         }
         .panel{
-            border: 1px solid #eee;
-            margin: 8px 0;
             .panel-hd{
-                border-bottom: 1px solid #eee;
-                display: flex;
-                align-items: center;
-                padding: 0px 12px;
-                min-height: 44px;
                 .panel-title{
                     display: flex;
                     align-items: center;

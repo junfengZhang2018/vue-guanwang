@@ -7,6 +7,9 @@
 .tr{
     text-align: right;
 }
+.fwb{
+    font-weight: bold;
+}
 .text-success{
     color: #059603;
 }
@@ -57,10 +60,30 @@
   background-color: rgba(5, 150, 3, 0.1);
   border: 1px solid rgba(5, 150, 3, 0.1);
 }
+.colorTips-primary{
+    color: #007fff;
+    background-color: rgba(0, 127, 255, 0.1);
+    border: 1px solid rgba(0, 127, 255, 0.1);
+}
 .container{
     width: 960px;
     padding: 0 12px;
     margin: 0 auto;
+}
+.panel{
+    margin: 8px 0;
+    background-color: #fff;
+    border: 1px solid #eee;
+    .panel-hd{
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        padding: 0px 12px;
+        min-height: 44px;
+    }
+    .panel-bd{
+        padding: 8px 12px;
+    }
 }
 .btn {
     display: inline-flex;
@@ -72,6 +95,9 @@
     font-size: 16px;
     padding: 4px 8px;
     white-space: nowrap;
+    >.icon{
+        margin-right: 6px;
+    }
 }
 .breadBtn{
     position: absolute;
@@ -104,6 +130,21 @@
   background-color: #ffffff;
   color: #007fff;
   border: 1px solid #007fff;
+}
+.btn-primary-full {
+  background-color: #198cff;
+  color: #fff;
+  border: 1px solid #007fff;
+}
+.btn-success-full {
+   color: #fff;
+   background-color: #1ea11c;
+   border: 1px solid #059603;
+}
+.btn-warning-full {
+  color: #fff;
+  background-color: #d87430;
+  border: 1px solid #d46419;
 }
 .card-wrap{
   border: 1px solid #eeeeee;
