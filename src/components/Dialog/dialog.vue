@@ -7,6 +7,7 @@
                     <span class="dialog-title">{{title}}</span>
                 </div>
                 <div class="dialog-content">
+                    <slot />
                     {{content}}
                     <img v-if="imgUrl" :src="imgUrl" alt="">
                 </div>
@@ -34,16 +35,22 @@ export default {
     name: "Dialog",
     data() {
         return {
-            show: false,
-            title: "",
-            content: "",
-            btnText: "确定",
-            cancelText: "",
-            imgUrl: "",
-            confirmButtonClass: "",
-            onConfirm: null,
-            onCancel: null,
+            show: false
         };
+    },
+    props: {
+        visible: { type: Boolean, default: false },
+        title: { type: String },
+        content: { type: String },
+        btnText: { type: String, default: "确定" },
+        cancelText: { type: String },
+        imgUrl: { type: String },
+        confirmButtonClass: { type: String },
+        onConfirm: { type: Function },
+        onCancel: { type: Function },
+    },
+    watch: {
+        visible(val){ this.show = val }
     },
     created() {},
     methods: {
@@ -53,6 +60,7 @@ export default {
             }else if(type === 'cancel' && typeof this.onCancel === 'function'){
                 this.onCancel();
             }
+            this.$emit('update:visible', false);
             this.show = false;
         }
     },
@@ -74,6 +82,9 @@ export default {
     background: rgba(0, 0, 0, 0.75);
     position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 1001;
     width: 100%;
     height: 100%;

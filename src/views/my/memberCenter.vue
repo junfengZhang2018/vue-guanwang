@@ -140,6 +140,9 @@
             font-weight: bold;
             border-width: 2px;
         }
+        .icon{
+            margin-right: 6px;
+        }
     }
     .input{
         background-color: #fff;

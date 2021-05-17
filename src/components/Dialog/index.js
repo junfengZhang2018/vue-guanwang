@@ -5,7 +5,7 @@ const DialogBox = Vue.extend(Dialog);
 
 Dialog.show = (data) => {
     let instance = new DialogBox({
-        data
+        propsData: data
     }).$mount();
     document.body.appendChild(instance.$el);
     Vue.nextTick(() => {
@@ -17,6 +17,7 @@ Dialog.install = (Vue) => {
     Vue.prototype.$dialog = function(options) {
         Dialog.show(options);
     };
+    Vue.component(Dialog.name, Dialog);
 }
 
 export default Dialog;
