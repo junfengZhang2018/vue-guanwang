@@ -12,9 +12,16 @@
                 </div>
                 <div class="dialog-foot">
                     <a
-                        @click="sure"
+                        @click="action('confirm')"
+                        :class="confirmButtonClass"
                         class="dialog-btn dialog-btn-default"
-                        ><strong>{{btnText}}</strong></a
+                        >{{btnText}}</a
+                    >
+                    <a
+                        v-if="cancelText"
+                        @click="action('cancel')"
+                        class="dialog-btn dialog-btn-default"
+                        >{{cancelText}}</a
                     >
                 </div>
             </div>
@@ -31,14 +38,23 @@ export default {
             title: "",
             content: "",
             btnText: "确定",
-            imgUrl: ""
+            cancelText: "",
+            imgUrl: "",
+            confirmButtonClass: "",
+            onConfirm: null,
+            onCancel: null,
         };
     },
     created() {},
     methods: {
-        sure() {
+        action(type){
+            if(type === 'confirm' && typeof this.onConfirm === 'function'){
+                this.onConfirm();
+            }else if(type === 'cancel' && typeof this.onCancel === 'function'){
+                this.onCancel();
+            }
             this.show = false;
-        },
+        }
     },
 };
 </script>
@@ -104,6 +120,9 @@ export default {
             font-size: 17px;
             line-height: 20px;
             text-align: center;
+            &:last-child{
+                border-left: 1px solid #eeeeee;
+            }
         }
     }
 }

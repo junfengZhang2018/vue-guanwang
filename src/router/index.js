@@ -79,6 +79,12 @@ const routes = [
           },
         ]
       },
+      {
+        path: 'warehouseAddress',
+        name: 'warehouseAddress',
+        component: () => import('../views/my/warehouseAddress.vue'),
+        meta: { title: '仓库地址' },
+      }
     ]
   },
   {
