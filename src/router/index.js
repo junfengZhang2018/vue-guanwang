@@ -48,6 +48,37 @@ const routes = [
         name: 'memberCenter',
         component: () => import('../views/my/memberCenter.vue'),
       },
+      {
+        path: 'email',
+        name: 'email',
+        component: () => import('../views/my/email.vue'),
+        meta: { title: '电子邮箱'},
+      },
+      {
+        path: 'coupon',
+        name: 'coupon',
+        component: () => import('../views/my/coupon.vue'),
+        meta: { title: '我的优惠券'},
+      },
+      {
+        path: 'profile',
+        name: 'profile',
+        component: () => import('../views/my/profile/index.vue'),
+        meta: { title: '我的账号' },
+        children: [
+          {
+            path: '',
+            name: 'profile',
+            component: () => import('../views/my/profile/profile.vue'),
+          },
+          {
+            path: 'edit',
+            name: 'edit',
+            component: () => import('../views/my/profile/edit.vue'),
+            meta: { title: '修改资料'},
+          },
+        ]
+      },
     ]
   },
   {
