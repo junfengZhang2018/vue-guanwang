@@ -61,6 +61,18 @@ const routes = [
         meta: { title: '我的优惠券'},
       },
       {
+        path: 'integral',
+        name: 'integral',
+        component: () => import('../views/my/integral.vue'),
+        meta: { title: '我的积分'},
+      },
+      {
+        path: 'wallet',
+        name: 'wallet',
+        component: () => import('../views/my/wallet.vue'),
+        meta: { title: '我的钱包'},
+      },
+      {
         path: 'profile',
         name: 'profile',
         component: () => import('../views/my/profile/index.vue'),

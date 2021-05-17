@@ -1,5 +1,5 @@
 <template>
-   <div class='coupon'>
+   <div class='integral'>
         <div class="subhead-right">
             <!-- <a @click.prevent="$router.push('/freightPrice/calculation')" class="breadBtn breadBtn-primary">
                 <span>网站首页</span>
@@ -9,7 +9,7 @@
           <TabNav :current="current" :tabsList="tabsList"></TabNav>
           <div class="content">
             <Default >
-              <div>暂无优惠卷</div>
+              <div>暂无积分记录</div>
             </Default>
           </div>
         </div>
@@ -24,7 +24,7 @@
         data() {
         //这里存放数据
             return {
-              current:2,
+              current:1,
               tabsList:[{
                 name:'钱包',
                 url:'/my/wallet',

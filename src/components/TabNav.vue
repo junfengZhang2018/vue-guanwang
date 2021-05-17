@@ -17,7 +17,6 @@ export default {
         };
     },
     methods: {
-
     },
     created() {
         // 将父组件props传递过来的值赋给data中contactWay
