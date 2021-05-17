@@ -49,11 +49,42 @@ const routes = [
         component: () => import('../views/my/memberCenter.vue'),
       },
       {
+        path: 'email',
+        name: 'email',
+        component: () => import('../views/my/email.vue'),
+        meta: { title: '电子邮箱'},
+      },
+      {
+        path: 'coupon',
+        name: 'coupon',
+        component: () => import('../views/my/coupon.vue'),
+        meta: { title: '我的优惠券'},
+      },
+      {
+        path: 'profile',
+        name: 'profile',
+        component: () => import('../views/my/profile/index.vue'),
+        meta: { title: '我的账号' },
+        children: [
+          {
+            path: '',
+            name: 'profile',
+            component: () => import('../views/my/profile/profile.vue'),
+          },
+          {
+            path: 'edit',
+            name: 'edit',
+            component: () => import('../views/my/profile/edit.vue'),
+            meta: { title: '修改资料'},
+          },
+        ]
+      },
+      {
         path: 'warehouseAddress',
         name: 'warehouseAddress',
         component: () => import('../views/my/warehouseAddress.vue'),
         meta: { title: '仓库地址' },
-      },
+      }
     ]
   },
   {
@@ -106,20 +137,40 @@ const routes = [
     meta: { title: '货运赔偿说明' }
   },
   {
-    // 赔偿说明
+    // 全抛、免抛、半抛
     path: '/halfFullNoThrow',
     name: 'halfFullNoThrow',
     component: () => import('../views/halfFullNoThrow.vue'),
     meta: { title: '全抛、免抛、半抛' }
   },
   {
-    // 赔偿说明
+    // 货运建议
     path: '/cargoTransportAdvice',
     name: 'cargoTransportAdvice',
     component: () => import('../views/cargoTransportAdvice.vue'),
     meta: { title: '货运建议' }
   },
-  
+  {
+    // 敏感货物
+    path: '/sensitiveGoods',
+    name: 'sensitiveGoods',
+    component: () => import('../views/sensitiveGoods.vue'),
+    meta: { title: '敏感货物' }
+  },
+  {
+    // 敏感货物
+    path: '/prohibitedGoods',
+    name: 'prohibitedGoods',
+    component: () => import('../views/prohibitedGoods.vue'),
+    meta: { title: '禁运货物' }
+  },
+  {
+    // 敏感货物
+    path: '/distinguishGoods',
+    name: 'distinguishGoods',
+    component: () => import('../views/distinguishGoods.vue'),
+    meta: { title: '敏感货与普货分辨' }
+  },
   {
     // 注册
     path: '/signUp',

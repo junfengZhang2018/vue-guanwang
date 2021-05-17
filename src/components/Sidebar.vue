@@ -70,11 +70,10 @@
             </div>
             <div class="panel-menu">
                 <div class="menuList">
-                    <router-link class="routerLink" :to="item.url" v-for="(item, i) in pkgList" :key="i">
-                        <div class="list-item">
-                            <div class="mlist-bd">{{item.title}}</div>
-                        </div>
-                    </router-link>
+                    <div class="list-item" v-for="(item, i) in pkgList" :key="i">
+                        <div class="mlist-bd"  @click.prevent="$router.push(item.url)">{{item.title}}</div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -106,15 +105,14 @@
                 }],
                 pkgList: [{
                     title: '敏感货物',
-                    url: '/aa'
+                    url: '/sensitiveGoods'
                 }, {
                     title: '禁运物品',
-                    url: '/bb'
+                    url: '/prohibitedGoods'
                 }, {
                     title: '普货敏感货分辨',
-                    url: '/cc'
-                }],
-                sayHello: ''
+                    url: '/distinguishGoods'
+                }]
             }
         },
         methods: {

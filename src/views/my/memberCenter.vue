@@ -73,6 +73,7 @@
             </a>
         </div>
    </div>
+   
 </template>
 
 <script>
@@ -156,3 +157,4 @@
         width: 100%;
     }
 </style>
+
