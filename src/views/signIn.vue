@@ -87,15 +87,16 @@
         //方法集合
         methods: {
             signIn(){
-                let errMsg = util.validate(this.form, this.rules);
-                if(errMsg){
-                    this.$dialog({
-                        title: errMsg,
-                        content: errMsg,
-                    })
-                }else{
-                    // 登录
-                }
+                // let errMsg = util.validate(this.form, this.rules);
+                // if(errMsg){
+                //     this.$dialog({
+                //         title: errMsg,
+                //         content: errMsg,
+                //     })
+                // }else{
+                //     // 登录
+                // }
+                this.$router.push('/my');
             }
         },
         //生命周期 - 创建完成（可以访问当前this实例）

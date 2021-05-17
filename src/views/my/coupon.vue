@@ -21,17 +21,17 @@
               current:2,
               tabsList:[{
                 name:'钱包',
-                url:'/my/coupon',
+                url:'/my/wallet',
                 num:'0',
                 Symbol:'￥'
               },
               {
                 name:'积分',
-                url:'/my/coupon',
+                url:'/my/score',
                 num:'0',
                 Symbol:''
               },{
-                name:'优惠卷',
+                name:'优惠券',
                 url:'/my/coupon',
                 num:'0',
                 Symbol:''

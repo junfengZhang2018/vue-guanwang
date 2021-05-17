@@ -55,6 +55,12 @@ const routes = [
         meta: { title: '电子邮箱'},
       },
       {
+        path: 'wallet',
+        name: 'wallet',
+        component: () => import('../views/my/wallet/wallet.vue'),
+        meta: { title: '我的钱包'},
+      },
+      {
         path: 'coupon',
         name: 'coupon',
         component: () => import('../views/my/coupon.vue'),
