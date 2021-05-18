@@ -7,9 +7,11 @@
         </div>
         <div class="main">
           <div class="content">
-            <Default >
+            <Default>
               <div>暂无收货地址</div>
-              <div class="newAdress"><a class="button button-success"><img src="" alt="">创建收货地址</a></div>
+              <div class="newAdress">
+                <a @click.prevent="$router.push('/my/address/creatAddress')" class="button button-success"><div class="icon icon-add"></div>创建收货地址</a>
+              </div>
             </Default>
           </div>
         </div>

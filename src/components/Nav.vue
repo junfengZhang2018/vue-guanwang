@@ -17,6 +17,10 @@
                             item.title
                         }}</router-link>
                     </li>
+                    <li>
+                        <router-link v-if="userInfo" to="/my" :class="{'green-border': $route.name !== 'memberCenter'}">会员中心</router-link>
+                        <router-link v-else to="/signIn">登录/注册</router-link>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -69,13 +73,9 @@
 import { mapGetters } from 'vuex'
 export default {
     props: ["contacts"],
-    watch: {
-        $route(val){
-            console.log(val);
-        }
-    },
+    watch: {},
     computed: {
-        ...mapGetters(['levelList'])
+        ...mapGetters(['userInfo', 'levelList'])
     },
     data() {
         return {
@@ -101,11 +101,7 @@ export default {
                 {
                     title: "如何代运",
                     url: "/howToForwarding",
-                },
-                {
-                    title: "登录/注册",
-                    url: "/signIn",
-                },
+                }
             ],
         };
     },
@@ -151,11 +147,18 @@ export default {
                 > li {
                     float: left;
                     margin-left: 8px;
+                    height: 48px;
+                    line-height: 48px;
                     a {
                         padding: 6px 8px;
                         height: 40px;
                         line-height: 40px;
                         color: #000000;
+                    }
+                    .green-border{
+                        color: #059603;
+                        border-radius: 4px;
+                        border: 1px solid #059603;
                     }
                     // 根据路有变化改变导航样式
                     .router-link-exact-active {

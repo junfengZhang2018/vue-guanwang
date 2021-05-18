@@ -96,8 +96,8 @@
                     { name: '我的账号', icon: 'icon-profile', url: '/my/profile' },
                     { name: '优惠券码', icon: 'icon-coupon', url: '/my/coupon' },
                     { name: '我的积分', icon: 'icon-point', url: '/my/integral' },
-                    { name: '消息通知', icon: 'icon-notification', url: '' },
-                    { name: '常用地址', icon: 'icon-location', url: '' }
+                    { name: '消息通知', icon: 'icon-notification', url: '/my/notification' },
+                    { name: '常用地址', icon: 'icon-location', url: '/my/address' }
                 ],
             };
         },

@@ -2,28 +2,24 @@
   <div class="wrapper">
     <div id="footer" class="hidden-xs-only">
       <div class="contactWay container">
-        <ul>
-          <li>
-            <i class="iconfont icon-dianhua"></i>
-            <a :href="'tel:'+contactWay.tel" v-text="contactWay.tel"></a>
-          </li>
-          <li>
-            <i class="iconfont icon-youxiang-"></i>
-            <a :href="'mailto:'+contactWay.email" v-text="contactWay.email"></a>
-          </li>
-          <li>
-            <i class="iconfont icon-qq"></i>
-            <a
-              :href="'tencent://message/?uin=' + contactWay.qq + '&Site=&Menu=yes'"
-              v-text="contactWay.qq"
-            ></a>
-          </li>
-        </ul>
+        <div class="info">
+          <div class="info-wrap">
+            <div class="title tl">联系方式</div>
+            <p>电话：+86 131111111111</p>
+            <p>邮箱：123456@qq.com</p>
+          </div>
+          <div class="info-wrap">
+            <div class="title tl">工作时间</div>
+            <p>09:00 AM ~ 18:00 PM (周一 至 周五)</p>
+            <p>10:00 AM ~ 18:00 PM (周六 与 周日)</p>
+          </div>
+        </div>
         <div class="weChat">
-          <img v-lazy="contactWay.weChat" alt="智腾达微信服务号" />
-          <h3>官方微信服务号</h3>
+          <div class="title">微信服务号</div>
+          <img src="@/assets/images/logo.png" alt="智腾达微信服务号" />
         </div>
         <div class="partner">
+          <div class="title tr">合作伙伴</div>
           <img src="@/assets/images/partner.png" alt="">
         </div>
       </div>
@@ -110,49 +106,28 @@ export default {
       overflow: hidden;
       display: flex;
       justify-content: space-between;
-      padding: 36px 0 0;
-      .weChat {
-        margin-top: 25px;
-        margin-bottom: 15px;
-        width: 150px;
-        height: 160px;
-        text-align: center;
-        float: left;
-        h3 {
-          line-height: 30px;
-          margin-top: 5px;
-          font-size: 1em;
-          color: #eeeeee;
-        }
-        img {
-          width: auto;
-          height: 120px;
-          border-radius: 12px;
+      padding: 36px 0;
+      >div{
+        flex: 1;
+      }
+      .title{
+        font-size: 16px;
+        margin: 0 0 8px;
+        color: #586C94;
+        font-weight: bold;
+      }
+      .info-wrap{
+        margin-bottom: 12px;
+        line-height: 24px;
+        p{
+          font-size: 14px;
         }
       }
-      ul {
-        display: block;
-        width: 280px;
-        height: 120px;
-        margin: 40px 0;
-        float: right;
-        overflow: hidden;
-        li {
-          height: 40px;
-          line-height: 40px;
-          overflow: hidden;
-          i {
-            font-size: 1.5em;
-            color: #eeeeee;
-            margin-right: 15px;
-          }
-          a {
-            font-size: 1em;
-            color: #eeeeee;
-            &:hover {
-              color: #0092ff;
-            }
-          }
+      .weChat {
+        text-align: center;
+        img {
+          width: 128px;
+          height: 128px;
         }
       }
       .partner{

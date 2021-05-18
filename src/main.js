@@ -2,8 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './vuex'
-// 引入iconfont字体库
-import '@/assets/font/iconfont.css'
 // 初始化样式
 import '@/assets/style/init.less'
 import 'element-ui/lib/theme-chalk/display.css';
@@ -15,7 +13,7 @@ Vue.use(Dialog);
 import Default from '@/components/default'
 Vue.component(Default.name, Default);
 // 按需引入element-ui
-import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem, Radio, RadioGroup, Checkbox, Message,Select,Input,Option } from "element-ui";
+import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem, Radio, RadioGroup, Checkbox, Message, Select, Input, Option } from "element-ui";
 // 首页element-ui轮播图
 Vue.use(Carousel);
 Vue.use(CarouselItem);
