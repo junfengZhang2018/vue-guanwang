@@ -80,7 +80,7 @@
                 </label>
               </div>
           </div>
-           <a class="button button-primary"><img src="" alt="">保存收货地址</a>
+          <div class="bot-button"><a class="button button-primary"><img src="" alt="">保存收货地址</a></div>
         </div>
    </div>
 </template>
@@ -163,4 +163,18 @@
         border: 1px solid #007fff;
       }
     }
+ @media screen and (max-width: 768px) {
+    .main{
+      padding: 12px;
+      box-sizing: border-box;
+      .bot-button{
+        width: 100%;
+        display: flex;
+        .button{
+        width: 100%;
+        padding: 8px 12px;
+        }
+      }
+    }
+  }
 </style>

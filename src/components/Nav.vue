@@ -75,7 +75,7 @@ export default {
                 },
                 {
                     title: "帮助中心",
-                    url: "/helpCenter",
+                    url: "/help/helpCenter",
                 },
                 {
                     title: "如何代运",

@@ -1,18 +1,18 @@
 <template>
-   <div class='address'>
-        <div class="subhead-right">
-            <a @click.prevent="$router.push('/my/address/creatAddress')" class="breadBtn breadBtn-primary">
-                <span>创建地址</span>
-            </a>
+   <div class='package'>
+      <div class="subhead-right">
+        <a @click.prevent="$router.push('/my/package/addPackage')" class="breadBtn breadBtn-primary">
+            <span>添加包裹</span>
+        </a>
+      </div>
+      <div class="main">
+        <div class="content">
+          <Default>
+            <div>暂无包裹</div>
+            <div class="addPackage"><a class="button button-primary"><img src="" alt="">添加包裹</a></div>
+          </Default>
         </div>
-        <div class="main">
-          <div class="content">
-            <Default >
-              <div>暂无收货地址</div>
-              <div class="newAdress"><a class="button button-success"><img src="" alt="">创建收货地址</a></div>
-            </Default>
-          </div>
-        </div>
+      </div>
    </div>
 </template>
 <script>
@@ -31,7 +31,7 @@
 <style lang='less' scoped>
     .main{
         .content{
-          .newAdress{
+          .addPackage{
             width: 100%;
             text-align: center;
             margin-top: 16px;
@@ -47,13 +47,14 @@
               white-space: nowrap;
               color: #fff;
             }
-            .button-success{
+            .button-primary{
               color: #fff;
-              background-color: #1ea11c;
-              border: 1px solid #059603;
+              background-color: #198cff;
+              border: 1px solid #007fff;
             }
           }
         }
+        
     }
-
+  
 </style>

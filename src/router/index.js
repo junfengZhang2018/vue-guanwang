@@ -136,6 +136,25 @@ const routes = [
         ]
       },
       {
+        path: 'package',
+        name: 'package',
+        component: () => import('../views/my/package/index.vue'),
+        meta: { title: '我的包裹'},
+        children: [
+          {
+            path: '',
+            name: 'package',
+            component: () => import('../views/my/package/package.vue'),
+          },
+          {
+            path: 'addPackage',
+            name: 'addPackage',
+            component: () => import('../views/my/package/addPackage.vue'),
+            meta: { title: '添加包裹'},
+          },
+        ]
+      },
+      {
         path: 'profile',
         name: 'profile',
         component: () => import('../views/my/profile/index.vue'),
@@ -164,11 +183,23 @@ const routes = [
   },
   {
     // 帮助中心
-    path: '/helpCenter',
-    name: 'helpCenter',
-    component: () => import('../views/helpCenter.vue'),
-    meta: { title: '帮助中心' }
+    path: '/help',
+    component: () => import('../views/help'),
+    meta: { title: '帮助中心' },
+    children: [
+      {
+        path: '',
+        name: 'helpCenter',
+        component: () => import('../views/help/helpCenter.vue'),
+      },
+      {
+        path: '',
+        name: 'helpCenter',
+        component: () => import('../views/help/helpCenter.vue'),
+      },
+    ]
   },
+
   {
     // 如何代运
     path: '/howToForwarding',
