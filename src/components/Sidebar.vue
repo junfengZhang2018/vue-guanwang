@@ -12,7 +12,7 @@
                 <a href="" class="cell access">
                     <div class="icon icon-rate"></div>
                     <div class="cell-bd">代付汇率</div>
-                    <div class="cell-ft">RM1 = ¥1.54</div>
+                    <div class="cell-ft">RM1 = ¥{{exchangeRate}}</div>
                 </a>
             </div>
         </div>
@@ -40,48 +40,73 @@
                 </template>
             </div>
         </div>
-        <div class="panel">
-            <div class="panel-hd">
-                <div class="panel-title">
-                    <div class="icon icon-transport"></div>
-                    <strong>
-                        运输服务
-                    </strong>
+        <template v-if="levelList.find(item => item.path === '/my') && $route.name !== 'memberCenter'">
+            <div class="panel">
+                <div class="panel-menu">
+                    <div class="menuList">
+                        <router-link class="routerLink" :to="item.url" v-for="(item, i) in menuList" :key="i">
+                            <div class="list-item flex">
+                                <div class="icon" :class="item.icon"></div>
+                                <div class="mlist-bd">{{item.title}}</div>
+                            </div>
+                        </router-link>
+                    </div>
                 </div>
             </div>
-            <div class="panel-menu">
-                <div class="menuList">
-                    <router-link class="routerLink" :to="item.url" v-for="(item, i) in serviceList" :key="i">
-                        <div class="list-item">
-                            <div class="mlist-bd">{{item.title}}</div>
-                        </div>
-                    </router-link>
+            <div class="panel">
+                <div class="panel-menu">
+                    <div class="menuList">
+                        <router-link class="routerLink" :to="item.url" v-for="(item, i) in stateList" :key="i">
+                            <div class="list-item flex">
+                                <div class="icon" :class="item.icon"></div>
+                                <div class="mlist-bd">{{item.title}}</div>
+                            </div>
+                        </router-link>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="panel">
-            <div class="panel-hd">
-                <div class="panel-title">
-                    <div class="icon icon-box"></div>
-                    <strong>
-                        包裹说明
-                    </strong>
+        </template>
+        <template v-else>
+            <div class="panel">
+                <div class="panel-hd">
+                    <div class="panel-title">
+                        <div class="icon icon-transport"></div>
+                        <strong>运输服务</strong>
+                    </div>
+                </div>
+                <div class="panel-menu">
+                    <div class="menuList">
+                        <router-link class="routerLink" :to="item.url" v-for="(item, i) in serviceList" :key="i">
+                            <div class="list-item">
+                                <div class="mlist-bd">{{item.title}}</div>
+                            </div>
+                        </router-link>
+                    </div>
                 </div>
             </div>
-            <div class="panel-menu">
-                <div class="menuList">
-                    <router-link class="routerLink" :to="item.url" v-for="(item, i) in pkgList" :key="i">
-                        <div class="list-item">
-                            <div class="mlist-bd" @click.prevent="$router.push(item.url)">{{item.title}}</div>
-                        </div>
-                    </router-link>
+            <div class="panel">
+                <div class="panel-hd">
+                    <div class="panel-title">
+                        <div class="icon icon-box"></div>
+                        <strong>包裹说明</strong>
+                    </div>
+                </div>
+                <div class="panel-menu">
+                    <div class="menuList">
+                        <router-link class="routerLink" :to="item.url" v-for="(item, i) in pkgList" :key="i">
+                            <div class="list-item">
+                                <div class="mlist-bd" @click.prevent="$router.push(item.url)">{{item.title}}</div>
+                            </div>
+                        </router-link>
+                    </div>
                 </div>
             </div>
-        </div>
+        </template>
     </div>
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     export default {
         data() {
             return {
@@ -113,8 +138,39 @@
                 }, {
                     title: '普货敏感货分辨',
                     url: '/distinguishGoods'
-                }]
+                }],
+                menuList: [{
+                    title: '我的账号',
+                    icon: 'icon-profile',
+                    url: '/my/profile'
+                }, {
+                    title: '优惠券码',
+                    icon: 'icon-coupon',
+                    url: '/my/coupon'
+                }, {
+                    title: '我的积分',
+                    icon: 'icon-point',
+                    url: '/my/integral'
+                }, {
+                    title: '消息通知',
+                    icon: 'icon-notification',
+                    url: '/my/notification'
+                }, {
+                    title: '常用地址',
+                    icon: 'icon-location',
+                    url: '/my/address'
+                }],
+                stateList: [
+                    { title: '待收齐', icon: 'icon-receive', state: '', url: '/my/profile' },
+                    { title: '待包装', icon: 'icon-package', state: '', url: '/my/coupon' },
+                    { title: '待付款', icon: 'icon-payment', state: '', url: '/my/integral' },
+                    { title: '运输中', icon: 'icon-transport', state: '', url: '/my/notification' },
+                    { title: '已签收', icon: 'icon-delivery', state: '', url: '/my/address' }
+                ]
             }
+        },
+        computed: {
+            ...mapGetters(['exchangeRate', 'levelList'])
         },
         methods: {
             initDate() {
@@ -140,6 +196,12 @@
         >div{
             background-color: #fff;
         }
+        .flex{
+            align-items: center;
+        }
+        .icon{
+            margin-right: 8px;
+        }
         .panel{
             .panel-hd{
                 .panel-title{
@@ -148,9 +210,6 @@
                     font-size: 17px;
                     line-height: 24px;
                     min-height: 32px;
-                    .icon{
-                        margin-right: 8px;
-                    }
                     strong{
                         transform: translateY(2px);
                     }
@@ -171,7 +230,8 @@
                     }
                     .list-item{
                         cursor: pointer;
-                        padding: 15px;
+                        line-height: 1.4;
+                        padding: 12px;
                         border-top: 1px dashed #eeeeee;
                     }
                 }

@@ -17,6 +17,10 @@
                             item.title
                         }}</router-link>
                     </li>
+                    <li>
+                        <router-link v-if="userInfo" to="/my" :class="{'green-border': $route.name !== 'memberCenter'}">会员中心</router-link>
+                        <router-link v-else to="/signIn">登录/注册</router-link>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -41,6 +45,18 @@
 				<div class="m-header-bar" v-else>
                     <div class="headleft">
                         <a
+                            v-if="$route.name === 'memberCenter'"
+                            class="idnum"
+                            ><b class="text-primary">ID：425443</b></a
+                        >
+                        <a
+                            v-else-if="levelList.find(item => item.path === '/my') && $route.name !== 'memberCenter'"
+                            @click.prevent="$router.push('/my')"
+                            class="btn btn-back"
+                            >会员中心</a
+                        >
+                        <a
+                            v-else
                             @click.prevent="$router.push('/')"
                             class="btn btn-back"
                             >MuluPost</a
@@ -54,8 +70,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     props: ["contacts"],
+    watch: {},
+    computed: {
+        ...mapGetters(['userInfo', 'levelList'])
+    },
     data() {
         return {
             contactWay: {
@@ -80,11 +101,7 @@ export default {
                 {
                     title: "如何代运",
                     url: "/howToForwarding",
-                },
-                {
-                    title: "登录/注册",
-                    url: "/signIn",
-                },
+                }
             ],
         };
     },
@@ -130,11 +147,18 @@ export default {
                 > li {
                     float: left;
                     margin-left: 8px;
+                    height: 48px;
+                    line-height: 48px;
                     a {
                         padding: 6px 8px;
                         height: 40px;
                         line-height: 40px;
                         color: #000000;
+                    }
+                    .green-border{
+                        color: #059603;
+                        border-radius: 4px;
+                        border: 1px solid #059603;
                     }
                     // 根据路有变化改变导航样式
                     .router-link-exact-active {
@@ -167,6 +191,9 @@ export default {
                     flex: 1;
                     display: flex;
                     justify-content: flex-start;
+                    .idnum{
+                        margin-left: 10px;
+                    }
                     .btn {
                         margin-left: 12px;
                     }

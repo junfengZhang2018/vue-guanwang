@@ -6,7 +6,7 @@
             </a>
         </div>
         <div class="search">
-            <div class="flex">
+            <div class="flex search-wrap">
                 <input class="input" type="search" placeholder="搜索单号 姓名 电话 邮编 包裹名">
                 <button class="btn btn-primary">
                     <div class="icon icon-search-primary"></div>
@@ -57,7 +57,7 @@
                     代付汇率
                 </div>
                 <div class="cell-check right-icon">
-                    RM1 = ¥1.52
+                    RM1 = ¥{{exchangeRate}}
                 </div>
             </a>
         </div>
@@ -77,6 +77,7 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     export default {
         components: {
             
@@ -94,14 +95,16 @@
                 menuList: [
                     { name: '我的账号', icon: 'icon-profile', url: '/my/profile' },
                     { name: '优惠券码', icon: 'icon-coupon', url: '/my/coupon' },
-                    { name: '我的积分', icon: 'icon-point', url: '' },
-                    { name: '消息通知', icon: 'icon-notification', url: '' },
-                    { name: '常用地址', icon: 'icon-location', url: '' }
+                    { name: '我的积分', icon: 'icon-point', url: '/my/integral' },
+                    { name: '消息通知', icon: 'icon-notification', url: '/my/notification' },
+                    { name: '常用地址', icon: 'icon-location', url: '/my/address' }
                 ],
             };
         },
         //监听属性 类似于data概念
-        computed: {},
+        computed: {
+            ...mapGetters(['exchangeRate'])
+        },
         //监控data中的数据变化
         watch: {},
         //方法集合
@@ -128,6 +131,13 @@
 
 <style lang="less" scoped>
     .search{
+        margin-top: 10px;
+        @media screen and (max-width: 768px) {
+            .search-wrap{
+                padding: 0 12px;
+            }
+        }
+        
         .input{
             border-radius: 4px 0 0 4px;
             border-width: 2px;
