@@ -73,6 +73,50 @@ const routes = [
         meta: { title: '我的钱包'},
       },
       {
+        path: 'myWaybill',
+        name: 'myWaybill',
+        component: () => import('../views/my/myWaybill.vue'),
+        meta: { title: '我的钱包'},
+      },
+      {
+        path: 'notification',
+        name: 'notification',
+        component: () => import('../views/my/notification/index.vue'),
+        meta: { title: '消息通知'},
+        children: [
+          {
+            path: '',
+            name: 'notification',
+            component: () => import('../views/my/notification/notification.vue'),
+          },
+          {
+            path: 'setting',
+            name: 'setting',
+            component: () => import('../views/my/notification/setting.vue'),
+            meta: { title: '通知设置'},
+          },
+        ]
+      },
+      {
+        path: 'address',
+        name: 'address',
+        component: () => import('../views/my/address/index.vue'),
+        meta: { title: '收件地址'},
+        children: [
+          {
+            path: '',
+            name: 'address',
+            component: () => import('../views/my/address/address.vue'),
+          },
+          {
+            path: 'creatAddress',
+            name: 'creatAddress',
+            component: () => import('../views/my/address/creatAddress.vue'),
+            meta: { title: '创建地址'},
+          },
+        ]
+      },
+      {
         path: 'profile',
         name: 'profile',
         component: () => import('../views/my/profile/index.vue'),
