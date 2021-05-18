@@ -12,7 +12,7 @@
                 <a href="" class="cell access">
                     <div class="icon icon-rate"></div>
                     <div class="cell-bd">代付汇率</div>
-                    <div class="cell-ft">RM1 = ¥1.54</div>
+                    <div class="cell-ft">RM1 = ¥{{exchangeRate}}</div>
                 </a>
             </div>
         </div>
@@ -82,6 +82,7 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     export default {
         data() {
             return {
@@ -115,6 +116,9 @@
                     url: '/distinguishGoods'
                 }]
             }
+        },
+        computed: {
+            ...mapGetters(['exchangeRate'])
         },
         methods: {
             initDate() {

@@ -137,12 +137,18 @@ a {
   justify-content: space-between;
   max-width: 960px;
   margin: 0 auto;
-  min-height: calc(100vh - 60px);
   .view{
     flex: 1;
-    padding-bottom: 56px;
     >div{
       position: relative;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .mainbody{
+    min-height: calc(100vh - 60px);
+    .view{
+        padding-bottom: 56px;
     }
   }
 }

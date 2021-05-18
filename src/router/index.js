@@ -62,7 +62,7 @@ const routes = [
           {
             path: 'wallet',
             component: () => import('../views/my/financeList/wallet/index.vue'),
-            meta: { title: '我的钱包'},
+            meta: { title: '我的钱包' },
             children: [
               {
                 path: '',

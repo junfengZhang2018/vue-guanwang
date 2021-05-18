@@ -2,3 +2,4 @@
 
 export const GET_USER_INFO = 'GET_USER_INFO' // 获取登录用户信息
 export const SET_LEVEL_LIST = 'SET_LEVEL_LIST'
+export const SET_EXCHANGE_RATE = 'SET_EXCHANGE_RATE'

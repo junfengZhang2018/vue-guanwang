@@ -4,7 +4,8 @@ const state = {
         { id: 1, value: '东马'},
         { id: 2, value: '新加坡'}
     ],
-    levelList: []
+    levelList: [],
+    exchangeRate: "1.52"
 };
 
 export default state;

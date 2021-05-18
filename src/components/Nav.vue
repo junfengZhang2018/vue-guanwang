@@ -41,6 +41,18 @@
 				<div class="m-header-bar" v-else>
                     <div class="headleft">
                         <a
+                            v-if="$route.name === 'memberCenter'"
+                            class="idnum"
+                            ><b class="text-primary">ID：425443</b></a
+                        >
+                        <a
+                            v-else-if="levelList.find(item => item.path === '/my') && $route.name !== 'memberCenter'"
+                            @click.prevent="$router.push('/my')"
+                            class="btn btn-back"
+                            >会员中心</a
+                        >
+                        <a
+                            v-else
                             @click.prevent="$router.push('/')"
                             class="btn btn-back"
                             >MuluPost</a
@@ -54,8 +66,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     props: ["contacts"],
+    watch: {
+        $route(val){
+            console.log(val);
+        }
+    },
+    computed: {
+        ...mapGetters(['levelList'])
+    },
     data() {
         return {
             contactWay: {
@@ -167,6 +188,9 @@ export default {
                     flex: 1;
                     display: flex;
                     justify-content: flex-start;
+                    .idnum{
+                        margin-left: 10px;
+                    }
                     .btn {
                         margin-left: 12px;
                     }

@@ -13,7 +13,7 @@
                                     class="text-success"
                                     style="font-size: 16px"
                                 >
-                                    <strong>RM1 = ¥{{rate}}</strong>
+                                    <strong>RM1 = ¥{{exchangeRate}}</strong>
                                 </div>
                             </div>
                         </td>
@@ -79,6 +79,7 @@
 
 <script>
 import util from '@/util';
+import { mapGetters } from 'vuex'
 
 export default {
     props: {
@@ -88,13 +89,14 @@ export default {
     data() {
         //这里存放数据
         return {
-            rate: 1.52,
             rmbList: Array.from(Array(20), (v,k) => k+1),
             rmList: []
         };
     },
     //监听属性 类似于data概念
-    computed: {},
+    computed: {
+        ...mapGetters(['exchangeRate'])
+    },
     //监控data中的数据变化
     watch: {},
     //方法集合
@@ -118,7 +120,7 @@ export default {
         },
         getCurrencyList(){
             this.rmbList = this.rmbList.map(item => util.dealFloat(this.getPrice(item), 0));
-            this.rmList = this.rmbList.map(item => util.dealFloat(util.accDiv(item, this.rate), 2));
+            this.rmList = this.rmbList.map(item => util.dealFloat(util.accDiv(item, this.exchangeRate), 2));
         }
     },
     //生命周期 - 创建完成（可以访问当前this实例）

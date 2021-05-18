@@ -85,7 +85,7 @@ export default {
           iconClass: 'icon-tabbar-how'
       }, {
           title: '会员中心',
-          url: '/signIn',
+          url: '/my',
           iconClass: 'icon-tabbar-my'
       }]
     };
