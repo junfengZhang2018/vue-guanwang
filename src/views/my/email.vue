@@ -17,7 +17,7 @@
               <div class="input-row">
                 <label class="input-label" for="">
                   <div class="input-field">登录邮箱</div>
-                  <input readonly  class="input" autocomplete="off" placeholder="请输入昵称" value="" type="text" name="" id="">
+                  <input readonly class="input" autocomplete="off" placeholder="请输入昵称" value="" type="text" name="" id="">
                 </label>
               </div>
               <a class="button button-primary"><img src="" alt="">验证邮箱</a>

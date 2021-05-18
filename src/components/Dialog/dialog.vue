@@ -7,7 +7,8 @@
                     <span class="dialog-title">{{title}}</span>
                 </div>
                 <div class="dialog-content">
-                    {{content}}
+                    <slot />
+                    <div class="word-content" :class="contentClass">{{content}}</div>
                     <img v-if="imgUrl" :src="imgUrl" alt="">
                 </div>
                 <div class="dialog-foot">
@@ -20,6 +21,7 @@
                     <a
                         v-if="cancelText"
                         @click="action('cancel')"
+                        :class="cancelButtonClass"
                         class="dialog-btn dialog-btn-default"
                         >{{cancelText}}</a
                     >
@@ -34,25 +36,51 @@ export default {
     name: "Dialog",
     data() {
         return {
-            show: false,
-            title: "",
-            content: "",
-            btnText: "确定",
-            cancelText: "",
-            imgUrl: "",
-            confirmButtonClass: "",
-            onConfirm: null,
-            onCancel: null,
+            show: false
         };
     },
-    created() {},
+    props: {
+        visible: { type: Boolean, default: false },
+        title: { type: String },
+        content: { type: String },
+        btnText: { type: String, default: "确定" },
+        cancelText: { type: String },
+        imgUrl: { type: String },
+        contentClass: { type: String },
+        confirmButtonClass: { type: String },
+        cancelButtonClass: { type: String },
+        onConfirm: { type: Function },
+        onCancel: { type: Function },
+        closeWhenConfirm: { type: Boolean, default: true },
+        closeWhenCancel: { type: Boolean, default: true },
+    },
+    watch: {
+        visible: { 
+            handler(val){
+                this.show = val;
+            },
+            immediate: true
+        }
+    },
+    created() {
+        
+    },
     methods: {
         action(type){
-            if(type === 'confirm' && typeof this.onConfirm === 'function'){
-                this.onConfirm();
-            }else if(type === 'cancel' && typeof this.onCancel === 'function'){
-                this.onCancel();
+            if(type === 'confirm'){
+                this.onConfirm && this.onConfirm();
+                if(this.closeWhenConfirm){
+                    this.closeDialog();
+                }
+            }else if(type === 'cancel'){
+                this.onCancel && this.onCancel();
+                if(this.closeWhenCancel){
+                    this.closeDialog();
+                }
             }
+        },
+        closeDialog(){
+            this.$emit('update:visible', false);
             this.show = false;
         }
     },
@@ -74,6 +102,9 @@ export default {
     background: rgba(0, 0, 0, 0.75);
     position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 1001;
     width: 100%;
     height: 100%;
@@ -103,6 +134,9 @@ export default {
         text-align: center;
         font-size: 16px;
         line-height: 24px;
+        .word-content + img{
+            margin-top: 26px;
+        }
         img{
             width: 160px;
             height: 160px;

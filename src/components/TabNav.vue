@@ -1,26 +1,24 @@
 <template>
     <div class="tabNav">
-        <div class="nav-item" :class="current==i?'select':''" v-for="(item, i) in tabsList" :key="i" @click="$router.push(item.url)">
-          <div class="number"><span v-if="item.Symbol">{{item.Symbol}}</span>{{item.num}}</div>
-          <div class="desc">{{item.name}}</div>
+        <div class="nav-item" :class="$route.path.includes(item.url)?'select':''" v-for="(item, i) in tabsList" :key="i" @click="$router.push(item.url)">
+            <div class="number"><span v-if="item.Symbol">{{item.Symbol}}</span>{{item.num}}</div>
+            <div class="desc">{{item.name}}</div>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    props:["current",'tabsList'],
+    props:['tabsList'],
     data() {
         return {
-            contactWay: {
-            },
+            
         };
     },
     methods: {
     },
     created() {
-        // 将父组件props传递过来的值赋给data中contactWay
-        this.contactWay = this.contacts;
+        
     },
 };
 </script>

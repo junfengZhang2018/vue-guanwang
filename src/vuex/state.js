@@ -4,6 +4,7 @@ const state = {
         { id: 1, value: '东马'},
         { id: 2, value: '新加坡'}
     ],
+    levelList: []
 };
 
 export default state;

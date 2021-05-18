@@ -55,22 +55,41 @@ const routes = [
         meta: { title: '电子邮箱'},
       },
       {
-        path: 'coupon',
-        name: 'coupon',
-        component: () => import('../views/my/coupon.vue'),
-        meta: { title: '我的优惠券'},
-      },
-      {
-        path: 'integral',
-        name: 'integral',
-        component: () => import('../views/my/integral.vue'),
-        meta: { title: '我的积分'},
-      },
-      {
-        path: 'wallet',
-        name: 'wallet',
-        component: () => import('../views/my/wallet.vue'),
-        meta: { title: '我的钱包'},
+        path: '',
+        name: 'finance',
+        component: () => import('../views/my/financeList/index.vue'),
+        children: [
+          {
+            path: 'wallet',
+            component: () => import('../views/my/financeList/wallet/index.vue'),
+            meta: { title: '我的钱包'},
+            children: [
+              {
+                path: '',
+                name: 'wallet',
+                component: () => import('../views/my/financeList/wallet/wallet.vue')
+              },
+              {
+                path: 'deposit',
+                name: 'deposit',
+                component: () => import('../views/my/financeList/wallet/deposit.vue'),
+                meta: { title: '余额充值' },
+              }
+            ]
+          },
+          {
+            path: 'coupon',
+            name: 'coupon',
+            component: () => import('../views/my/financeList/coupon.vue'),
+            meta: { title: '我的优惠券'},
+          },
+          {
+            path: 'integral',
+            name: 'integral',
+            component: () => import('../views/my/financeList/integral.vue'),
+            meta: { title: '我的积分'},
+          },
+        ]
       },
       {
         path: 'myWaybill',

@@ -195,9 +195,6 @@
 <style lang='less' scoped>
     @import './sticky.less';
     .panel{
-        margin: 8px 0;
-        background-color: #fff;
-        border: 1px solid #eee;
         .panel-wrap{
             padding: 8px 12px;
             .input-wrap{
@@ -254,9 +251,6 @@
                     .btn{
                         color: #fff;
                         width: 100%;
-                    }
-                    .icon{
-                        margin-right: 6px;
                     }
                 }
             }

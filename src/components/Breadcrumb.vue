@@ -11,7 +11,7 @@
 </template>
 
 <script>
-   // import 《组件名称》 from '《组件路径》';
+    import { mapMutations } from 'vuex';
 
     export default {
         components: {},
@@ -31,10 +31,12 @@
         },
         //方法集合
         methods: {
+            ...mapMutations(['SET_LEVEL_LIST']),
             getBreadcrumb() {
                 let matched = this.$route.matched.filter(item => item.meta && item.meta.title);
                 matched = [{ path: '/', meta: { title: '网站首页' }}].concat(matched);
                 this.levelList = matched.filter(item => item.meta && item.meta.title);
+                this.SET_LEVEL_LIST(this.levelList);
             },
             handleLink(item) {
                 const { redirect, path } = item;

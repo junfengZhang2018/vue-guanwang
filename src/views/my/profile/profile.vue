@@ -102,9 +102,6 @@
           text-align: center;
         }
         .panel{
-          margin: 8px 0;
-          background-color: #fff;
-          border: 1px solid #eeeeee;
           .panel-tp{
             display: flex;
             padding: 4px 12px;

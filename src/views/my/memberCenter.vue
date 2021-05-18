@@ -22,7 +22,7 @@
                     </div>
                     <div class="title">我的包裹</div>
                 </a>
-                <a class="item">
+                <a class="item" @click="$router.push('/my/wallet')">
                     <div class="number">
                         <b>￥0.00</b>
                     </div>
@@ -62,7 +62,7 @@
             </a>
         </div>
         <div class="card-wrap">
-            <a class="cell" v-for="(item, i) in menuList" :key="i">
+            <a class="cell" v-for="(item, i) in menuList" :key="i" @click="$router.push(item.url)">
                 <div class="icon" :class="item.icon"></div>
                 <div class="cell-content">
                     {{item.name}}
@@ -92,8 +92,8 @@
                     { name: '已签收', icon: 'icon-delivery', state: '' }
                 ],
                 menuList: [
-                    { name: '我的账号', icon: 'icon-profile', url: '' },
-                    { name: '优惠券码', icon: 'icon-coupon', url: '' },
+                    { name: '我的账号', icon: 'icon-profile', url: '/my/profile' },
+                    { name: '优惠券码', icon: 'icon-coupon', url: '/my/coupon' },
                     { name: '我的积分', icon: 'icon-point', url: '' },
                     { name: '消息通知', icon: 'icon-notification', url: '' },
                     { name: '常用地址', icon: 'icon-location', url: '' }
