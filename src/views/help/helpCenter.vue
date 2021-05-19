@@ -6,6 +6,12 @@
         </a>
       </div>
       <div class="main">
+        <div class="tabNav">
+          <div class="nav-item" :class="$route.path.includes(item.url)?'select':''" v-for="(item, i) in tabsList" :key="i" @click="$router.push(item.url)">
+            <div class="icon md" :class="item.icon"></div>
+            <div class="desc"><strong class="text-primary">{{item.name}}</strong></div>
+          </div>
+        </div>
         <div class="panel">
           <ul class="helpList">
             <li class="helpList-item" v-for="(item,index) in helpList" :key="index"><a :href="item.url">{{item.title}}</a></li>
@@ -22,6 +28,19 @@
         data() {
         //这里存放数据
             return {
+                tabsList:[{
+                name:'如何代运',
+                url:'/howToForwarding',
+                icon:'icon-card-how',
+            }, {
+                name:'常见问题',
+                url:'/faq',
+                icon:'icon-card-faq',
+            }, {
+                name:'联系我们',
+                url:'/my/coupon',
+                icon:'icon-card-customer',
+            }],
             helpList:[{
               url:'/help/howToChangeAddress',
               title:'如何修改收货地址'
@@ -86,6 +105,42 @@
 <style lang='less' scoped>
   .main{
     line-height: 1.625;
+    .tabNav{
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: #fff;
+      border: 1px solid #eeeeee;
+      .nav-item{
+          flex: 1;
+          padding: 12px 0;
+          user-select: none;
+          font-size: 18px;
+          line-height: 24px;
+          text-align: center;
+          cursor: pointer;
+          width: 0;
+          min-width: 0;
+          border-left: 1px solid #eee;
+          .icon{
+            position: relative;
+            margin: 0 auto;
+          }
+          .desc{
+            margin-top: 2px;
+            font-size: 14px;
+            line-height: 18px;
+            margin-top: 6px;
+          }
+      }
+      .nav-item.select{
+        color: #007fff;
+      }
+      .nav-item:first-child{
+          border: none;
+      }
+  }
     .panel{
       .helpList{
         .helpList-item{
