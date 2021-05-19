@@ -96,7 +96,7 @@ export default {
                 },
                 {
                     title: "帮助中心",
-                    url: "/help/helpCenter",
+                    url: "/help",
                 },
                 {
                     title: "如何代运",

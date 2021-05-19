@@ -193,10 +193,72 @@ const routes = [
         component: () => import('../views/help/helpCenter.vue'),
       },
       {
-        path: '',
-        name: 'helpCenter',
-        component: () => import('../views/help/helpCenter.vue'),
+        path: 'howToChangeAddress',
+        name: 'howToChangeAddress',
+        component: () => import('../views/help/howToChangeAddress.vue'),
+        meta: { title: '如何修改收获地址' },
       },
+      {
+        path: 'helpPage',
+        name: 'helpPage',
+        component: () => import('../views/help/helpPage.vue'),
+        meta: { title: '首次使用代运须知' },
+      },
+      {
+        path: 'helpPage1',
+        name: 'helpPage1',
+        component: () => import('../views/help/helpPage1.vue'),
+        meta: { title: '包裹已经送达仓库，但未见代运订单' },
+      },
+      {
+        path: 'helpPage2',
+        name: 'helpPage2',
+        component: () => import('../views/help/helpPage2.vue'),
+        meta: { title: '包裹在仓库可以存放多久' },
+      },
+      {
+        path: 'helpPage3',
+        name: 'helpPage3',
+        component: () => import('../views/help/helpPage3.vue'),
+        meta: { title: '如何查看商家发货快递单号' },
+      },
+      {
+        path: 'helpPage4',
+        name: 'helpPage4',
+        component: () => import('../views/help/helpPage4.vue'),
+        meta: { title: '商品如何退货或换货' },
+      },
+      {
+        path: 'helpPage5',
+        name: 'helpPage5',
+        component: () => import('../views/help/helpPage5.vue'),
+        meta: { title: '代运包裹签收及验货规则' },
+      },
+      {
+        path: 'helpPage6',
+        name: 'helpPage6',
+        component: () => import('../views/help/helpPage6.vue'),
+        meta: { title: '商家发货后多久可送达仓库' },
+      },
+      {
+        path: 'packageName',
+        name: 'packageName',
+        component: () => import('../views/help/packageName.vue'),
+        meta: { title: '如何填写包裹名称' },
+      },
+      {
+        path: 'howAddPackage',
+        name: 'howAddPackage',
+        component: () => import('../views/help/howAddPackage.vue'),
+        meta: { title: '如何添加包裹' },
+      },
+      {
+        path: 'deposit',
+        name: 'deposit',
+        component: () => import('../views/help/deposit.vue'),
+        meta: { title: '如何充值进我的钱包' },
+      },
+      
     ]
   },
 

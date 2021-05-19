@@ -23,37 +23,37 @@
         //这里存放数据
             return {
             helpList:[{
-              url:'',
+              url:'/help/howToChangeAddress',
               title:'如何修改收货地址'
             },{
-              url:'',
+              url:'/help/helpPage',
               title:'首次使用代运须知'
             },{
-              url:'',
+              url:'/help/deposit',
               title:'如何充值进我的钱包'
             },{
-              url:'',
+              url:'/help/helpPage1',
               title:'包裹已经送达仓库，但未见代运订单'
             },{
-              url:'',
+              url:'/help/helpPage2',
               title:'包裹在仓库可以存放多久'
             },{
-              url:'',
+              url:'/help/helpPage3',
               title:'如何查看商家发货快递单号'
             },{
-              url:'',
+              url:'/help/helpPage4',
               title:'商品如何退货或换货'
             },{
-              url:'',
+              url:'/help/helpPage5',
               title:'代运包裹签收及验货规则'
             },{
-              url:'',
+              url:'/help/helpPage6',
               title:'商家发货后多久可送达仓库'
             },{
-              url:'',
+              url:'/help/packageName',
               title:'如何填写包裹名称'
             },{
-              url:'',
+              url:'/help/howAddPackage',
               title:'如何添加包裹'
             }]
             };
