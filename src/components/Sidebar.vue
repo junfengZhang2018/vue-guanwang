@@ -56,12 +56,12 @@
             <div class="panel">
                 <div class="panel-menu">
                     <div class="menuList">
-                        <router-link class="routerLink" :to="item.url" v-for="(item, i) in stateList" :key="i">
+                        <a class="routerLink" v-for="(item, i) in stateList" :key="i" @click="$router.push(`/my/myWaybill?state=${item.state}`)">
                             <div class="list-item flex">
                                 <div class="icon" :class="item.icon"></div>
                                 <div class="mlist-bd">{{item.title}}</div>
                             </div>
-                        </router-link>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -161,11 +161,11 @@
                     url: '/my/address'
                 }],
                 stateList: [
-                    { title: '待收齐', icon: 'icon-receive', state: '', url: '/my/profile' },
-                    { title: '待包装', icon: 'icon-package', state: '', url: '/my/coupon' },
-                    { title: '待付款', icon: 'icon-payment', state: '', url: '/my/integral' },
-                    { title: '运输中', icon: 'icon-transport', state: '', url: '/my/notification' },
-                    { title: '已签收', icon: 'icon-delivery', state: '', url: '/my/address' }
+                    { title: '待收齐', icon: 'icon-receive', state: 'receive' },
+                    { title: '待包装', icon: 'icon-package', state: 'package' },
+                    { title: '待付款', icon: 'icon-payment', state: 'payment' },
+                    { title: '运输中', icon: 'icon-transport', state: 'transport' },
+                    { title: '已签收', icon: 'icon-delivery', state: 'delivery' }
                 ]
             }
         },

@@ -16,7 +16,7 @@
         </div>
         <div class="card-wrap">
             <div class="card-body">
-                <a class="item">
+                <a class="item" @click="$router.push('/my/package')">
                     <div class="number">
                         <b>1</b>
                     </div>
@@ -32,7 +32,7 @@
         </div>
         <div class="card-wrap">
             <div class="card-body">
-                <a class="item" v-for="(item, i) in stateList" :key="i">
+                <a class="item" v-for="(item, i) in stateList" :key="i" @click="$router.push(`/my/myWaybill?state=${item.state}`)">
                     <div class="icon" :class="item.icon"></div>
                     <div class="title">{{item.name}}</div>
                 </a>
@@ -86,11 +86,11 @@
         //这里存放数据
             return {
                 stateList: [
-                    { name: '待收齐', icon: 'icon-receive', state: '' },
-                    { name: '待包装', icon: 'icon-package', state: '' },
-                    { name: '待付款', icon: 'icon-payment', state: '' },
-                    { name: '运输中', icon: 'icon-transport', state: '' },
-                    { name: '已签收', icon: 'icon-delivery', state: '' }
+                    { name: '待收齐', icon: 'icon-receive', state: 'receive' },
+                    { name: '待包装', icon: 'icon-package', state: 'package' },
+                    { name: '待付款', icon: 'icon-payment', state: 'payment' },
+                    { name: '运输中', icon: 'icon-transport', state: 'transport' },
+                    { name: '已签收', icon: 'icon-delivery', state: 'delivery' }
                 ],
                 menuList: [
                     { name: '我的账号', icon: 'icon-profile', url: '/my/profile' },

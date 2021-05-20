@@ -1,7 +1,7 @@
 <template>
    <div class='howToForwarding'>
       <div class="subhead-right">
-        <a @click.prevent="$router.push('/helpCenter')" class="breadBtn breadBtn-success">
+        <a @click.prevent="$router.push('/help')" class="breadBtn breadBtn-success">
             <span>帮助中心</span>
         </a>
       </div>

@@ -6,9 +6,9 @@
             </a>
         </div>
         <div class="main">
-          <TabNav :current="current" :tabsList="tabsList" ></TabNav>
+          <TabNav :tabsList="tabsList" :url="$route.path"></TabNav>
           <div class="content">
-            <Default >
+            <Default>
               <div>暂无流水记录</div>
             </Default>
           </div>
@@ -24,24 +24,27 @@
         data() {
         //这里存放数据
             return {
-              current:0,
               tabsList:[{
-                name:'钱包',
-                url:'/my/wallet',
+                name:'待收齐',
+                state: 'receive',
                 num:'0',
-                Symbol:'￥'
-              },
-              {
-                name:'积分',
-                url:'/my/integral',
-                num:'0',
-                Symbol:''
               },{
-                name:'优惠卷',
-                url:'/my/coupon',
+                name:'待包装',
+                state: 'package',
                 num:'0',
-                Symbol:''
-              }]
+              },{
+                name:'待付款',
+                state: 'payment',
+                num:'0',
+              },{
+                name:'运输中',
+                state: 'transport',
+                num:'0',
+              },{
+                name:'已签收',
+                state: 'delivery',
+                num:'0',
+              }],
             };
         },
     }

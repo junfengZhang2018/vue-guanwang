@@ -1,6 +1,6 @@
 <template>
     <div class="tabNav">
-        <div class="nav-item" :class="$route.path.includes(item.url)?'select':''" v-for="(item, i) in tabsList" :key="i" @click="$router.push(item.url)">
+        <div class="nav-item" :class="(item.url&&$route.path.includes(item.url)||item.state&&$route.query.state === item.state)?'select':''" v-for="(item, i) in tabsList" :key="i" @click="goPage(item)">
             <div class="number"><span v-if="item.Symbol">{{item.Symbol}}</span>{{item.num}}</div>
             <div class="desc">{{item.name}}</div>
         </div>
@@ -9,13 +9,25 @@
 
 <script>
 export default {
-    props:['tabsList'],
+    props:['tabsList', 'url'],
     data() {
         return {
             
         };
     },
     methods: {
+        goPage(item){
+            if(item.url){
+                this.$router.push(item.url);
+            }else if(item.state){
+                this.$router.push({
+                    path: this.url,
+                    query: {
+                        state: item.state
+                    }
+                });
+            }
+        }
     },
     created() {
         

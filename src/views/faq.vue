@@ -125,7 +125,6 @@
         //方法集合
         methods: {
         readDetails(index,type){
-
           switch(type) {
 					  case 'faqs1':
 					        this.faqs1[index].flog = !this.faqs1[index].flog;
@@ -192,7 +191,7 @@
       >p{
         margin-top: 16px;
       }
-      /deep/.link,/deep/a{
+      .link,/deep/a{
         color: #007fff;
         cursor: pointer;
         text-decoration: underline;
