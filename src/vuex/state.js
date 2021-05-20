@@ -1,5 +1,5 @@
 const state = {
-    userInfo: 11,
+    userInfo: null,
     regionList: [
         { id: 0, value: '西马'},
         { id: 1, value: '东马'},

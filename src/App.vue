@@ -2,7 +2,7 @@
   <div id="app" :class="{'bgc':!exclude.includes($route.name)}">
     <Dialog />
     <!-- 顶部导航组件 -->
-    <Nav :contacts="contacts"></Nav>
+    <Nav></Nav>
     <div class="container mainbody">
       <Sidebar v-if="!exclude.includes($route.name)" />
       <div class="view">
@@ -11,8 +11,7 @@
       </div>
     </div>
     <!-- 底部联系方式及版权信息 -->
-    <Footer :contacts="contacts"></Footer>
-
+    <Footer></Footer>
   </div>
 </template>
 <script>
@@ -21,6 +20,7 @@ import Footer from "@/components/Footer.vue";
 import Sidebar from '@/components/Sidebar.vue';
 import Breadcrumb from '@/components/Breadcrumb.vue';
 import Dialog from '@/components/Dialog/dialog'
+import { mapMutations } from 'vuex'
 
 export default {
   name: "App",
@@ -33,28 +33,15 @@ export default {
   },
   data() {
     return {
-      contacts: {
-        email: "qjtcoonline@163.com",
-        tel: "15241794625",
-        qq: "1575246119",
-        site: "吉林省长春市经济开发区世纪大街长春总部基地D地块B座1单元1042号室",
-        siteImg: "https://www.qjtco.com/assets/image/site.jpg",
-        weChat: "https://www.qjtco.com/assets/image/WeChat.png"
-      },
       exclude: ['Home']
     };
   },
   created() {
-    // 获取联系方式并派发给nav和footer,用父组件派发能够减少一次请求
-    this.$axios
-      .get("api/contacts")
-      .then(res => {
-        // console.log(res.data);
-        this.contacts = res.data.contacts;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    let user = localStorage.getItem('user');
+    user && this.SET_USER_INFO(user);
+  },
+  methods: {
+    ...mapMutations(['SET_USER_INFO'])
   }
 };
 </script>

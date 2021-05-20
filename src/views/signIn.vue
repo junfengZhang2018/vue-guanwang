@@ -47,7 +47,8 @@
 </template>
 
 <script>
-   import util from '@/util';
+    import util from '@/util';
+    import { mapMutations } from 'vuex';
 
     export default {
         components: {},
@@ -86,17 +87,21 @@
         watch: {},
         //方法集合
         methods: {
+            ...mapMutations(['SET_USER_INFO']),
             signIn(){
-                // let errMsg = util.validate(this.form, this.rules);
-                // if(errMsg){
-                //     this.$dialog({
-                //         title: errMsg,
-                //         content: errMsg,
-                //     })
-                // }else{
-                //     // 登录
-                // }
-                this.$router.push('/my');
+                let errMsg = util.validate(this.form, this.rules);
+                if(errMsg){
+                    this.$dialog({
+                        title: errMsg,
+                        content: errMsg,
+                    })
+                }else{
+                    // 登录
+                    const userName = '王多鱼';
+                    localStorage.setItem('user', userName);
+                    this.SET_USER_INFO(userName);
+                    this.$router.push('/my');
+                }
             }
         },
         //生命周期 - 创建完成（可以访问当前this实例）

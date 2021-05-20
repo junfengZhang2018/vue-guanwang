@@ -47,7 +47,7 @@
                   <div class="row-ft access text-500"> <time>14 May 2021</time> <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span> <time>3天</time></div>
                 </div>
                 <div class="row">
-                  <div class="row-bd text-danger text-center"><b>退出登录</b></div>
+                  <div class="row-bd text-danger text-center" @click="logout"><b>退出登录</b></div>
                 </div>
               </div>
             </div>
@@ -55,6 +55,7 @@
    </div>
 </template>
 <script>
+import { mapMutations } from 'vuex';
    // import 《组件名称》 from '《组件路径》';
 
     export default {
@@ -65,11 +66,25 @@
             };
         },
         methods:{
+          ...mapMutations(['SET_USER_INFO']),
           bindWechat(){
             this.$diaolog({
                title: '微信扫一扫，绑定账户',
                content: '欢迎使用MuluPost'
-               })
+             })
+          },
+          logout(){
+            this.$dialog({
+               title: '操作确认',
+               content: '确定退出登录?',
+              cancelText: '取消',
+              confirmButtonClass: 'text-danger',
+              onConfirm: () => {
+                localStorage.removeItem('user');
+                this.SET_USER_INFO(null);
+                this.$router.push('/signIn');
+              }
+            })
           }
         }
     }
