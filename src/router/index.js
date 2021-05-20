@@ -58,7 +58,7 @@ const routes = [
         path: '',
         name: 'finance',
         component: () => import('../views/my/financeList/index.vue'),
-        children: [
+        children: [ 
           {
             path: 'wallet',
             component: () => import('../views/my/financeList/wallet/index.vue'),
@@ -261,13 +261,26 @@ const routes = [
       
     ]
   },
-
   {
     // 如何代运
     path: '/howToForwarding',
     name: 'howToForwarding',
     component: () => import('../views/howToForwarding.vue'),
     meta: { title: '如何代运' }
+  },
+  {
+    // 如何代运
+    path: '/aboutUs',
+    name: 'aboutUs',
+    component: () => import('../views/aboutUs.vue'),
+    meta: { title: '关于我们' }
+  },
+  {
+    // 如何代运
+    path: '/faq',
+    name: 'faq',
+    component: () => import('../views/faq.vue'),
+    meta: { title: '常见问题' }
   },
   {
     // 登录

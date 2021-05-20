@@ -38,7 +38,7 @@
                 icon:'icon-card-faq',
             }, {
                 name:'联系我们',
-                url:'/my/coupon',
+                url:'/aboutUs',
                 icon:'icon-card-customer',
             }],
             helpList:[{
