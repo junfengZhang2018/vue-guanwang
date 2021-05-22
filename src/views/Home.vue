@@ -42,7 +42,7 @@
       <div class="m-card sticky-top">
         <div class="main">
           <router-link class="item" v-for="(item, index) in mainCard" :key="index" to="">
-            <div class="icon"></div>
+            <div class="icon " :class="item.url"></div>
             <div class="title">{{item.title}}</div>
           </router-link>
         </div>
@@ -65,7 +65,7 @@
         <ul class="list clearfix">
           <li v-for="(item, index) in processList" :key="index">
             <div class="wrap">
-              <div class="icon"></div>
+              <div class="icon" :class="item.icon"></div>
               <div class="content">
                 <p class="title">{{item.title}}</p>
                 <p class="desc">{{item.desc}}</p>
@@ -157,93 +157,59 @@ export default {
     return {
       meta: {
         title:
-          "青玖科技有限公司官网-微信小程序定制-公众号定制-网站专业定制开发-app定制-运营推广-营销-十年从业经验专业技术团队",
+          "海运物流",
         keywords:
-          "网站定制,公众号定制,小程序定制,app定制,运营推广,营销,定制开发,做网站,做小程序,做软件,定制开发",
+          "海运物流",
         description: "描述"
       },
       bannerHeight: "", //轮播图高度
       homeBanner: [
         {
-          src: "https://www.qjtco.com/assets/image/banner1.jpg",
-          alt: "网站、小程序、公众号、APP专业定制开发"
+          src: "https://www.mulupost.com/news/2020-commercial-shipping",
+          alt: ""
         },
         {
-          src: "https://www.qjtco.com/assets/image/banner2.jpg",
+          src: "https://www.mulupost.com/pricing",
           alt: "顶级品牌、顶级售后、顶级产品、办公工具、网址导航"
         },
         {
-          src: "https://www.qjtco.com/assets/image/banner3.jpg",
+          src: "https://www.mulupost.com/pricing",
           alt: "免费赠首年服务器、三个月免费运维、免费培训"
-        }
-      ],
-      ourFriends: [
-        {
-          src: "https://www.qjtco.com/assets/image/friends1.png",
-          alt: "阿里巴巴"
-        },
-        {
-          src: "https://www.qjtco.com/assets/image/friends2.png",
-          alt: "腾讯公益"
-        },
-        {
-          src: "https://www.qjtco.com/assets/image/friends3.png",
-          alt: "途客租车"
-        },
-        {
-          src: "https://www.qjtco.com/assets/image/friends4.png",
-          alt: "壹想食"
-        },
-        {
-          src: "https://www.qjtco.com/assets/image/friends5.png",
-          alt: "腾讯"
-        },
-        {
-          src: "https://www.qjtco.com/assets/image/friends6.png",
-          alt: "Adobe"
-        },
-        {
-          src: "https://www.qjtco.com/assets/image/friends7.png",
-          alt: "新网"
-        },
-        {
-          src: "https://www.qjtco.com/assets/image/friends8.png",
-          alt: "微软"
         }
       ],
       mainCard:[{
           title: '运费价格',
-          url: ''
+          url: 'icon-card-pricing'
       },{
           title: '帮助中心',
-          url: ''
+          url: 'icon-card-helper'
       },{
           title: '物流查询',
-          url: ''
+          url: 'icon-card-tracking'
       }],
       processList:[{
         title:'1. 包裹入库',
         desc:'邮寄您的包裹到我们的广州仓库，仓库会通知你包裹状态及包裹重量。',
         url:'',
-        icon:''
+        icon:'icon-home-parcel'
       },
       {
         title:'2. 运单配货',
         desc:'当您提交运单，我们将分配和包装货物，完成后即可出货代运至马来西亚。',
         url:'',
-        icon:''
+        icon:'icon-home-distribution'
       },
       {
         title:'3. 邮寄运单',
         desc:'根据您选择的运输方式，包裹将通过空运或海运邮寄给您，并提供追踪单号。',
         url:'',
-        icon:''
+        icon:'icon-home-transport'
       },
       {
         title:'4. 签收包裹',
         desc:'我们的本地快递员将准时地将包裹寄送给您指定的收货地址，简单且快速。',
         url:'',
-        icon:''
+        icon:'icon-home-sign'
       }],
       servicesList:[{
          title:'空运拆外包装',
@@ -268,7 +234,7 @@ export default {
         }
       ],
       newsList:[{
-        icon:'',
+        icon:'https://c.mulupost.com/parcel-addon/cb05ef0e-08f3-4ea1-8c89-23bf681c7cf1.png',
         url:'',
         title:'2021国际劳动节放假公告',
         summary:'劳动节放假三天，仓库暂停出货，请合理安排出货时间'
@@ -298,7 +264,6 @@ export default {
         // console.log(res.data);
         this.meta = res.data.meta;
         this.homeBanner = res.data.homeBanner;
-        this.ourFriends = res.data.ourFriends;
       })
       .catch(function(error) {
         console.log(error);

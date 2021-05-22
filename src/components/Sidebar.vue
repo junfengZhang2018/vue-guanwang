@@ -43,7 +43,7 @@
         <template v-if="levelList.find(item => item.path === '/my') && $route.name !== 'memberCenter'">
             <div class="panel">
                 <div class="panel-menu">
-                    <div class="menuList">
+                    <div class="menuList">   
                         <router-link class="routerLink" :to="item.url" v-for="(item, i) in menuList" :key="i">
                             <div class="list-item flex">
                                 <div class="icon" :class="item.icon"></div>
