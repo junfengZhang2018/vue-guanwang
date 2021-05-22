@@ -77,7 +77,7 @@ export default {
           iconClass: 'icon-tabbar-pricing'
       }, {
           title: '帮助中心',
-          url: '/helpCenter',
+          url: '/help',
           iconClass: 'icon-tabbar-how'
       }, {
           title: '会员中心',

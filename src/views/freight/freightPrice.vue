@@ -25,6 +25,21 @@
     import tableData from './data'
 
     export default {
+        metaInfo() {
+            return {
+                title: 'MuluPost',
+                meta: [
+                    {
+                        name: "keywords",
+                        content: "运费价格"
+                    },
+                    {
+                        name: "description",
+                        content: "西马东马新加坡"
+                    }
+                ]
+            };
+        },
         components: {
             ATable
         },

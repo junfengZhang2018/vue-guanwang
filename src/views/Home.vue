@@ -14,7 +14,7 @@
       </div>
       <div class="home-banner hidden-sm-and-up" >
         <div style="width:100%"></div>
-         <el-carousel :height="bannerHeight" >
+         <el-carousel :height="bannerHeight">
           <el-carousel-item v-for="(item,index) in homeBanner" :key="index">
             <img class="homeBanner" :src="item.src" :alt="item.alt" />
           </el-carousel-item>
@@ -139,15 +139,15 @@ export default {
   name: "home",
   metaInfo() {
     return {
-      title: this.meta.title,
+      title: 'MuluPost',
       meta: [
         {
           name: "keywords",
-          content: this.meta.keywords
+          content: "马来西亚，新加坡，中国淘宝代运专家"
         },
         {
           name: "description",
-          content: this.meta.description
+          content: "包税清关，免抛重，送货到家"
         }
       ],
       
@@ -155,13 +155,6 @@ export default {
   },
   data() {
     return {
-      meta: {
-        title:
-          "青玖科技有限公司官网-微信小程序定制-公众号定制-网站专业定制开发-app定制-运营推广-营销-十年从业经验专业技术团队",
-        keywords:
-          "网站定制,公众号定制,小程序定制,app定制,运营推广,营销,定制开发,做网站,做小程序,做软件,定制开发",
-        description: "描述"
-      },
       bannerHeight: "", //轮播图高度
       homeBanner: [
         {
@@ -291,18 +284,6 @@ export default {
     };
   },
   created() {
-    // axios获取home数据
-    this.$axios
-      .get("api/home")
-      .then(res => {
-        // console.log(res.data);
-        this.meta = res.data.meta;
-        this.homeBanner = res.data.homeBanner;
-        this.ourFriends = res.data.ourFriends;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
     // 获取当前窗口宽度通过计算动态设置轮播图高度
     this.bannerHeight = (document.body.clientWidth * 400) / 1390 + "px";
   },
