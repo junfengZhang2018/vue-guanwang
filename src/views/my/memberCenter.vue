@@ -79,6 +79,21 @@
 <script>
     import { mapGetters } from 'vuex'
     export default {
+        metaInfo() {
+            return {
+                title: 'MuluPost',
+                meta: [
+                    {
+                        name: "keywords",
+                        content: "会员中心"
+                    },
+                    {
+                        name: "description",
+                        content: ""
+                    }
+                ]
+            };
+        },
         components: {
             
         },

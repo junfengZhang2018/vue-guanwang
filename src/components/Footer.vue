@@ -77,7 +77,7 @@ export default {
           iconClass: 'icon-tabbar-pricing'
       }, {
           title: '帮助中心',
-          url: '/helpCenter',
+          url: '/help',
           iconClass: 'icon-tabbar-how'
       }, {
           title: '会员中心',
@@ -87,8 +87,7 @@ export default {
     };
   },
   created(){
-    // 将父组件props传递过来的值赋给data中contactWay
-    this.contactWay = this.contacts;
+    
   }
 };
 </script>

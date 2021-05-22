@@ -69,6 +69,21 @@
    // import 《组件名称》 from '《组件路径》';
 
     export default {
+        metaInfo() {
+            return {
+                title: 'MuluPost',
+                meta: [
+                    {
+                        name: "keywords",
+                        content: "如何代运"
+                    },
+                    {
+                        name: "description",
+                        content: ""
+                    }
+                ]
+            };
+        },
         components: {},
         data() {
         //这里存放数据
