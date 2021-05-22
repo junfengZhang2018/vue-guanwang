@@ -79,12 +79,6 @@ export default {
     },
     data() {
         return {
-            contactWay: {
-                // 网站顶部邮箱
-                email: "qjtcoonline@163.com",
-                // 网站顶部电话
-                tel: "15241794625",
-            },
             titleList: [
                 {
                     title: "首页",
@@ -109,8 +103,7 @@ export default {
 
     },
     created() {
-        // 将父组件props传递过来的值赋给data中contactWay
-        this.contactWay = this.contacts;
+        
     },
 };
 </script>

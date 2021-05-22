@@ -87,8 +87,7 @@ export default {
     };
   },
   created(){
-    // 将父组件props传递过来的值赋给data中contactWay
-    this.contactWay = this.contacts;
+    
   }
 };
 </script>
