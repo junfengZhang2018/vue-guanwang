@@ -49,7 +49,7 @@
 <script>
     import util from '@/util';
     import { mapMutations } from 'vuex';
-
+    import {login} from '@/api/index'
     export default {
         components: {},
         data() {
@@ -89,19 +89,31 @@
         methods: {
             ...mapMutations(['SET_USER_INFO']),
             signIn(){
-                let errMsg = util.validate(this.form, this.rules);
-                if(errMsg){
-                    this.$dialog({
-                        title: errMsg,
-                        content: errMsg,
-                    })
-                }else{
-                    // 登录
-                    const userName = '王多鱼';
-                    localStorage.setItem('user', userName);
-                    this.SET_USER_INFO(userName);
-                    this.$router.push('/my');
-                }
+              let errMsg = util.validate(this.form, this.rules);
+              let _data ={
+                email:this.form.email,
+                password:this.form.password
+              }
+              login(_data).then(res =>{
+                console.log(res)
+                const userName = '王多鱼';
+                localStorage.setItem('user', res.data.obj.user_name);
+                this.SET_USER_INFO(res.data.obj);
+                // this.$router.push('/my');
+              })
+
+                // if(errMsg){
+                //     this.$dialog({
+                //         title: errMsg,
+                //         content: errMsg,
+                //     })
+                // }else{
+                //     // 登录
+                //     const userName = '王多鱼';
+                //     localStorage.setItem('user', userName);
+                //     this.SET_USER_INFO(userName);
+                //     this.$router.push('/my');
+                // }
             }
         },
         //生命周期 - 创建完成（可以访问当前this实例）

@@ -38,7 +38,7 @@
                             <div class="input-checkbox">
                                 <el-checkbox v-model="checked"></el-checkbox>
                                 <span class="input-checked">
-                                    已阅读并同意<a @click="" style="text-decoration: underline">《服务条款》</a>
+                                    已阅读并同意<a  style="text-decoration: underline">《服务条款》</a>
                                 </span>
                             </div>
                         </div>
@@ -61,8 +61,8 @@
 </template>
 
 <script>
-   import util from '@/util';
-
+    import util from '@/util';
+    import {register} from '@/api/index'
     export default {
         components: {},
         data() {
@@ -103,20 +103,29 @@
         //方法集合
         methods: {
             signUp(){
-                let errMsg = util.validate(this.form, this.rules);
-                if(errMsg){
-                    this.$dialog({
-                        title: errMsg,
-                        content: errMsg
-                    })
-                }else{
-                    // 注册
-                    this.$diaolog({
-                        title: '注册成功',
-                        content: '欢迎使用MuluPost',
-                    })
-                    // this.$router.push('')
-                }
+              let errMsg = util.validate(this.form, this.rules);
+              let data_= {
+                name: this.form.name,
+                email: this.form.email,
+                password: this.form.password
+              }
+              register(data_).then(res =>{
+                  console.log(res)
+                this.$router.push('')
+              })
+                // if(errMsg){n
+                //     this.$dialog({
+                //         title: errMsg,
+                //         content: errMsg
+                //     })
+                // }else{
+                //     // 注册
+                //     this.$diaolog({
+                //         title: '注册成功',
+                //         content: '欢迎使用MuluPost',
+                //     })
+                //     // this.$router.push('')
+                // }
             }
         },
         //生命周期 - 创建完成（可以访问当前this实例）

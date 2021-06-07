@@ -22,8 +22,8 @@
 
 <script>
     import ATable from '@/components/ATable';
-    import tableData from './data'
-
+    // import tableData from './data'
+     import {getPriceList} from '@/api/index'
     export default {
         metaInfo() {
             return {
@@ -46,12 +46,13 @@
         data() {
         //这里存放数据
             return {
-                tableData,
+                tableData:null,
                 regionList: [
                     { name: '西马', engName: 'West Malaysia' },
                     { name: '东马', engName: 'East Malaysia' },
                     { name: '新加坡', engName: 'Singapore' }
-                ]
+                ],
+
             };
         },
         //监听属性 类似于data概念
@@ -60,11 +61,43 @@
         watch: {},
         //方法集合
         methods: {
-        
+          getPriceList(){
+            let self = this;
+             getPriceList().then((response)=>{
+               let {data} = response
+               console.log(data)
+               let priceList = [];
+               data.forEach((item,index) => {
+                let _obj =  {
+                    priceType: 0,     // 0-kg 1-m³
+                    transportType: 0,    // 0-空运  1-海运
+                    price:[]
+                }
+                _obj.title = item.region +' '+ item.freight_type
+                _obj.index = index
+                _obj.region = ['西马','东马','新加坡'].indexOf(item.region)
+                _obj.range =[item.goodsFreightRegions[0].weight_section1,item.goodsFreightRegions[0].weight_section2,item.goodsFreightRegions[0].weight_section3] 
+                _obj.desc = item.remark
+                if(item.goodsFreightRegions){
+                  item.goodsFreightRegions.forEach((gtem,index)=>{
+                    let priceData = {}
+                    priceData.companyList = gtem.delivery_company
+                    priceData.per = [gtem.price_section1,gtem.price_section2,gtem.price_section3]
+                    _obj.price.push(priceData)
+                  })
+                }
+                priceList.push(_obj)
+               });
+               self.tableData = priceList
+              console.log(priceList)
+              }).catch((response)=>{
+                console.log(response);
+              })
+          }
         },
         //生命周期 - 创建完成（可以访问当前this实例）
         created() {
-        
+        this.getPriceList()
         },
         //生命周期 - 挂载完成（可以访问DOM元素）
         mounted() {

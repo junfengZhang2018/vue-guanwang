@@ -33,20 +33,8 @@ Vue.use(VueClipBoard);
 // 引入vue-meta-info用于动态设置网页meta
 import MetaInfo from 'vue-meta-info'
 Vue.use(MetaInfo)
-// 引入axios
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-Vue.use(VueAxios, axios)
-// 引入VueLazyload
-// import VueLazyload from 'vue-lazyload'
-// Vue.use(VueLazyload)
-//把axios作为Vue的原型属性
-Vue.prototype.$axios = axios;
 import util from './util'
 Vue.prototype.$util = util;
-// axios默认配置
-axios.defaults.baseURL = 'http://127.0.0.1:3000'; //设置axios默认baseURL
-axios.defaults.timeout = 5000;//设置请求超时时间
 
 Vue.config.productionTip = false
 

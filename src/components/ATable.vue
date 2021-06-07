@@ -27,37 +27,37 @@
                 </td>
                 <td class="text-info" v-for="(item, i) in data.range" :key="i">
                     <strong>
-                        <template v-if="item.length === 2">
-                            {{item[0]}}~{{item[1]}}
+                        <template>
+                            {{item}}
                         </template>
-                        <template v-else>
-                            > {{item[0]}}
-                        </template>
-                        {{data.priceType?'m³':'kg'}}
+                        <!-- <template v-else>
+                            > {{item}}
+                        </template> -->
+                        <!-- {{data.priceType?'m³':'kg'}} -->
                     </strong>
                 </td>
                 <td v-if="!data.range.length"></td>
             </tr>
             <tr v-for="(item, i) in data.price" :key="i">
                 <td>
-                    <div class="tc" v-for="(val, index) in item.companyList" :key="index">
-                        <u><strong>{{val}}</strong></u>
+                    <div class="tc">
+                        <u><strong>{{item.companyList}}</strong></u>
                     </div>
                 </td>
                 <td v-for="(val, index) in item.per" :key="index">
                     <template v-if="Array.isArray(val)">
                         <div v-for="(a, index) in val" :key="index">
-                            {{index?'续':'首'}} {{a.price}}/<template v-if="a.weight!=1">{{a.weight}}</template>{{data.priceType?'m³':'kg'}}
+                            {{index?'续':'首'}} {{a.price}}/<template v-if="a.weight!=1">{{a.weight}}</template>
                         </div>
                     </template>
                     <template v-else>
-                        {{val}}/{{data.priceType?'0.1m³':'kg'}}
+                        {{val}}
                     </template>
                 </td>
             </tr>
             <tr>
                 <td colspan="4">
-                    <div class="table-desc" v-for="(item, i) in data.desc" :key="i">{{i+1}}. {{item}}；</div>
+                    <div class="table-desc" vhtml>{{data.desc}}</div>
                 </td>
             </tr>
         </tbody>

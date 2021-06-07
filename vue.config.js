@@ -4,9 +4,17 @@ const path = require('path');
 module.exports = {
     assetsDir: "static", //静态资源打包到static文件夹
     productionSourceMap: false,
-    devServer: {
-        proxy: 'http://127.0.0.1:3000'//json-server启动在3000端口，在此处配置vue-cli的代理服务
-    },
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'http://169q82e980.51mypc.cn',
+                changOrigin: true,
+                pathRewrite: {
+                    '^/api': '/' 
+                },
+            }
+        }
+    },
     configureWebpack: config => {
         if (process.env.NODE_ENV !== 'production') return;
         return {
