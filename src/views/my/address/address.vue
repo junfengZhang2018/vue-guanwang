@@ -45,9 +45,18 @@
         data() {
         //这里存放数据
             return {
-                hasAddress:true
+                hasAddress:false
             };
         },
+         //方法集合
+        methods: {
+            getMyAddress(){
+              let me = this;
+              queryMyAddress().then(res =>{
+                console.log(res)
+              })
+            }
+        } 
     }
 </script>
 <style lang='less' scoped>

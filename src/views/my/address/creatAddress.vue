@@ -27,7 +27,7 @@
                 <label class="input-label" for="">
                   <div class="input-field">邮政编码</div>
                   <div class="wraper">
-                    <el-input v-model="input" placeholder="输入邮政编码"></el-input>
+                    <el-input v-model="zipCode" placeholder="输入邮政编码"></el-input>
                   </div>
                 </label>
               </div>
@@ -40,7 +40,7 @@
                   <div class="input-field">收货人</div>
                   <!-- <input class="input" autocomplete="off" placeholder="请输入昵称" type="text" name="" id=""> -->
                     <div class="wraper">
-                       <el-input v-model="input" placeholder="请输入收货人姓名"></el-input>
+                       <el-input v-model="receiveName" placeholder="请输入收货人姓名"></el-input>
                     </div>
                 </label>
               </div>
@@ -50,14 +50,15 @@
                 <label class="input-label" for="">
                   <div class="input-field">联系电话</div>
                   <div class="wraper">
-                    <el-select v-model="telValue" placeholder="请选择">
+                    <el-input v-model="telValue" placeholder="请输入收货人手机号"></el-input>
+                    <!-- <el-select v-model="telValue" placeholder="请选择">
                         <el-option
                           v-for="item in telList"
                           :key="item.id"
                           :label="item.value"
                           :value="item.value">
                         </el-option>
-                      </el-select>
+                      </el-select> -->
                   </div>
                 </label>
               </div>
@@ -66,7 +67,7 @@
           <div class="row">
              <div class="input-row">
                 <label class="input-label" for="">
-                  <div class="input-field">收获地址</div>
+                  <div class="input-field">收货地址</div>
                   <div class="wraper">
                     <el-input
                       type="textarea"
@@ -80,25 +81,26 @@
                 </label>
               </div>
           </div>
-          <div class="bot-button"><a class="button button-primary"><img src="" alt="">保存收货地址</a></div>
+          <div class="bot-button" @click="creatAddress"><a class="button button-primary"><img src="" alt="">保存收货地址</a></div>
         </div>
    </div>
 </template>
 <script>
    // import 《组件名称》 from '《组件路径》';
-
+    import {addMyAddress} from '@/api/index'
     export default {
         components: {},
         data() {
         //这里存放数据
             return {
-              input:'',
+              zipCode:'',
               areaList:[
                   { id: 0, value: '西马'},
                   { id: 1, value: '东马'},
                   { id: 2, value: '新加坡'}
               ],
               areaValue:'',
+              receiveName:'',
               telList:[
                   { id: 0, value: '1535589622'},
                   { id: 1, value: '1535589623'}
@@ -107,6 +109,28 @@
               receiptAddress:''
             };
         },
+         //方法集合
+        methods: {
+            creatAddress(){                        
+              let me = this;
+              if(this.areaValue ==''){this.$message("请选择货运地区");return;}
+              if(this.zipCode ==''){this.$message("请输入邮政编码");return;}
+              if(this.receiveName ==''){this.$message("请输入收件人姓名");return;}
+              if(this.receivePhone ==''){this.$message("请输入收件人电话");return;}
+              if(this.receiveAddress ==''){this.$message("请输入收货地址");return;}
+              let _data = {
+                region:this.areaValue,
+                zipCode:this.zipCode,
+                receiveName:this.receiveName,
+                receivePhone:this.telValue,
+                receiveAddress:this.receiptAddress
+              }
+              addMyAddress(_data).then(res =>{
+                console.log(res)
+              })
+
+            }
+        }
     }
 </script>
 <style lang='less' scoped>
