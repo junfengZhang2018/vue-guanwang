@@ -1,15 +1,23 @@
 /****   request.js   ****/
 // 导入axios
 import axios from 'axios'
+import qs from 'qs'
+import { Message } from 'element-ui'
 //1. 创建新的axios实例，
 const service = axios.create({
   // 公共接口--这里注意后面会讲
   baseURL: process.env.NODE_ENV !== 'production' ? '/api' : 'http://169q82e980.51mypc.cn/',
   // 超时时间 单位是ms，这里设置了3s的超时时间
-  timeout: 3 * 1000
+  timeout: 15 * 1000
 })
+
 // 2.请求拦截器
 service.interceptors.request.use(config => {
+  config.data = qs.stringify(config.data);
+  config.header = {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    token: '111111111'
+  }
   return config
 }, error => {
   Promise.reject(error)
@@ -65,6 +73,7 @@ service.interceptors.response.use(response => {
       default:
         error.message = `连接错误${error.response.status}`
     }
+    Message.error(error.message);
   } else {
     // 超时处理
     if (JSON.stringify(error).includes('timeout')) {
