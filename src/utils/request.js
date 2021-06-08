@@ -14,9 +14,9 @@ const service = axios.create({
 // 2.请求拦截器
 service.interceptors.request.use(config => {
   config.data = qs.stringify(config.data);
-  config.header = {
+  config.headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
-    token: '111111111'
+    token: localStorage.getItem('token')
   }
   return config
 }, error => {
@@ -26,7 +26,7 @@ service.interceptors.request.use(config => {
 // 3.响应拦截器
 service.interceptors.response.use(response => {
   //接收到响应数据并成功后的一些共有的处理，关闭loading等
-  return response
+  return response.data;
 }, error => {
    /***** 接收到异常响应的处理开始 *****/
   if (error && error.response) {

@@ -90,28 +90,16 @@
             ...mapMutations(['SET_USER_INFO']),
             signIn(){
                 let errMsg = util.validate(this.form, this.rules);
-            //   let _data ={
-            //     email:this.form.email,
-            //     password:this.form.password
-            //   
-              
                 if(errMsg){
                     this.$dialog({
                         title: errMsg,
                         content: errMsg,
                     })
                 }else{
-                    // 登录
-                    // const userName = '王多鱼';
-                    // localStorage.setItem('user', userName);
-                    // this.SET_USER_INFO(userName);
-                    // this.$router.push('/my');
                     login(this.form).then(res =>{
-                        console.log(res)
-                        // const userName = '王多鱼';
-                        // localStorage.setItem('user', res.data.obj.user_name);
-                        // this.SET_USER_INFO(res.data.obj);
-                        // this.$router.push('/my');
+                        util.storage.set('user', res.obj);
+                        this.SET_USER_INFO(res.obj.user_name);
+                        this.$router.push('/my');
                     })
                 }
             }

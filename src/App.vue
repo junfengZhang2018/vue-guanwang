@@ -20,6 +20,7 @@ import Footer from "@/components/Footer.vue";
 import Sidebar from '@/components/Sidebar.vue';
 import Breadcrumb from '@/components/Breadcrumb.vue';
 import Dialog from '@/components/Dialog/dialog'
+import util from '@/util'
 import { mapMutations } from 'vuex'
 
 export default {
@@ -37,8 +38,8 @@ export default {
     };
   },
   created() {
-    let user = localStorage.getItem('user');
-    user && this.SET_USER_INFO(user);
+    let user = util.storage.get('user');
+    user && this.SET_USER_INFO(user.user_name);
   },
   methods: {
     ...mapMutations(['SET_USER_INFO'])
