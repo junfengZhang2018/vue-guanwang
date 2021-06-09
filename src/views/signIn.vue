@@ -87,7 +87,7 @@
         watch: {},
         //方法集合
         methods: {
-            ...mapMutations(['SET_USER_INFO']),
+            ...mapMutations(['SET_USER_INFO','SET_USER_NAME']),
             signIn(){
                 let errMsg = util.validate(this.form, this.rules);
             //   let _data ={
@@ -112,6 +112,7 @@
                         localStorage.setItem('token', res.obj.token);
                         localStorage.setItem('userData', res.obj);
                         this.SET_USER_INFO(res.obj);
+                        this.SET_USER_NAME(res.obj.user_name)
                         this.$router.push('/my');
                         }
                        

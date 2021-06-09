@@ -86,7 +86,20 @@
                 }
                 priceList.push(_obj)
                });
-               self.tableData = priceList
+                self.tableData = priceList
+                  let { id } = this.$route.params;
+                 console.log(id)
+                  this.tableData = this.tableData[Number(id)];
+                  let tableData = [];
+                  let price = this.tableData.price;
+                  price.forEach((item, i) => {
+                      tableData.push({
+                          ...this.tableData,
+                          price: [item]
+                      });
+                  });
+                  this.tableData = tableData;
+
               console.log(priceList)
               }).catch((response)=>{
                 console.log(response);

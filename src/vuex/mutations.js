@@ -10,5 +10,9 @@ const mutations = {
     [types.SET_EXCHANGE_RATE] (state, parm) {
         state.exchangeRate = parm;
     },
+    [types.SET_USER_NAME] (state, parm) {
+        state.userName = parm;
+    },
+    
 }
 export default mutations;

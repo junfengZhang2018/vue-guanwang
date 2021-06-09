@@ -66,9 +66,9 @@
              getPriceList().then((res)=>{
                 console.log(res)
                let data = res.obj
-               if(data.success){
+               if(res.success){
                   let priceList = [];
-                  data.obj.forEach((item,index) => {
+                  data.forEach((item,index) => {
                       let _obj =  {
                           priceType: 0,     // 0-kg 1-m³
                           transportType: 0,    // 0-空运  1-海运

@@ -66,8 +66,8 @@
               let me = this;
               getMyOrders().then(res =>{
                 console.log(res)
-                if(res.data.success&&res.data.obj.length>0){
-                  me.myOrders = res.data.obj
+                if(res.success&&res.obj.length>0){
+                  me.myOrders = res.obj
                   me.hasPackage = true
                 }
               })

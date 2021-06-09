@@ -39,10 +39,11 @@ export default {
   },
   created() {
     let user = util.storage.get('user');
-    user && this.SET_USER_INFO(user.user_name);
+    console.log('user',user)
+    user && this.SET_USER_NAME(user);
   },
   methods: {
-    ...mapMutations(['SET_USER_INFO'])
+    ...mapMutations(['SET_USER_NAME'])
   }
 };
 </script>
