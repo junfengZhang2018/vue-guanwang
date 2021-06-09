@@ -61,8 +61,8 @@
               let me = this;
               queryMyAddress().then(res =>{
                 console.log(res)
-                if(res.data.success&&res.data.obj.length>0){
-                  me.myAddress = res.data.obj
+                if(res.success&&res.obj.length>0){
+                  me.myAddress = res.obj
                   me.hasAddress = true
                 }
               })

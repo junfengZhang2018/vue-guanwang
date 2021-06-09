@@ -140,7 +140,7 @@
                 _data.id = me.editData.id
                  updMyAddress(_data).then(res =>{
                   console.log(res)
-                  if(res.data.success){
+                  if(res.success){
                     me.$message.success("收件人更新成功");
                     setTimeout(()=>{
                       me.$router.push('/my/address')
@@ -150,7 +150,7 @@
               }else{
                 addMyAddress(_data).then(res =>{
                   console.log(res)
-                  if(res.data.success){
+                  if(res.success){
                     me.$message.success("新增收件人成功");
                     setTimeout(()=>{
                       me.$router.push('/my/address')

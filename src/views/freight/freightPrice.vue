@@ -65,7 +65,7 @@
             let self = this;
              getPriceList().then((res)=>{
                 console.log(res)
-               let {data} = res
+               let data = res.obj
                if(data.success){
                   let priceList = [];
                   data.obj.forEach((item,index) => {

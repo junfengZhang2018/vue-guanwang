@@ -94,7 +94,6 @@
             //     email:this.form.email,
             //     password:this.form.password
             //   
-              
                 if(errMsg){
                     this.$dialog({
                         title: errMsg,
@@ -108,11 +107,11 @@
                     // this.$router.push('/my');
                     login(this.form).then(res =>{
                         console.log(res)
-                        if(res.data.success){
-                        localStorage.setItem('user', res.data.obj.user_name);
-                        localStorage.setItem('token', res.data.obj.token);
-                        localStorage.setItem('userData', res.data.obj);
-                        this.SET_USER_INFO(res.data.obj);
+                        if(res.success){
+                        localStorage.setItem('user', res.obj.user_name);
+                        localStorage.setItem('token', res.obj.token);
+                        localStorage.setItem('userData', res.obj);
+                        this.SET_USER_INFO(res.obj);
                         this.$router.push('/my');
                         }
                        

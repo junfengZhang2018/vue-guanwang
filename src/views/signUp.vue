@@ -103,33 +103,33 @@
         //方法集合
         methods: {
             signUp(){
-              let errMsg = util.validate(this.form, this.rules);
-            //   let data_= {
-            //     name: this.form.name,
-            //     email: this.form.email,
-            //     password: this.form.password
-            //   }
-            
+                let errMsg = util.validate(this.form, this.rules);
                 if(errMsg){
                     this.$dialog({
                         title: errMsg,
                         content: errMsg
                     })
                 }else{
+                    if(!this.checked){
+                        this.$dialog({
+                            title: '提示',
+                            content: '请确认已阅读并同意《服务条款》'
+                        })
+                        return;
+                    }
                     register(this.form).then(res =>{
                         console.log(res)
-                        
-                        if(res.data.success){
-                            this.$diaolog({
-                                title: '注册成功',
-                                content: '欢迎使用MuluPost',
-                            })
-                           this.$router.push('/signIn')
+                        if(res.success){
+                          this.$dialog({
+                            title: '注册成功',
+                            content: '欢迎使用MuluPost',
+                            onConfirm: () => {
+                                this.$router.push('/signIn');
+                            }
+                          })
                         }
+                     
                     })
-                    // 注册
-                    
-                    // this.$router.push('')
                 }
             }
         },

@@ -32,8 +32,7 @@ service.interceptors.response.use(response => {
     router.push('/signIn')
     return false;
   }
-
-  return response
+  return response.data;
 }, error => {
    /***** 接收到异常响应的处理开始 *****/
   if (error && error.response) {
