@@ -1,14 +1,14 @@
 <template>
    <div class='freightDetail'>
        <a-table :showLink="false" :data="data" v-for="(data, i) in tableData" :key="i" />
-       <b-table :data="data" v-for="(data, i) in tableData" :key="i" />
+       <!-- <b-table :data="data" v-for="(data, i) in tableData" :key="i" /> -->
    </div>
 </template>
 
 <script>
     import ATable from '@/components/ATable';
     import BTable from '@/components/BTable';
-
+    import {getPriceList} from '@/api/index'
     export default {
         components: {
             ATable, BTable
@@ -61,8 +61,8 @@
           },
            getPriceList(){
             let self = this;
-             getPriceList().then((response)=>{
-               let {data} = response
+             getPriceList().then((res)=>{
+                let data = res.obj
                console.log(data)
                let priceList = [];
                data.forEach((item,index) => {
@@ -109,8 +109,8 @@
         //生命周期 - 创建完成（可以访问当前this实例）
         created() {
             scrollTo(0, 0);
-            this.getPriceDetail()
             this.getPriceList()
+            // this.getPriceDetail()
             // let { id } = this.$route.params;
             // this.tableData = this.tableData[Number(id)];
             // let tableData = [];
