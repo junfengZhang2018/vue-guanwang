@@ -81,13 +81,13 @@
                 </label>
               </div>
           </div>
-          <div class="bot-button" @click="creatAddress"><a class="button button-primary"><img src="" alt="">保存收货地址</a></div>
+          <div class="bot-button" @click="submit"><a class="button button-primary"><img src="" alt="">保存收货地址</a></div>
         </div>
    </div>
 </template>
 <script>
    // import 《组件名称》 from '《组件路径》';
-    import {addMyAddress} from '@/api/index'
+    import {addMyAddress,updMyAddress} from '@/api/index'
     export default {
         components: {},
         data() {
@@ -106,29 +106,68 @@
                   { id: 1, value: '1535589623'}
               ],
               telValue:'',
-              receiptAddress:''
+              receiptAddress:'',
+              editData:'',
+              type:''
             };
+        },
+        created(){
+          let me = this;
+          let {item} = this.$route.params
+          if(item){
+            let _data = JSON.parse(item)
+            me.type = _data.type
+            me.echoData(_data.items)
+          }
         },
          //方法集合
         methods: {
-            creatAddress(){                        
+            submit(){                    
               let me = this;
-              if(this.areaValue ==''){this.$message("请选择货运地区");return;}
-              if(this.zipCode ==''){this.$message("请输入邮政编码");return;}
-              if(this.receiveName ==''){this.$message("请输入收件人姓名");return;}
-              if(this.receivePhone ==''){this.$message("请输入收件人电话");return;}
-              if(this.receiveAddress ==''){this.$message("请输入收货地址");return;}
+              if(me.areaValue ==''){me.$message("请选择货运地区");return;}
+              if(me.zipCode ==''){me.$message("请输入邮政编码");return;}
+              if(me.receiveName ==''){me.$message("请输入收件人姓名");return;}
+              if(me.receivePhone ==''){me.$message("请输入收件人电话");return;}
+              if(me.receiveAddress ==''){me.$message("请输入收货地址");return;}
               let _data = {
-                region:this.areaValue,
-                zipCode:this.zipCode,
-                receiveName:this.receiveName,
-                receivePhone:this.telValue,
-                receiveAddress:this.receiptAddress
+                region:me.areaValue,
+                zipCode:me.zipCode,
+                receiveName:me.receiveName,
+                receivePhone:me.telValue,
+                receiveAddress:me.receiptAddress
               }
-              addMyAddress(_data).then(res =>{
-                console.log(res)
+              if(me.type =='edit'){
+                _data.id = me.editData.id
+                 updMyAddress(_data).then(res =>{
+                  console.log(res)
+                  if(res.data.success){
+                    me.$message.success("收件人更新成功");
+                    setTimeout(()=>{
+                      me.$router.push('/my/address')
+                    },1000)
+                  }
+                })
+              }else{
+                addMyAddress(_data).then(res =>{
+                  console.log(res)
+                  if(res.data.success){
+                    me.$message.success("新增收件人成功");
+                    setTimeout(()=>{
+                      me.$router.push('/my/address')
+                    },1000)
+                  }
               })
-
+              }
+            },
+            echoData(item){
+              console.log(item)
+              let me = this;
+              me.editData = item;
+              me.areaValue = item.region||'';
+              me.telValue = item.receive_phone||'';
+              me.receiveName = item.receive_name||'';
+              me.receiptAddress = item.reveive_address||'';
+              me.zipCode = item.zip_code||'';
             }
         }
     }

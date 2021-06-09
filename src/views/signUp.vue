@@ -104,28 +104,33 @@
         methods: {
             signUp(){
               let errMsg = util.validate(this.form, this.rules);
-              let data_= {
-                name: this.form.name,
-                email: this.form.email,
-                password: this.form.password
-              }
-              register(data_).then(res =>{
-                  console.log(res)
-                this.$router.push('')
-              })
-                // if(errMsg){n
-                //     this.$dialog({
-                //         title: errMsg,
-                //         content: errMsg
-                //     })
-                // }else{
-                //     // 注册
-                //     this.$diaolog({
-                //         title: '注册成功',
-                //         content: '欢迎使用MuluPost',
-                //     })
-                //     // this.$router.push('')
-                // }
+            //   let data_= {
+            //     name: this.form.name,
+            //     email: this.form.email,
+            //     password: this.form.password
+            //   }
+            
+                if(errMsg){
+                    this.$dialog({
+                        title: errMsg,
+                        content: errMsg
+                    })
+                }else{
+                    register(this.form).then(res =>{
+                        console.log(res)
+                        
+                        if(res.data.success){
+                            this.$diaolog({
+                                title: '注册成功',
+                                content: '欢迎使用MuluPost',
+                            })
+                           this.$router.push('/signIn')
+                        }
+                    })
+                    // 注册
+                    
+                    // this.$router.push('')
+                }
             }
         },
         //生命周期 - 创建完成（可以访问当前this实例）

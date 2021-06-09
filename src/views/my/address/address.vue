@@ -8,22 +8,24 @@
         <div class="main">
           <div class="content">
             <div class="hasAddress" v-if="hasAddress">
-              <div class="title">12</div>
-              <div class="info">
-                <div class="left">
-                  <div class="row">
-                    电话:1372428777
+              <div class="item" v-for="(item,index) in myAddress" :key="index">
+                <div class="title">{{item.receive_name}}</div>
+                <div class="info">
+                  <div class="left">
+                    <div class="row">
+                      电话:{{item.receive_phone}}
+                    </div>
+                    <div class="row">
+                      地区:{{item.region}}
+                    </div>
+                    <div class="row">
+                      地址:{{item.reveive_address}}
+                    </div>
                   </div>
-                   <div class="row">
-                    地区:1372428777
+                  <div class="right">
+                    <span class="button " @click="editAddress(item)">修改</span>
+                    <span class="button red">删除</span>
                   </div>
-                   <div class="row">
-                    地址:test
-                  </div>
-                </div>
-                <div class="right">
-                  <span class="button ">修改</span>
-                  <span class="button red">删除</span>
                 </div>
               </div>
             </div>
@@ -40,13 +42,18 @@
 <script>
    // import 《组件名称》 from '《组件路径》';
     import Default from '@/components/default';
+    import {queryMyAddress} from '@/api/index'
     export default {
         components: {Default},
         data() {
         //这里存放数据
             return {
-                hasAddress:false
+                hasAddress:false,
+                myAddress:[]
             };
+        },
+        created(){
+          this.getMyAddress()
         },
          //方法集合
         methods: {
@@ -54,7 +61,21 @@
               let me = this;
               queryMyAddress().then(res =>{
                 console.log(res)
+                if(res.data.success&&res.data.obj.length>0){
+                  me.myAddress = res.data.obj
+                  me.hasAddress = true
+                }
               })
+            },
+            editAddress(item){
+                let me = this;
+                let _data = {
+                  type:'edit',
+                  items:item
+                }
+                me.$router.push({
+                  path: `/my/address/creatAddress/${JSON.stringify(_data)}`,
+                })
             }
         } 
     }
@@ -67,6 +88,14 @@
             height: auto;
             background-color: #fff;
             padding: 10px;
+            .item{
+              width: 100%;
+              height: auto;
+              border-bottom: 1px dashed #ddd;
+            }
+            .item:last-child{
+              border-bottom:none;
+            }
             .title{
               font-size:16px;
               font-weight: bold;

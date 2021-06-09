@@ -9,7 +9,7 @@
               <label class="input-label" for="">
                 <div class="input-field">物流单号（必填）</div>
                 <div class="wraper">
-                  <el-input v-model="input" placeholder="请输入包裹物流单号"></el-input>
+                  <el-input v-model="billCode" placeholder="请输入包裹物流单号"></el-input>
                 </div>
               </label>
             </div>
@@ -19,7 +19,7 @@
                 <label class="input-label" for="">
                   <div class="input-field">物品名称（必填）</div>
                   <div class="wraper">
-                    <el-input v-model="input" placeholder="请输入包裹物品名称"></el-input>
+                    <el-input v-model="goods" placeholder="请输入包裹物品名称"></el-input>
                   </div>
                 </label>
               </div>
@@ -30,27 +30,62 @@
 </template>
 <script>
    // import 《组件名称》 from '《组件路径》';
-
+    import {queryMyAddress} from '@/api/index'
     export default {
         components: {},
         data() {
         //这里存放数据
             return {
-              input:'',
-              areaList:[
-                  { id: 0, value: '西马'},
-                  { id: 1, value: '东马'},
-                  { id: 2, value: '新加坡'}
-              ],
-              areaValue:'',
-              telList:[
-                  { id: 0, value: '1535589622'},
-                  { id: 1, value: '1535589623'}
-              ],
-              telValue:'',
-              receiptAddress:''
+              goods:'',
+              billCode:'',
             };
         },
+        created(){
+          let me = this;
+          // let {item} = this.$route.params
+          // if(item){
+          //   let _data = JSON.parse(item)
+          //   me.type = _data.type
+          //   me.echoData(_data.items)
+          // }
+        },
+         //方法集合
+        methods: {
+            submit(){                    
+              let me = this;
+              if(me.areaValue ==''){me.$message("请选择货运地区");return;}
+              if(me.zipCode ==''){me.$message("请输入邮政编码");return;}
+              if(me.receiveName ==''){me.$message("请输入收件人姓名");return;}
+              if(me.receivePhone ==''){me.$message("请输入收件人电话");return;}
+              if(me.receiveAddress ==''){me.$message("请输入收货地址");return;}
+              let _data = {
+                region:me.areaValue,
+                zipCode:me.zipCode,
+                receiveName:me.receiveName,
+                receivePhone:me.telValue,
+                receiveAddress:me.receiptAddress
+              }
+              addMyAddress(_data).then(res =>{
+                console.log(res)
+                if(res.data.success){
+                  me.$message.success("新增收件人成功");
+                  setTimeout(()=>{
+                    me.$router.push('/my/address')
+                  },1000)
+                }
+              })
+            },
+            echoData(item){
+              console.log(item)
+              let me = this;
+              me.editData = item;
+              me.areaValue = item.region||'';
+              me.telValue = item.receive_phone||'';
+              me.receiveName = item.receive_name||'';
+              me.receiptAddress = item.reveive_address||'';
+              me.zipCode = item.zip_code||'';
+            }
+        }
     }
 </script>
 <style lang='less' scoped>

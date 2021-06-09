@@ -63,33 +63,37 @@
         methods: {
           getPriceList(){
             let self = this;
-             getPriceList().then((response)=>{
-               let {data} = response
-               console.log(data)
-               let priceList = [];
-               data.forEach((item,index) => {
-                let _obj =  {
-                    priceType: 0,     // 0-kg 1-m³
-                    transportType: 0,    // 0-空运  1-海运
-                    price:[]
+             getPriceList().then((res)=>{
+                console.log(res)
+               let {data} = res
+               if(data.success){
+                  let priceList = [];
+                  data.obj.forEach((item,index) => {
+                      let _obj =  {
+                          priceType: 0,     // 0-kg 1-m³
+                          transportType: 0,    // 0-空运  1-海运
+                          price:[]
+                      }
+                      _obj.title = item.region +' '+ item.freight_type
+                      _obj.index = index
+                      _obj.region = ['西马','东马','新加坡'].indexOf(item.region)
+                      _obj.range =[item.goodsFreightRegions[0].weight_section1,item.goodsFreightRegions[0].weight_section2,item.goodsFreightRegions[0].weight_section3] 
+                      _obj.desc = item.remark
+                      if(item.goodsFreightRegions){
+                      item.goodsFreightRegions.forEach((gtem,index)=>{
+                          let priceData = {}
+                          priceData.companyList = gtem.delivery_company
+                          priceData.per = [gtem.price_section1,gtem.price_section2,gtem.price_section3]
+                          _obj.price.push(priceData)
+                          
+                      })
+                      }
+                      priceList.push(_obj)
+                    });
+                    self.tableData = priceList
+                    console.log(priceList)
                 }
-                _obj.title = item.region +' '+ item.freight_type
-                _obj.index = index
-                _obj.region = ['西马','东马','新加坡'].indexOf(item.region)
-                _obj.range =[item.goodsFreightRegions[0].weight_section1,item.goodsFreightRegions[0].weight_section2,item.goodsFreightRegions[0].weight_section3] 
-                _obj.desc = item.remark
-                if(item.goodsFreightRegions){
-                  item.goodsFreightRegions.forEach((gtem,index)=>{
-                    let priceData = {}
-                    priceData.companyList = gtem.delivery_company
-                    priceData.per = [gtem.price_section1,gtem.price_section2,gtem.price_section3]
-                    _obj.price.push(priceData)
-                  })
-                }
-                priceList.push(_obj)
-               });
-               self.tableData = priceList
-              console.log(priceList)
+            
               }).catch((response)=>{
                 console.log(response);
               })

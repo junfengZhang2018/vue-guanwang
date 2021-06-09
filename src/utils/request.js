@@ -1,19 +1,24 @@
 /****   request.js   ****/
 // 导入axios
 import axios from 'axios'
+import qs from 'qs'
+import { Message } from 'element-ui'
+import router from '../router'
 //1. 创建新的axios实例，
 const service = axios.create({
   // 公共接口--这里注意后面会讲
   baseURL: process.env.NODE_ENV !== 'production' ? '/api' : 'http://169q82e980.51mypc.cn/',
-  // 超时时间 单位是ms，这里设置了3s的超时时间
-  timeout: 3 * 1000,
-  header: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'token':'1111111111111'
-  }
-})
 // 2.请求拦截器 
+  timeout: 15 * 1000
+})
+console.log(localStorage.getItem('token'))
+// 2.请求拦截器
 service.interceptors.request.use(config => {
+  config.data = qs.stringify(config.data);
+  config.headers = {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'token':localStorage.getItem('token')
+  }
   return config
 }, error => {
   Promise.reject(error)
@@ -22,21 +27,28 @@ service.interceptors.request.use(config => {
 // 3.响应拦截器
 service.interceptors.response.use(response => {
   //接收到响应数据并成功后的一些共有的处理，关闭loading等
+  if(response.data.status == 403){
+    Message.error('权限不足，请先登录')
+    router.push('/signIn')
+    return false;
+  }
+
   return response
 }, error => {
    /***** 接收到异常响应的处理开始 *****/
   if (error && error.response) {
     // 1.公共错误处理
     // 2.根据响应码具体处理
+    console.log()
     switch (error.response.status) {
       case 400:
         error.message = '错误请求'
         break;
       case 401:
-        error.message = '未授权，请重新登录'
+        error.message = '拒绝访问'
         break;
       case 403:
-        error.message = '拒绝访问'
+        error.message = '权限不足，请先登录'
         break;
       case 404:
         error.message = '请求错误,未找到该资源'
@@ -69,6 +81,7 @@ service.interceptors.response.use(response => {
       default:
         error.message = `连接错误${error.response.status}`
     }
+    Message.error(error.message);
   } else {
     // 超时处理
     if (JSON.stringify(error).includes('timeout')) {
