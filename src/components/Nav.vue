@@ -18,7 +18,7 @@
                         }}</router-link>
                     </li>
                     <li>
-                        <router-link v-if="userInfo" to="/my" :class="{'green-border': $route.name !== 'memberCenter'}">会员中心</router-link>
+                        <router-link v-if="userName" to="/my" :class="{'green-border': $route.name !== 'memberCenter'}">会员中心</router-link>
                         <router-link v-else to="/signIn">登录/注册</router-link>
                     </li>
                 </ul>
@@ -75,7 +75,7 @@ export default {
     props: ["contacts"],
     watch: {},
     computed: {
-        ...mapGetters(['userInfo', 'levelList'])
+        ...mapGetters(['userName', 'levelList'])
     },
     data() {
         return {

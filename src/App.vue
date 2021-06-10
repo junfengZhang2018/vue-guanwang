@@ -38,9 +38,7 @@ export default {
     };
   },
   created() {
-    console.log('..........')
     let user = util.storage.get('user');
-    console.log('user',user)
     user && this.SET_USER_NAME(user);
   },
   methods: {
