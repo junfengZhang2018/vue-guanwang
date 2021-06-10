@@ -8,20 +8,20 @@
       <div class="main">
         <div class="content">
            <div class="packageList" v-if="hasPackage">
-              <div class="item" >
+              <div class="item" v-for="(item, index) in myOrders" :key="index" >
                   <div class="checkbox">
-                    <span>#1</span>
-                    <img src="../../../assets/images/checkboxG.png" alt="">
+                    <span>#{{item.id}} </span>
+                    <img class="imgBox" @click="selectPackage(item,index)"  :src="item.ck? '../../../assets/images/select.png':'../../../assets/images/checkboxG.png'"  alt="">
                   </div>
                   <div class="warper">
-                    <div class="title">2222</div>
+                    <div class="title">{{item.bill_code}}</div>
                     <div class="info">
                       <div class="left">
                           <div class="row">
-                            22222
+                            {{item.goods_name}}
                           </div>
-                          <div class="row red">
-                            未入库
+                          <div class="row red" v-if="item.status==0">
+                             未入库
                           </div>
                       </div>
                       <div class="right">
@@ -33,13 +33,16 @@
                     </div>
                  </div>
               </div>
-              <div class="submit"> </div>
             </div>
-                
-          <Default v-else>
-            <div>暂无包裹</div>
-            <div class="addPackage"><a class="button button-primary"  @click.prevent="$router.push('/my/package/addPackage')"><img src="" alt="">添加包裹</a></div>
-          </Default>
+            <div v-if="hasPackage" class="submit">
+              <img class="imgBox" @click="allSelects" :src="allSelect?'../../../assets/images/select.png':'../../../assets/images/checkboxG.png'" alt="">
+              <span class="text-success">全选 2</span>
+              <span class="submit-button" @click="transport" >提交运输（0）</span>
+             </div>
+            <Default v-if="!hasPackage">
+              <div>暂无包裹</div>
+              <div class="addPackage"><a class="button button-primary"  @click.prevent="$router.push('/my/package/addPackage')"><img src="" alt="">添加包裹</a></div>
+            </Default>
         </div>
       </div>
    </div>
@@ -47,14 +50,15 @@
 <script>
    // import 《组件名称》 from '《组件路径》';
     import Default from '@/components/default';
-     import {getMyOrders} from '@/api/index'
+    import {getMyOrders} from '@/api/index'
     export default {
         components: {Default},
         data() {
         //这里存放数据
             return {
                 hasPackage:false,
-                myOrders:[]
+                myOrders:[],
+                allSelect:false
             };
         },
         created(){
@@ -67,10 +71,27 @@
               getMyOrders().then(res =>{
                 console.log(res)
                 if(res.success&&res.obj.length>0){
-                  me.myOrders = res.obj
-                  me.hasPackage = true
+                  res.obj.forEach(item =>{
+									item.ck = false
+								})
+                me.myOrders = res.obj
+                me.hasPackage = true
                 }
               })
+            },
+            allSelects(){
+              let me = this;
+              let myOrdersData;
+              me.allSelect = !me.allSelect;
+              me.myOrders.forEach(item=>{
+                item.ck = me.allSelect
+              })
+             me.myOrders = me.myOrders
+            },
+            selectPackage(item,index){
+              let me = this;
+              me.myOrders[index].ck = !me.myOrders[index].ck;
+              
             },
             // editAddress(item){
             //     let me = this;
@@ -88,6 +109,11 @@
 <style lang='less' scoped>
     .main{
         .content{
+          .imgBox{
+              width: 20px;
+              height: 20px;
+              margin:5px 15px 5px 0;
+            }
           .packageList{
              width: 100%;
              height: auto;
@@ -96,13 +122,14 @@
             .item{
               width: 100%;
               height: auto;
-              border-bottom: 1px dashed #ddd;
+              border-top: 1px dashed #ddd;
               display: flex;
               justify-content: center;
               align-items: center;
+              padding: 5px 0;
             }
-            .item:last-child{
-              border-bottom:none;
+            .item:first-child{
+              border-top:none;
             }
             .checkbox{
               display: flex;
@@ -113,11 +140,7 @@
               span{
                 color: #007fff;
               }
-              img{
-                width: 20px;
-                height: 20px;
-                margin:5px 15px;
-              }
+              
             }
             .warper{
               flex: 1;
@@ -162,6 +185,35 @@
             }
             }
             
+          }
+          .submit{
+             width: 100%;
+             height: auto;
+             background-color: #fff;
+             padding:12px 10px;
+             margin-top: 10px;
+             display: flex;
+             align-items: center;
+             .imgBox{
+              margin:5px 5px 5px 0;
+            }
+            span{
+              margin-right: 10px;
+              font-weight: bold;
+            }
+            .submit-button{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: 4px;
+              text-align: center;
+              line-height: 24px;
+              font-size: 16px;
+              padding: 4px 16px;
+              white-space: nowrap;
+              background-color: #1ea11c;
+              color: #fff;
+            }
           }
           .addPackage{
             width: 100%;

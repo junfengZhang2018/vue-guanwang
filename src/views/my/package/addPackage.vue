@@ -24,13 +24,13 @@
                 </label>
               </div>
           </div>
-           <div class="bot-button"><a class="button button-primary"><img src="" alt="">添加包裹</a></div>
+           <div class="bot-button"><a class="button button-primary" @click="submit"><img src="" alt="">添加包裹</a></div>
         </div>
    </div>
 </template>
 <script>
    // import 《组件名称》 from '《组件路径》';
-    import {queryMyAddress} from '@/api/index'
+    import {addMyOrder} from '@/api/index'
     export default {
         components: {},
         data() {
@@ -53,24 +53,18 @@
         methods: {
             submit(){                    
               let me = this;
-              if(me.areaValue ==''){me.$message("请选择货运地区");return;}
-              if(me.zipCode ==''){me.$message("请输入邮政编码");return;}
-              if(me.receiveName ==''){me.$message("请输入收件人姓名");return;}
-              if(me.receivePhone ==''){me.$message("请输入收件人电话");return;}
-              if(me.receiveAddress ==''){me.$message("请输入收货地址");return;}
+              if(me.billCode ==''){me.$message("请输入运单号");return;}
+              if(me.goodsName ==''){me.$message("请输入物品名称");return;}
               let _data = {
-                region:me.areaValue,
-                zipCode:me.zipCode,
-                receiveName:me.receiveName,
-                receivePhone:me.telValue,
-                receiveAddress:me.receiptAddress
+                billCode:me.billCode,
+                goodsName:me.goods,
               }
-              addMyAddress(_data).then(res =>{
-                console.log(res)
-                if(res.data.success){
+              console.log(_data)
+              addMyOrder(_data).then(res =>{
+                if(res.success){
                   me.$message.success("新增收件人成功");
                   setTimeout(()=>{
-                    me.$router.push('/my/address')
+                    me.$router.push('/my/package')
                   },1000)
                 }
               })

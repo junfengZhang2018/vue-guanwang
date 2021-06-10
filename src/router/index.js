@@ -152,6 +152,13 @@ const routes = [
             component: () => import('../views/my/package/addPackage.vue'),
             meta: { title: '添加包裹'},
           },
+          {
+            path: 'transport',
+            name: 'transport',
+            component: () => import('../views/my/package/transport.vue'),
+            meta: { title: '提交运输'},
+          },
+          
         ]
       },
       {

@@ -87,14 +87,14 @@
             width: 100%;
             height: auto;
             background-color: #fff;
-            padding: 10px;
             .item{
               width: 100%;
               height: auto;
-              border-bottom: 1px dashed #ddd;
+              border-top: 1px dashed #ddd;
+              padding: 10px;
             }
-            .item:last-child{
-              border-bottom:none;
+            .item:first-child{
+              border-top:none;
             }
             .title{
               font-size:16px;
