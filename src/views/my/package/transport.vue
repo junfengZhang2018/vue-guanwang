@@ -114,7 +114,7 @@
                   >
                   </el-input>
                   <div class="bottom-operate">
-                     <div class="checkbox">
+                    <div class="checkbox">
                       <img class="checkImg" src="../../../assets/images/checkboxG.png"  alt="">
                     </div>
                     <div class="operate-c">
@@ -124,6 +124,13 @@
                   </div>
               </div>
             </div> 
+            <div class="bot-button"><a class="button btn-primary-full" @click="submit"><img src="" alt="">确认提交运输</a></div>
+            <div class="wraper-cks">
+              <div class="checkbox">
+                <img class="checkImg" src="../../../assets/images/checkboxG.png"  alt="">
+              </div>
+              <div>我已经阅读并同意 <span class="booking">《服务协议》</span></div>
+            </div>
         </div>
       </div>
    </div>
@@ -144,7 +151,8 @@
                   type:0,
                 },
                 remark:'',
-                goodsPrice:''
+                goodsPrice:'',
+                agree:false
                 
             };
         },
@@ -163,6 +171,9 @@
                 }
               })
             },
+            submit(){
+
+            }
             // editAddress(item){
             //     let me = this;
             //     let _data = {
@@ -179,15 +190,16 @@
 <style lang='less' scoped>
     .main{
       .content{
+        .radioImg,.checkImg{
+            width: 20px;
+            height: 20px;
+            margin:5px 10px 5px 0 ;
+          }
         .panel{
             width: 100%;
             height: auto;
             background-color: #fff;
-            .radioImg,.checkImg{
-              width: 20px;
-              height: 20px;
-              margin:5px 10px 5px 0 ;
-            }
+           
         }
         .order-wraper{
           .item{
@@ -352,6 +364,28 @@
             background-color: #198cff;
             border: 1px solid #007fff;
             
+          }
+        }
+        .bot-button{
+          width: 100%;
+          display: flex;
+          font-size: 15px;
+          margin-top: 20px;
+          .button{
+          padding: 8px 12px;
+          border-radius: 4px;
+          }
+        }
+        .wraper-cks{
+          display: flex;
+          align-items: center;
+          font-size: 15px;
+          margin-top: 25px;
+          .checkImg{
+            margin:0 5px 0 0 ;
+          }
+          .booking{
+            color:#198cff;
           }
         }
       }

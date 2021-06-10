@@ -24,7 +24,7 @@
                   </div>
                   <div class="right">
                     <span class="button " @click="editAddress(item)">修改</span>
-                    <span class="button red">删除</span>
+                    <span class="button red" @click="delAddress(item,index)">删除</span>
                   </div>
                 </div>
               </div>
@@ -42,7 +42,7 @@
 <script>
    // import 《组件名称》 from '《组件路径》';
     import Default from '@/components/default';
-    import {queryMyAddress} from '@/api/index'
+    import {queryMyAddress,deleteMyAddress } from '@/api/index'
     export default {
         components: {Default},
         data() {
@@ -64,6 +64,24 @@
                 if(res.success&&res.obj.length>0){
                   me.myAddress = res.obj
                   me.hasAddress = true
+                }
+              })
+            },
+            delAddress(item,index){
+              let me = this;
+              me.$dialog({
+                title: '提示',
+                content: '是否要删除该地址',
+                onConfirm: () => {
+                  let _data ={
+                    id:item.id
+                  }
+                  me.deleteMyAddress(_data).then(res =>{
+                    if(res.success){
+                       //收件人
+										  me.myAddress.splice(index,1);
+                    }
+                  })
                 }
               })
             },

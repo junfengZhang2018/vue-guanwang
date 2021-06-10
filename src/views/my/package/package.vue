@@ -29,7 +29,6 @@
                             <span class="" >查看详情</span>
                         </div>
                       </div>
-
                     </div>
                  </div>
               </div>
@@ -50,7 +49,8 @@
 <script>
    // import 《组件名称》 from '《组件路径》';
     import Default from '@/components/default';
-    import {getMyOrders} from '@/api/index'
+    import {getMyOrders,getMyOrderDetail} from '@/api/index'
+    
     export default {
         components: {Default},
         data() {
@@ -62,7 +62,8 @@
             };
         },
         created(){
-          this.getMyOrders()
+          this.getMyOrders();
+          this.getMyOrderDetail()
         },
          //方法集合
         methods: {
@@ -77,6 +78,14 @@
                 me.myOrders = res.obj
                 me.hasPackage = true
                 }
+              })
+            },
+            getMyOrderDetail(){
+              let _data = {
+                id:1
+              }
+              getMyOrderDetail(_data).then(res =>{
+                console.log(res)
               })
             },
             allSelects(){
