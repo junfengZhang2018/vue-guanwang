@@ -50,7 +50,7 @@
    // import 《组件名称》 from '《组件路径》';
     import Default from '@/components/default';
     import {getMyOrders,getMyOrderDetail} from '@/api/index'
-    
+
     export default {
         components: {Default},
         data() {

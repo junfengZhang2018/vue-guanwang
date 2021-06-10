@@ -153,7 +153,7 @@
                   if(res.success){
                     me.$message.success("新增收件人成功");
                     setTimeout(()=>{
-                      me.$router.push('/my/address')
+                      me.$router.go(-1)
                     },1000)
                   }
               })

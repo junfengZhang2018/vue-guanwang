@@ -7,8 +7,8 @@
       </div>
       <div class="main">
         <div class="colorTips colorTips-warning">
-          <div class="colorTips-title">请复制文本粘贴收货信息</div>
-          <div class="colorTips-content">尽量避免手动输入拼写错误</div>
+          <div class="colorTips-title">非常时期配送时效提醒</div>
+          <div class="colorTips-content">COVID-19疫情期间，“进出口清关”及“末端配送”均受到不同程度的影响，送达时效不稳定。</div>
         </div>
         <div class="content">
            <div class="order-wraper panel" >
@@ -34,19 +34,25 @@
             <div class="panel recAdress" >
               <div class="title">
                 <span class="text-bold">收货地址(1)</span>
-                <span class="primary-button">添加收货地址</span>
+                <span class="primary-button" @click="$router.push('/my/address/creatAddress')">添加收货地址</span>
               </div>
               <div class="rec-wraper">
-                <div class="item">
-                  <div class="radioBox">
+                <div class="" v-if="myAddress.length<1">
+                  请选择地址
+                </div>
+                <div class="address-box" v-else>
+                  <div class="item">
+                    <div class="radioBox">
                     <img class="radioImg" src="" alt="">
-                  </div>
-                  <div class="row-wraper">
-                    <div class="text-p">Weasda-15454</div>
-                    <div class="text-p text-bold">12(13025552)</div>
-                    <div class="text-p">text</div>
+                    </div>
+                    <div class="row-wraper">
+                      <div class="text-p">Weasda-15454</div>
+                      <div class="text-p text-bold">12(13025552)</div>
+                      <div class="text-p">text</div>
+                    </div>
                   </div>
                 </div>
+
               </div>
             </div>    
             <div class="panel type" >
@@ -55,31 +61,13 @@
                 <span class="text-success unline text-bold">普货与敏感货</span>
               </div>
               <div class="type-wraper">
-                <div class="item">
+                <div class="item" v-for="(item,index) in typeList" :key="index">
                   <div class="radioBox">
-                    <img class="radioImg" src="" alt="">
+                    <img class="radioImg"  :src="item.id==typeIndex?require('../../../assets/images/radioSelect.png'):require('../../../assets/images/radio.png')" alt="">
                   </div>
                   <div class="row-wraper">
-                    <div class="text-bold text-p">1.空运普货</div>
-                    <div class="text-p colGray">快速空运非敏感货物</div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="radioBox">
-                    <img class="radioImg" src="" alt="">
-                  </div>
-                  <div class="row-wraper">
-                    <div class="text-bold text-p ">2.空运敏感</div>
-                    <div class="text-p colGray">敏感商品如食物、电子产品、化妆品等</div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="radioBox">
-                    <img class="radioImg" src="" alt="">
-                  </div>
-                  <div class="row-wraper">
-                    <div class="text-bold text-p ">3.海运运输</div>
-                    <div class="text-p colGray">仓库会根据重量及尺寸更换划算的“海运小包”或“海运大货”渠道</div>
+                    <div class="text-bold text-p">{{item.name}}</div>
+                    <div class="text-p colGray">{{item.tips}}</div>
                   </div>
                 </div>
               </div>
@@ -115,7 +103,7 @@
                   </el-input>
                   <div class="bottom-operate">
                     <div class="checkbox">
-                      <img class="checkImg" src="../../../assets/images/checkboxG.png"  alt="">
+                      <img class="checkImg" :src="blPayAuto?require('../../../assets/images/select.png'):require('../../../assets/images/checkboxG.png')"  alt="">
                     </div>
                     <div class="operate-c">
                       <div class="text-p">包装完成后，自动扣款并及时发货</div>
@@ -127,7 +115,7 @@
             <div class="bot-button"><a class="button btn-primary-full" @click="submit"><img src="" alt="">确认提交运输</a></div>
             <div class="wraper-cks">
               <div class="checkbox">
-                <img class="checkImg" src="../../../assets/images/checkboxG.png"  alt="">
+                <img class="checkImg" :src="agree?require('../../../assets/images/select.png'):require('../../../assets/images/checkboxG.png')"  alt="">
               </div>
               <div>我已经阅读并同意 <span class="booking">《服务协议》</span></div>
             </div>
@@ -138,7 +126,7 @@
 <script>
    // import 《组件名称》 from '《组件路径》';
     import Default from '@/components/default';
-    import {getMyOrders} from '@/api/index'
+    import {getMyOrders,queryMyAddress} from '@/api/index'
     export default {
         components: {Default},
         data() {
@@ -152,8 +140,28 @@
                 },
                 remark:'',
                 goodsPrice:'',
-                agree:false
-                
+                agree:false,
+                typeList:[{
+                  id:0,
+                  name:'1.空运普货',
+                  tips:'快速空运非敏感货物',
+                  value:'空运普货'
+                },
+                {
+                  id:1,
+                  name:'2.空运敏感',
+                  tips:'敏感商品如食物、电子产品、化妆品等',
+                  value:'空运敏感'
+                },
+                {
+                  id:2,
+                  name:'3.海运运输',
+                  tips:'仓库会根据重量及尺寸更换划算的“海运小包”或“海运大货”渠道',
+                  value:'海运运输'
+                }],
+                typeIndex:0,
+                myAddress:[],
+                blPayAuto:false
             };
         },
         created(){
@@ -161,6 +169,16 @@
         },
          //方法集合
         methods: {
+           getMyAddress(){
+              let me = this;
+              queryMyAddress().then(res =>{
+                console.log(res)
+                if(res.success&&res.obj.length>0){
+                  me.myAddress = res.obj
+                  me.hasAddress = true
+                }
+              })
+            },
             getMyOrders(){
               let me = this;
               getMyOrders().then(res =>{
@@ -172,6 +190,17 @@
               })
             },
             submit(){
+              let me = this;
+              let recData = me.myAddress.find(item=>{
+                return item.checked
+              });
+
+              if(recData.name ==''){me.$message("请选择收件人");return;}
+              if(me.zipCode ==''){me.$message("请输入邮政编码");return;}
+              if(me.receiveName ==''){me.$message("请输入收件人姓名");return;}
+              if(me.receivePhone ==''){me.$message("请输入收件人电话");return;}
+              if(me.receiveAddress ==''){me.$message("请输入收货地址");return;}
+
 
             }
             // editAddress(item){

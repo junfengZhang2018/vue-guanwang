@@ -128,7 +128,7 @@ const routes = [
             component: () => import('../views/my/address/address.vue'),
           },
           {
-            path: 'creatAddress/:item',
+            path: 'creatAddress',
             name: 'creatAddress',
             component: () => import('../views/my/address/creatAddress.vue'),
             meta: { title: '创建地址'},
