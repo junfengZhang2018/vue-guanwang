@@ -78,7 +78,7 @@ export default {
     return {};
   },
   methods: {
-    ...mapMutations(["SET_USER_INFO"]),
+    ...mapMutations(["SET_USER_INFO", "SET_USER_NAME"]),
     bindWechat() {
       this.$dialog({
         title: "微信扫一扫，绑定账户",
@@ -93,7 +93,10 @@ export default {
         confirmButtonClass: "text-danger",
         onConfirm: () => {
           util.storage.remove("user");
+          util.storage.remove("userData");
+          util.storage.remove("token");
           this.SET_USER_INFO(null);
+          this.SET_USER_NAME(null);
           this.$router.push("/signIn");
         },
       });

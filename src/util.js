@@ -47,7 +47,7 @@ export default {
         },
         //取出数据
         get(key) {
-            return JSON.parse(localStorage.getItem(key));
+            return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : null;
         },
         // 删除数据
         remove(key) {

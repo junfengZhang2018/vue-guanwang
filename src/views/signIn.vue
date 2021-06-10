@@ -90,10 +90,6 @@
             ...mapMutations(['SET_USER_INFO','SET_USER_NAME']),
             signIn(){
                 let errMsg = util.validate(this.form, this.rules);
-            //   let _data ={
-            //     email:this.form.email,
-            //     password:this.form.password
-            //   
                 if(errMsg){
                     this.$dialog({
                         title: errMsg,
@@ -101,21 +97,15 @@
                     })
                 }else{
                     // 登录
-                    // const userName = '王多鱼';
-                    // localStorage.setItem('user', userName);
-                    // this.SET_USER_INFO(userName);
-                    // this.$router.push('/my');
                     login(this.form).then(res =>{
-                        console.log(res)
                         if(res.success){
-                        localStorage.setItem('user', res.obj.user_name);
-                        localStorage.setItem('token', res.obj.token);
-                        localStorage.setItem('userData', res.obj);
-                        this.SET_USER_INFO(res.obj);
-                        this.SET_USER_NAME(res.obj.user_name)
-                        this.$router.push('/my');
+                            util.storage.set('user', res.obj.user_name);
+                            util.storage.set('token', res.obj.token);
+                            util.storage.set('userData', res.obj);
+                            this.SET_USER_INFO(res.obj);
+                            this.SET_USER_NAME(res.obj.user_name)
+                            this.$router.push('/my');
                         }
-                       
                     })
                 }
             }

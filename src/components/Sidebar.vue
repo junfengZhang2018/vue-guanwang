@@ -5,7 +5,7 @@
                 <div class="panel-title">
                     <div>
                         {{sayHello}}，
-                        <template v-if="!$store.state.userInfo">请 <a @click.prevent="$router.push('/signIn')" class="text-link">登录/注册</a></template>
+                        <template v-if="!$store.state.userName">请 <a @click.prevent="$router.push('/signIn')" class="text-link">登录/注册</a></template>
                         <template v-else><a @click.prevent="$router.push('/my')" class="text-link">{{$store.state.userName}}</a></template>
                     </div>
                 </div>

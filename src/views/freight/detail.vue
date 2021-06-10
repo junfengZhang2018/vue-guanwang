@@ -8,7 +8,7 @@
 <script>
     import ATable from '@/components/ATable';
     import BTable from '@/components/BTable';
-    import {getPriceList} from '@/api/index'
+    import {getPriceList, getPriceDetail} from '@/api/index'
     export default {
         components: {
             ATable, BTable
@@ -59,11 +59,10 @@
               console.log(response);
             })
           },
-           getPriceList(){
+          getPriceList(){
             let self = this;
              getPriceList().then((res)=>{
                 let data = res.obj
-               console.log(data)
                let priceList = [];
                data.forEach((item,index) => {
                 let _obj =  {
@@ -88,7 +87,6 @@
                });
                 self.tableData = priceList
                   let { id } = this.$route.params;
-                 console.log(id)
                   this.tableData = this.tableData[Number(id)];
                   let tableData = [];
                   let price = this.tableData.price;
@@ -99,8 +97,6 @@
                       });
                   });
                   this.tableData = tableData;
-
-              console.log(priceList)
               }).catch((response)=>{
                 console.log(response);
               })
@@ -109,8 +105,8 @@
         //生命周期 - 创建完成（可以访问当前this实例）
         created() {
             scrollTo(0, 0);
-            this.getPriceList()
-            // this.getPriceDetail()
+            // this.getPriceList()
+            this.getPriceDetail()
             // let { id } = this.$route.params;
             // this.tableData = this.tableData[Number(id)];
             // let tableData = [];

@@ -57,7 +57,7 @@
             </tr>
             <tr>
                 <td colspan="4">
-                    <div class="table-desc" vhtml>{{data.desc}}</div>
+                    <div class="table-desc" v-html="data.desc"></div>
                 </td>
             </tr>
         </tbody>

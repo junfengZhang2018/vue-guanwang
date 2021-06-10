@@ -11,7 +11,7 @@
               <div class="item" v-for="(item, index) in myOrders" :key="index" >
                   <div class="checkbox">
                     <span>#{{item.id}} </span>
-                    <img class="imgBox" @click="selectPackage(item,index)"  :src="item.ck? '../../../assets/images/select.png':'../../../assets/images/checkboxG.png'"  alt="">
+                    <img class="imgBox" @click="selectPackage(item,index)" :src="item.ck?require('../../../assets/images/select.png'):require('../../../assets/images/checkboxG.png')"  alt="">
                   </div>
                   <div class="warper">
                     <div class="title">{{item.bill_code}}</div>
@@ -34,7 +34,7 @@
               </div>
             </div>
             <div v-if="hasPackage" class="submit">
-              <img class="imgBox" @click="allSelects" :src="allSelect?'../../../assets/images/select.png':'../../../assets/images/checkboxG.png'" alt="">
+              <img class="imgBox" @click="allSelects" :src="allSelect?require('../../../assets/images/select.png'):require('../../../assets/images/checkboxG.png')" alt="">
               <span class="text-success">全选 2</span>
               <span class="submit-button" @click="transport" >提交运输（0）</span>
              </div>

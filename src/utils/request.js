@@ -11,13 +11,17 @@ const service = axios.create({
 // 2.请求拦截器 
   timeout: 15 * 1000
 })
-console.log(localStorage.getItem('token'))
+
 // 2.请求拦截器
 service.interceptors.request.use(config => {
-  config.data = qs.stringify(config.data);
+  if(config.method.toLowerCase() == 'get'){
+    config.params = qs.stringify(config.data);
+  }else{
+    config.data = qs.stringify(config.data);
+  }
   config.headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
-    'token':localStorage.getItem('token')
+    'token': localStorage.getItem('token')
   }
   return config
 }, error => {
@@ -31,6 +35,9 @@ service.interceptors.response.use(response => {
     Message.error('权限不足，请先登录')
     router.push('/signIn')
     return false;
+  }else if(response.data.status != 200){
+    Message.error(response.data.message)
+    return Promise.reject(response.data)
   }
   return response.data;
 }, error => {
@@ -38,7 +45,6 @@ service.interceptors.response.use(response => {
   if (error && error.response) {
     // 1.公共错误处理
     // 2.根据响应码具体处理
-    console.log()
     switch (error.response.status) {
       case 400:
         error.message = '错误请求'
@@ -51,7 +57,6 @@ service.interceptors.response.use(response => {
         break;
       case 404:
         error.message = '请求错误,未找到该资源'
-        window.location.href = "/NotFound"
         break;
       case 405:
         error.message = '请求方法未允许'
