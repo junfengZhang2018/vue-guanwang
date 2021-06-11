@@ -12,7 +12,7 @@
           <div class="signup"> <router-link to="/">立即注册</router-link></div>
         </div>
       </div>
-      <div class="home-banner hidden-sm-and-up" >
+      <div class="home-banner hidden-sm-and-up">
         <div style="width:100%"></div>
          <el-carousel :height="bannerHeight">
           <el-carousel-item v-for="(item,index) in homeBanner" :key="index">
@@ -20,7 +20,7 @@
           </el-carousel-item>
         </el-carousel>
       </div>
-      <div class="home-banner hidden-xs-only" >
+      <div class="home-banner hidden-xs-only">
           <ul class="home-banner-list">
             <li class="home-banner-item">
               <a class="home-banner-img" href="javascript:void(0)" target="_blank">

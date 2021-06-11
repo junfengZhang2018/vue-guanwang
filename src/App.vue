@@ -109,7 +109,10 @@ a {
   -webkit-transition: color 0.5s;
   -o-transition: color 0.5s;
 }
-
+pre{
+  margin: 0;
+  font-family: initial;
+}
 .clearfix:after{/*伪元素是行内元素 正常浏览器清除浮动方法*/
    content: "";
    display: block;

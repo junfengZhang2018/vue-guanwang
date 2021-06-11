@@ -27,9 +27,7 @@
                 </td>
                 <td class="text-info" v-for="(item, i) in data.range" :key="i">
                     <strong>
-                        <template>
-                            {{item}}
-                        </template>
+                        <template>{{item}}</template>
                         <!-- <template v-else>
                             > {{item}}
                         </template> -->
@@ -41,7 +39,7 @@
             <tr v-for="(item, i) in data.price" :key="i">
                 <td>
                     <div class="tc">
-                        <u><strong>{{item.companyList}}</strong></u>
+                        <u><strong><pre>{{item.companyList}}</pre></strong></u>
                     </div>
                 </td>
                 <td v-for="(val, index) in item.per" :key="index">

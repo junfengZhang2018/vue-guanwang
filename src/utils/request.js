@@ -18,7 +18,7 @@ const service = axios.create({
 service.interceptors.request.use(config => {
   console.log(config)
   if(config.method.toLowerCase() == 'get'){
-    config.params = qs.stringify(config.data);
+    config.params = config.data;
   }else{
     config.data = qs.stringify(config.data);
   }
