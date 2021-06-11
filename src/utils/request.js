@@ -4,16 +4,19 @@ import axios from 'axios'
 import qs from 'qs'
 import { Message } from 'element-ui'
 import router from '../router'
+import util from '@/util';
+
 //1. 创建新的axios实例，
 const service = axios.create({
   // 公共接口--这里注意后面会讲
-  baseURL: process.env.NODE_ENV !== 'production' ? '/api' : 'http://169q82e980.51mypc.cn/',
+  baseURL: process.env.NODE_ENV !== 'production' ? '/api' : 'http://169q82e980.51mypc.cn',
 // 2.请求拦截器 
   timeout: 15 * 1000
 })
 
 // 2.请求拦截器
 service.interceptors.request.use(config => {
+  console.log(config)
   if(config.method.toLowerCase() == 'get'){
     config.params = qs.stringify(config.data);
   }else{
@@ -21,7 +24,7 @@ service.interceptors.request.use(config => {
   }
   config.headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
-    'token': localStorage.getItem('token')
+    'token': util.storage.get('token')
   }
   return config
 }, error => {
@@ -33,6 +36,11 @@ service.interceptors.response.use(response => {
   //接收到响应数据并成功后的一些共有的处理，关闭loading等
   if(response.data.status == 403){
     Message.error('权限不足，请先登录')
+    util.storage.remove('user');
+    util.storage.remove('token');
+    util.storage.remove('userData');
+    // this.SET_USER_INFO(res.obj);
+    // this.SET_USER_NAME(res.obj.user_name)
     router.push('/signIn')
     return false;
   }else if(response.data.status != 200){

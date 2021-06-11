@@ -7,7 +7,7 @@
         </div>
         <div class="main">
           <div class="content">
-            <div class="hasAddress" v-if="hasAddress">
+            <div class="hasAddress" v-if="myAddress.length>0">
               <div class="item" v-for="(item,index) in myAddress" :key="index">
                 <div class="title">{{item.receive_name}}</div>
                 <div class="info">
@@ -48,7 +48,6 @@
         data() {
         //这里存放数据
             return {
-                hasAddress:false,
                 myAddress:[]
             };
         },
@@ -63,7 +62,6 @@
                 console.log(res)
                 if(res.success&&res.obj.length>0){
                   me.myAddress = res.obj
-                  me.hasAddress = true
                 }
               })
             },
@@ -76,10 +74,11 @@
                   let _data ={
                     id:item.id
                   }
-                  me.deleteMyAddress(_data).then(res =>{
+                  deleteMyAddress(_data).then(res =>{
                     if(res.success){
                        //收件人
 										  me.myAddress.splice(index,1);
+
                     }
                   })
                 }
@@ -92,7 +91,8 @@
                   items:item
                 }
                 me.$router.push({
-                  path: `/my/address/creatAddress/${JSON.stringify(_data)}`,
+                  path: '/my/address/creatAddress',
+                  query:_data
                 })
             }
         } 
@@ -110,6 +110,7 @@
               height: auto;
               border-top: 1px dashed #ddd;
               padding: 10px;
+              box-sizing: border-box;
             }
             .item:first-child{
               border-top:none;

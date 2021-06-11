@@ -12,19 +12,19 @@
         </div>
         <div class="content">
            <div class="order-wraper panel" >
-              <div class="item" >
+              <div class="item" v-for="(item,index) in myOrders" :key="index">
                 <div class="checkbox">
-                  <span>#1</span>
+                  <span>#{{item.id}}</span>
                 </div>
                 <div class="warper">
-                  <div class="title">2222</div>
+                  <div class="title">{{item.bill_code}}</div>
                   <div class="info">
                     <div class="left">
                         <div class="row">
-                          22222
+                          {{item.goods_name}}
                         </div>
                         <div class="row red">
-                          未入库
+                          {{item.status==0?'未入库':''}}
                         </div>
                     </div>
                   </div>
@@ -41,14 +41,14 @@
                   请选择地址
                 </div>
                 <div class="address-box" v-else>
-                  <div class="item">
+                  <div class="item" v-for="(item,index) in myAddress" :key="index" >
                     <div class="radioBox">
-                    <img class="radioImg" src="" alt="">
+                      <img class="radioImg" @click.stop="selectAddress(item,index)"  :src="item.ck?require('../../../assets/images/radioSelect.png'):require('../../../assets/images/radio.png')" alt="">
                     </div>
                     <div class="row-wraper">
-                      <div class="text-p">Weasda-15454</div>
-                      <div class="text-p text-bold">12(13025552)</div>
-                      <div class="text-p">text</div>
+                      <div class="text-p">{{item.receive_name}} - {{ item.receive_phone}}</div>
+                      <div class="text-p text-bold">{{item.reveive_address}}</div>
+                      <div class="text-p">{{item.region}}（邮政编码:{{item.zip_code}}）</div>
                     </div>
                   </div>
                 </div>
@@ -62,7 +62,7 @@
               </div>
               <div class="type-wraper">
                 <div class="item" v-for="(item,index) in typeList" :key="index">
-                  <div class="radioBox">
+                  <div class="radioBox"  @click="selectType(item,index)">
                     <img class="radioImg"  :src="item.id==typeIndex?require('../../../assets/images/radioSelect.png'):require('../../../assets/images/radio.png')" alt="">
                   </div>
                   <div class="row-wraper">
@@ -76,8 +76,11 @@
               <div class="title">
                 <span class="text-bold">海运公司</span>
               </div>
-              <div class="company-wraper">
+              <!-- <div class="company-wraper" >
                 请先选择“收货地址”，“运输方式”
+              </div> -->
+              <div class="">
+                <el-input class="inputStyle" v-model="company" placeholder="请输入公司名称~"></el-input>
               </div>
             </div> 
              <div class="panel goodsPrice" >
@@ -103,7 +106,7 @@
                   </el-input>
                   <div class="bottom-operate">
                     <div class="checkbox">
-                      <img class="checkImg" :src="blPayAuto?require('../../../assets/images/select.png'):require('../../../assets/images/checkboxG.png')"  alt="">
+                      <img class="checkImg" @click="selectBlPayAuto" :src="blPayAuto?require('../../../assets/images/select.png'):require('../../../assets/images/checkboxG.png')"  alt="">
                     </div>
                     <div class="operate-c">
                       <div class="text-p">包装完成后，自动扣款并及时发货</div>
@@ -115,7 +118,7 @@
             <div class="bot-button"><a class="button btn-primary-full" @click="submit"><img src="" alt="">确认提交运输</a></div>
             <div class="wraper-cks">
               <div class="checkbox">
-                <img class="checkImg" :src="agree?require('../../../assets/images/select.png'):require('../../../assets/images/checkboxG.png')"  alt="">
+                <img class="checkImg" @click="selectAgree"  :src="agree?require('../../../assets/images/select.png'):require('../../../assets/images/checkboxG.png')"  alt="">
               </div>
               <div>我已经阅读并同意 <span class="booking">《服务协议》</span></div>
             </div>
@@ -126,7 +129,7 @@
 <script>
    // import 《组件名称》 from '《组件路径》';
     import Default from '@/components/default';
-    import {getMyOrders,queryMyAddress} from '@/api/index'
+    import {queryMyAddress,addMyBills} from '@/api/index'
     export default {
         components: {Default},
         data() {
@@ -134,12 +137,9 @@
             return {
                 hasPackage:false,
                 myOrders:[],
-                form:{
-                  address:0,
-                  type:0,
-                },
                 remark:'',
                 goodsPrice:'',
+                company:'',
                 agree:false,
                 typeList:[{
                   id:0,
@@ -165,7 +165,14 @@
             };
         },
         created(){
-          this.getMyOrders()
+          let me = this;
+          let _data = me.$route.query
+          if(JSON.stringify(_data) != "{}"){
+            me.myOrders = _data.packageList
+          }else{
+             me.$router.push('/my/package')
+          }
+          me.getMyAddress()
         },
          //方法集合
         methods: {
@@ -174,49 +181,76 @@
               queryMyAddress().then(res =>{
                 console.log(res)
                 if(res.success&&res.obj.length>0){
-                  me.myAddress = res.obj
-                  me.hasAddress = true
+                  res.obj.forEach(item =>{
+                    item.ck = false
+                  })
+                  me.myAddress = res.obj;
+                  me.myAddress[0].ck = true;
+                  me.hasAddress = true;
                 }
               })
             },
-            getMyOrders(){
+            selectType(item,index){
               let me = this;
-              getMyOrders().then(res =>{
-                console.log(res)
-                if(res.success&&res.obj.length>0){
-                  me.myOrders = res.obj
-                  me.hasPackage = true
-                }
+              me.typeIndex = index
+            },
+            selectAddress(item,index){
+              let me = this;
+              me.myAddress.forEach(item =>{
+                item.ck = false
               })
+              me.myAddress[index].ck = true;
+            },
+            selectBlPayAuto(){
+               let me = this;
+               me.blPayAuto = !me.blPayAuto
+            },
+            selectAgree(){
+              let me = this;
+              me.agree = !me.agree
             },
             submit(){
               let me = this;
               let recData = me.myAddress.find(item=>{
                 return item.checked
               });
-
+              console.log(recData)
               if(recData.name ==''){me.$message("请选择收件人");return;}
-              if(me.zipCode ==''){me.$message("请输入邮政编码");return;}
-              if(me.receiveName ==''){me.$message("请输入收件人姓名");return;}
-              if(me.receivePhone ==''){me.$message("请输入收件人电话");return;}
+              if(me.freightType ==''){me.$message("请选择运输方式");return;}
+              if(me.company ==''){me.$message("请输入海运公司");return;}
+              if(me.goodsPrice ==''){me.$message("请输入商品价格");return;}
               if(me.receiveAddress ==''){me.$message("请输入收货地址");return;}
-
-
+              let _data = {
+                receiveRegion:recData.region,
+                receiveZipCode:recData.zip_code,
+                receiveName:recData.receive_name,
+                receivePhone:recData.receive_phone,
+                receiveAddress:recData.reveive_address,
+                freightType:me.typeList[me.typeIndex].value,
+                channelType:'',
+                channelCompany:me.company,
+                goodsPrice:me.goodsPrice,
+                remark:me.remark,
+                blPayAuto:me.blPayAuto
+              }
+              addMyBills(_data).then(res =>{
+                if(res.success){
+                  me.$message.success("提交运输成功");
+                  setTimeout(()=>{
+                    me.$router.go(-1)
+                  },1000)
+                }else{
+                  me.$message.error("提交运输失败~");
+                }
+              })
             }
-            // editAddress(item){
-            //     let me = this;
-            //     let _data = {
-            //       type:'edit',
-            //       items:item
-            //     }
-            //     me.$router.push({
-            //       path: `/my/address/creatAddress/${JSON.stringify(_data)}`,
-            //     })
-            // }
         } 
     }
 </script>
 <style lang='less' scoped>
+    /deep/.el-input__inner{
+      border:none;
+    }
     .main{
       .content{
         .radioImg,.checkImg{
@@ -314,7 +348,7 @@
             }
           }
           .rec-wraper,.type-wraper{
-            padding:16px 10px;
+            padding:8px 10px;
             width: 100%;
             box-sizing: border-box;
             font-size: 15px;
@@ -325,20 +359,25 @@
               display: flex;
               justify-content: flex-start;
               align-items: center;
+              border-top: 1px solid #ddd;
               .row-wraper{
                 flex:1;
                 .text-p{
-                  margin: 5px 0;
+                  margin: 8px 0;
                 }
                 .colGray{
                   color: #666;
                 }
               }
             }
+            .item:first-child{
+              border-top: none;
+            }
           }
           .type-wraper{
+            padding:0 10px;
             .item{
-              margin: 5px 0;
+              margin: 8px 0;
             }
           }
           .company-wraper{

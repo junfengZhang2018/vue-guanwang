@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <a-table :id="'table'+data.region+data.index" :tableId="i" :data="data" v-for="(data, i) in tableData" :key="i" />
+        <a-table :id="'table'+data.region+data.index" :tableId="data.id" :data="data" v-for="(data, i) in tableData" :key="i" />
    </div>
 </template>
 
@@ -64,7 +64,7 @@
           getPriceList(){
             let self = this;
              getPriceList().then((res)=>{
-                console.log(res)
+                console.log('res',res)
                let data = res.obj
                if(res.success){
                   let priceList = [];
@@ -75,7 +75,7 @@
                           price:[]
                       }
                       _obj.title = item.region +' '+ item.freight_type
-                      _obj.index = index
+                      _obj.id = item.id
                       _obj.region = ['西马','东马','新加坡'].indexOf(item.region)
                       _obj.range =[item.goodsFreightRegions[0].weight_section1,item.goodsFreightRegions[0].weight_section2,item.goodsFreightRegions[0].weight_section3] 
                       _obj.desc = item.remark
@@ -85,13 +85,12 @@
                           priceData.companyList = gtem.delivery_company
                           priceData.per = [gtem.price_section1,gtem.price_section2,gtem.price_section3]
                           _obj.price.push(priceData)
-                          
                       })
                       }
                       priceList.push(_obj)
                     });
-                    self.tableData = priceList
                     console.log(priceList)
+                    self.tableData = priceList
                 }
             
               }).catch((response)=>{
