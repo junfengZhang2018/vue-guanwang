@@ -15,7 +15,7 @@ const service = axios.create({
 // 2.请求拦截器
 service.interceptors.request.use(config => {
   if(config.method.toLowerCase() == 'get'){
-    config.params = qs.stringify(config.data);
+    config.params = config.data;
   }else{
     config.data = qs.stringify(config.data);
   }
