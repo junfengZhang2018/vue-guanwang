@@ -1,13 +1,8 @@
-module.exports = {
-  presets: [
-    '@vue/cli-plugin-babel/preset'
-  ]
-}
-
 //按需引入element-ui
 module.exports = {
   presets: ["@vue/app"],
   plugins: [
+    '@babel/plugin-proposal-optional-chaining',
     // element官方教程
     [
       "component",

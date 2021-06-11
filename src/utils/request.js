@@ -9,14 +9,13 @@ import util from '@/util';
 //1. 创建新的axios实例，
 const service = axios.create({
   // 公共接口--这里注意后面会讲
-  baseURL: process.env.NODE_ENV !== 'production' ? '/api' : 'http://169q82e980.51mypc.cn',
+  baseURL: process.env.NODE_ENV !== 'production' ? '/api' : '/',
 // 2.请求拦截器 
   timeout: 15 * 1000
 })
 
 // 2.请求拦截器
 service.interceptors.request.use(config => {
-  console.log(config)
   if(config.method.toLowerCase() == 'get'){
     config.params = config.data;
   }else{

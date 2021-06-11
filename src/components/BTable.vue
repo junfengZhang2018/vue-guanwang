@@ -7,13 +7,14 @@
                         <td class="td-title" colspan="4">
                             <div class="th-title">
                                 <h1 class="flex-item price-title">
-                                    西马 普货空运价格表
+                                    {{data.region}} {{data.freight_type}}价格表
                                 </h1>
                                 <div
                                     class="text-success"
                                     style="font-size: 16px"
                                 >
-                                    <strong>RM1 = ¥{{exchangeRate}}</strong>
+                                    <strong>RM1 = ¥{{$util.dealFloat($util.accDiv(data.price_rmb, data.price_mb), 2)}}</strong>
+                                    <!-- <strong>RM1 = ¥{{exchangeRate}}</strong> -->
                                 </div>
                             </div>
                         </td>
@@ -24,7 +25,8 @@
                             colspan="4"
                             style="padding-top: 2px; padding-bottom: 2px"
                         >
-                            <strong>运输公司：{{data.price[0].companyList.join('、')}}</strong>
+                            <strong>运输公司：{{data.delivery_company}}</strong>
+                            <!-- <strong>运输公司：{{data.price[0].companyList.join('、')}}</strong> -->
                         </td>
                     </tr>
                     <tr>
@@ -60,7 +62,18 @@
         </div>
         <table class="table table-border" style="margin-top: -14px">
             <tbody>
-                <tr v-for="(item, i) in 20" :key="i">
+                <tr>
+                    <td width="22%" style="padding:4px">
+                        <strong>{{data.weight}}</strong>
+                    </td>
+                    <td width="22%" style="padding:4px">
+                        {{data.price_rmb}}
+                    </td>
+                    <td width="22%" style="padding:4px">
+                        {{data.price_mb}}
+                    </td>
+                </tr>
+                <!-- <tr v-for="(item, i) in 20" :key="i">
                     <td width="22%" style="padding:4px">
                         <strong v-if="!data.priceType">{{i+1}}kg</strong>
                         <strong v-else>{{$util.dealFloat((i+1)*0.1)}}m³</strong>
@@ -71,7 +84,7 @@
                     <td width="22%" style="padding:4px">
                         {{rmList[i]}}
                     </td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </div>
@@ -95,7 +108,7 @@ export default {
     },
     //监听属性 类似于data概念
     computed: {
-        ...mapGetters(['exchangeRate'])
+        ...mapGetters(['exchangeRate']),
     },
     //监控data中的数据变化
     watch: {},
@@ -125,7 +138,8 @@ export default {
     },
     //生命周期 - 创建完成（可以访问当前this实例）
     created() {
-        this.getCurrencyList();
+        // this.getCurrencyList();
+        console.log(this.data);
     },
     //生命周期 - 挂载完成（可以访问DOM元素）
     mounted() {},
