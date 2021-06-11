@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "npm": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "dev": "concurrently \"vue-cli-service serve\" \"node ./src/mock/server.js\""
   },
