@@ -212,15 +212,25 @@
             submit(){
               let me = this;
               let recData = me.myAddress.find(item=>{
-                return item.checked
+                return item.ck
               });
               console.log(recData)
+              if(!me.agree){me.$message("请同意协议");return;}
               if(recData.name ==''){me.$message("请选择收件人");return;}
               if(me.freightType ==''){me.$message("请选择运输方式");return;}
               if(me.company ==''){me.$message("请输入海运公司");return;}
               if(me.goodsPrice ==''){me.$message("请输入商品价格");return;}
               if(me.receiveAddress ==''){me.$message("请输入收货地址");return;}
+              let orderList = ''
+              me.myOrders.forEach((item,index) =>{
+                 if(index==0){
+                    orderList = item.id
+                  }else{
+                    orderList +=','+item.id
+                  }
+              })
               let _data = {
+                orderIds:orderList,
                 receiveRegion:recData.region,
                 receiveZipCode:recData.zip_code,
                 receiveName:recData.receive_name,
@@ -231,7 +241,7 @@
                 channelCompany:me.company,
                 goodsPrice:me.goodsPrice,
                 remark:me.remark,
-                blPayAuto:me.blPayAuto
+                blPayAuto:me.blPayAuto?0:1
               }
               addMyBills(_data).then(res =>{
                 if(res.success){
