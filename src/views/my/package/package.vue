@@ -140,7 +140,7 @@
           .imgBox{
               width: 20px;
               height: 20px;
-              margin:5px 15px 5px 0;
+              
             }
           .packageList{
              width: 100%;
@@ -165,6 +165,7 @@
               align-items: center;
               flex-direction: column;
               flex-wrap: wrap;
+              margin:5px 15px 5px 0;
               span{
                 color: #007fff;
               }
