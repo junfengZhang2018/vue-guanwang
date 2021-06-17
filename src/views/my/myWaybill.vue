@@ -1,7 +1,7 @@
 <template>
    <div class='myWaybill'>
         <div class="subhead-right">
-            <a @click.prevent="$router.push('/freightPrice/calculation')" class="breadBtn breadBtn-primary">
+            <a @click.prevent="$router.push('/my/myWaybill/search')" class="breadBtn breadBtn-primary">
                 <span>查找运单</span>
             </a>
         </div>

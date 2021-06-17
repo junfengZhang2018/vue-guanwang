@@ -5,15 +5,7 @@
                 <span>网站首页</span>
             </a>
         </div>
-        <div class="search">
-            <div class="flex search-wrap">
-                <input class="input" type="search" placeholder="搜索单号 姓名 电话 邮编 包裹名">
-                <button class="btn btn-primary">
-                    <div class="icon icon-search-primary"></div>
-                    <span>搜索</span>
-                </button>
-            </div>
-        </div>
+        <Search />
         <div class="card-wrap">
             <div class="card-body">
                 <a class="item" @click="$router.push('/my/package')">
@@ -78,6 +70,7 @@
 
 <script>
     import { mapGetters } from 'vuex'
+    import Search from '@/components/Search'
     export default {
         metaInfo() {
             return {
@@ -95,7 +88,7 @@
             };
         },
         components: {
-            
+            Search
         },
         data() {
         //这里存放数据
@@ -114,6 +107,7 @@
                     { name: '消息通知', icon: 'icon-notification', url: '/my/notification' },
                     { name: '常用地址', icon: 'icon-location', url: '/my/address' }
                 ],
+                searchContent: ''
             };
         },
         //监听属性 类似于data概念
@@ -145,38 +139,6 @@
 </script>
 
 <style lang="less" scoped>
-    .search{
-        margin-top: 10px;
-        @media screen and (max-width: 768px) {
-            .search-wrap{
-                padding: 0 12px;
-            }
-        }
-        
-        .input{
-            border-radius: 4px 0 0 4px;
-            border-width: 2px;
-            border-color: #007fff;
-            border-right: none;
-            padding: 6px 8px;
-        }
-        .btn{
-            border-radius: 0 4px 4px 0;
-            padding: 4px 12px;
-            font-weight: bold;
-            border-width: 2px;
-        }
-    }
-    .input{
-        background-color: #fff;
-        margin: 0;
-        border: 1px solid #ebebeb;
-        outline: none;
-        resize: none;
-        font-size: 16px;
-        line-height: 20px;
-        vertical-align: middle;
-        width: 100%;
-    }
+
 </style>
 
