@@ -21,13 +21,13 @@
                             {{item.goods_name}}
                           </div>
                           <div class="row red" v-if="item.status==0">
-                             未入库
+                              {{item.status==0?'未入库':''}}
                           </div>
                       </div>
                       <div class="right">
-                        <div class="cell-check right-icon">
+                        <!-- <div class="cell-check right-icon">
                             <span class="" >查看详情</span>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                  </div>
@@ -35,8 +35,8 @@
             </div>
             <div v-if="hasPackage" class="submit">
               <img class="imgBox" @click="allSelects" :src="allSelect?require('../../../assets/images/select.png'):require('../../../assets/images/checkboxG.png')" alt="">
-              <span class="text-success">全选 2</span>
-              <span class="submit-button" @click="transport" >提交运输（0）</span>
+              <span class="text-success">全选 {{checkOrders.length}}</span>
+              <span class="submit-button" @click="transport" >提交运输（{{checkOrders.length}}）</span>
              </div>
             <Default v-if="!hasPackage">
               <div>暂无包裹</div>
@@ -56,14 +56,33 @@
         data() {
         //这里存放数据
             return {
-                hasPackage:false,
                 myOrders:[],
-                allSelect:false
+                allSelect:false,
+                checkNum:'',
+                hasPackage:false
+
             };
         },
         created(){
           this.getMyOrders();
           this.getMyOrderDetail()
+        },
+        computed:{
+          checkOrders:function(){
+            return this.myOrders.filter(item =>{
+              return  item.ck==true
+            })
+          }
+        },
+        watch:{
+          checkOrders(val, oldVal){//普通的watch监听
+            if(val.length<1){
+              this.allSelect = false;
+            }else{
+              this.allSelect = val.length == this.myOrders.length? true:false
+            }
+            
+          },
         },
          //方法集合
         methods: {
@@ -88,6 +107,17 @@
                 console.log(res)
               })
             },
+            transport(){
+              let me = this;
+                if(me.checkOrders.length <1){me.$message("请先选择包裹~");return;}
+                let _data = {
+                  packageList:me.checkOrders
+                }
+                me.$router.push({ 
+                  path: '/my/package/transport',
+                  query:_data
+                })
+            },
             allSelects(){
               let me = this;
               let myOrdersData;
@@ -100,18 +130,7 @@
             selectPackage(item,index){
               let me = this;
               me.myOrders[index].ck = !me.myOrders[index].ck;
-              
             },
-            // editAddress(item){
-            //     let me = this;
-            //     let _data = {
-            //       type:'edit',
-            //       items:item
-            //     }
-            //     me.$router.push({
-            //       path: `/my/address/creatAddress/${JSON.stringify(_data)}`,
-            //     })
-            // }
         } 
     }
 </script>
@@ -121,7 +140,7 @@
           .imgBox{
               width: 20px;
               height: 20px;
-              margin:5px 15px 5px 0;
+              
             }
           .packageList{
              width: 100%;
@@ -146,6 +165,7 @@
               align-items: center;
               flex-direction: column;
               flex-wrap: wrap;
+              margin:5px 15px 5px 0;
               span{
                 color: #007fff;
               }
@@ -222,6 +242,7 @@
               white-space: nowrap;
               background-color: #1ea11c;
               color: #fff;
+              cursor: pointer;
             }
           }
           .addPackage{

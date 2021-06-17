@@ -62,10 +62,12 @@
               console.log(_data)
               addMyOrder(_data).then(res =>{
                 if(res.success){
-                  me.$message.success("新增收件人成功");
+                  me.$message.success("新增包裹成功");
                   setTimeout(()=>{
                     me.$router.push('/my/package')
                   },1000)
+                }else{
+                   me.$message.error("新增包裹失败~");
                 }
               })
             },

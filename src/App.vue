@@ -40,9 +40,11 @@ export default {
   created() {
     let user = util.storage.get('user');
     user && this.SET_USER_NAME(user);
+    let uerData = util.storage.get('userData');
+     uerData && this.SET_USER_INFO(uerData);
   },
   methods: {
-    ...mapMutations(['SET_USER_NAME'])
+    ...mapMutations(['SET_USER_NAME','SET_USER_INFO'])
   }
 };
 </script>

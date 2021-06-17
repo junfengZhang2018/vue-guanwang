@@ -20,7 +20,7 @@
         </div>
         <div class="card">
             <div class="body">
-                <template v-if="$route.name === 'freightPrice' || $route.name === 'helpCenter'">
+                <template v-if="$route.name === 'freightPrice' || $route.name === 'helpCenter'||$store.state.userName">
                     <router-link to="/freightPrice" class="item">
                         <div class="icon icon-card-pricing md"></div>
                         <div class="title">运费价格</div>

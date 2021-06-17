@@ -7,9 +7,9 @@
         <p>MuluPost 服务范围包含仓储物流、空运与海运等增值服务，从清关到快递派送，无需担心一切繁琐的过程</p>
         <p>智能化物流系统实时追踪包裹位置信息，精准预测包裹送达时间，安全便捷准时收货</p>
         <p>价格优惠，空运每公斤低至 10RM，高效快速，三天完成跨境物流派送</p>
-        <div class="home-btn">
-          <div class="signin"> <router-link to="/">账号登录</router-link></div>
-          <div class="signup"> <router-link to="/">立即注册</router-link></div>
+        <div class="home-btn" v-if="!$store.state.userName">
+          <div class="signin"> <router-link to="/signIn">账号登录</router-link></div>
+          <div class="signup"> <router-link to="/signUp">立即注册</router-link></div>
         </div>
       </div>
       <div class="home-banner hidden-sm-and-up">
@@ -41,8 +41,8 @@
       </div>
       <div class="m-card sticky-top">
         <div class="main">
-          <router-link class="item" v-for="(item, index) in mainCard" :key="index" to="">
-            <div class="icon " :class="item.url"></div>
+          <router-link class="item" v-for="(item, index) in mainCard" :key="index" :to="item.url">
+            <div class="icon " :class="item.icon"></div>
             <div class="title">{{item.title}}</div>
           </router-link>
         </div>
@@ -135,6 +135,7 @@
 </template>
 
 <script>
+// import { mapGetters } from 'vuex'
 export default {
   name: "home",
   metaInfo() {
@@ -172,13 +173,16 @@ export default {
       ],
       mainCard:[{
           title: '运费价格',
-          url: 'icon-card-pricing'
+          icon: 'icon-card-pricing',
+          url:'/freightPrice'
       },{
           title: '帮助中心',
-          url: 'icon-card-helper'
+          icon: 'icon-card-helper',
+          url:'/help'
       },{
           title: '物流查询',
-          url: 'icon-card-tracking'
+          icon: 'icon-card-tracking',
+          url:'/tracking'
       }],
       processList:[{
         title:'1. 包裹入库',
