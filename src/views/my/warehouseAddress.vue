@@ -21,7 +21,7 @@
                     <li class="text-warning">系统自动入库，免填单号</li>
                     <li>收件人及地址中包含6位数字为系统为您的分配的 ID，用于系统为您添加包裹实现自动入库</li>
                     <li>仓库配备叉车等工具免费主动卸货，若发货方额外<strong class="text-danger">向您收取 “入仓费” 则为欺诈</strong></li>
-                    <li>大件货物手写唛头可以填写 <strong class="text-success">ML425443</strong></li>
+                    <li>大件货物手写唛头可以填写 <strong class="text-success">{{info.warehouse_name}}</strong></li>
                     <li>通常无须填写 “邮政编码(Postal Code)”，若需填写请输入 <u>528225</u></li>
                     <li>发货方或商家要求实名寄件可填写您的 “中文名字”</li>
                 </ul>
@@ -31,14 +31,24 @@
 </template>
 
 <script>
+    import util from '@/util'
     export default {
         data() {
             return {
-                propList: [
-                    { prop: '收件姓名', value: 'ML425443'},
-                    { prop: '联系电话', value: '13243839708'},
-                    { prop: '所在地区', value: '广东省/佛山市/南海区/狮山镇'},
-                    { prop: '详细地址', value: '鑫玖电创园B2号ML425443#TBJTTC'},
+                
+            }
+        },
+        computed: {
+            info(){
+                return util.storage.get('userData');
+            },
+            propList(){
+                const info = this.info;
+                return [
+                    { prop: '收件姓名', value: info.warehouse_name },
+                    { prop: '联系电话', value: info.warehouse_phone },
+                    { prop: '所在地区', value: info.warehouse_address },
+                    { prop: '详细地址', value: info.warehouse_town },
                 ]
             }
         },

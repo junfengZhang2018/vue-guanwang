@@ -10,7 +10,7 @@
     </div>
     <div class="main">
       <div class="panel">
-        <div class="panel-tp text-500">#425442</div>
+        <div class="panel-tp text-500">#{{$store.state.userInfo.warehouse_code.slice(2)}}</div>
         <div class="m-row">
           <div class="row">
             <div class="icon md icon-o-email"></div>
@@ -85,7 +85,13 @@ export default {
         title: "微信扫一扫，绑定账户",
         content: "欢迎使用MuluPost",
       });
-     
+    },
+    clearData(){
+      util.storage.remove("user");
+      util.storage.remove("userData");
+      util.storage.remove("token");
+      this.SET_USER_INFO(null);
+      this.SET_USER_NAME(null);
     },
     logout() {
       this.$dialog({
@@ -94,11 +100,7 @@ export default {
         cancelText: "取消",
         confirmButtonClass: "text-danger",
         onConfirm: () => {
-          util.storage.remove("user");
-          util.storage.remove("userData");
-          util.storage.remove("token");
-          this.SET_USER_INFO(null);
-          this.SET_USER_NAME(null);
+          this.clearData();
           this.$router.push("/signIn");
         },
       });

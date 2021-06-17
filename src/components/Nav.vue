@@ -47,7 +47,7 @@
                         <a
                             v-if="$route.name === 'memberCenter'"
                             class="idnum"
-                            ><b class="text-primary">ID：425443</b></a
+                            ><b class="text-primary">ID：{{$store.state.userInfo.warehouse_code.slice(2)}}</b></a
                         >
                         <a
                             v-else-if="levelList.find(item => item.path === '/my') && $route.name !== 'memberCenter'"
