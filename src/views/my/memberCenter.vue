@@ -43,7 +43,8 @@
                 <div class="icon icon-warehouse md"></div>
                 <div class="cell-content">
                     <div>仓库地址</div>
-                    <div class="address">广东省/佛山市/南海区/狮山镇</div>
+                    <!-- <div class="address">广东省/佛山市/南海区/狮山镇</div> -->
+                     <div class="address">{{$store.state.userInfo.warehouse_address}}</div>
                 </div>
                 <div class="check cell-check text-primary right-icon">
                     查看

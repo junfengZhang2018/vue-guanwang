@@ -16,7 +16,7 @@
             <div class="icon md icon-o-email"></div>
             <div class="row-bd">
               <p class="text-info fonts14">注册邮箱</p>
-              <p class="user-text">450567157@qq.com</p>
+              <p class="user-text">{{$store.state.userInfo.email}}</p>
             </div>
             <div class="row-ft">
               <a
@@ -45,7 +45,7 @@
         <div class="m-row">
           <div class="row" @click="$router.push('/my/profile/edit')">
             <div class="row-bd">账号昵称</div>
-            <div class="row-ft access text-500">bob</div>
+            <div class="row-ft access text-500">{{$store.state.userInfo.user_name}}</div>
           </div>
           <div class="row" @click="$router.push('/my/profile/edit')">
             <div class="row-bd">账号性别</div>
@@ -54,8 +54,9 @@
           <div class="row">
             <div class="row-bd">注册时间</div>
             <div class="row-ft access text-500">
-              <time>14 May 2021</time> <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
-              <time>3天</time>
+              <time>{{$store.state.userInfo.register_date}}</time> 
+              <!-- <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span> -->
+              <!-- <time>3天</time> -->
             </div>
           </div>
           <div class="row">
@@ -84,6 +85,7 @@ export default {
         title: "微信扫一扫，绑定账户",
         content: "欢迎使用MuluPost",
       });
+     
     },
     logout() {
       this.$dialog({

@@ -9,7 +9,7 @@ import util from '@/util';
 //1. 创建新的axios实例，
 const service = axios.create({
   // 公共接口--这里注意后面会讲
-  baseURL: process.env.NODE_ENV !== 'production' ? '/api' : '/',
+  baseURL: process.env.NODE_ENV !== 'production' ? '/api' : 'http://47.243.104.54:8082',
 // 2.请求拦截器 
   timeout: 15 * 1000
 })
