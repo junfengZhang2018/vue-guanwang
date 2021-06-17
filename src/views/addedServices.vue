@@ -8,7 +8,7 @@
         <div class="main">
           <h1 class="article-title">代运增值服务</h1>
 					<div class="summary">
-						<div class="text-success">MuluPost 除了提供基础运输服务，还提供人性化的增值服务，让运输更有保障，以下是我们提供的代运增值服务</div>
+						<div class="text-success">BosuPost 除了提供基础运输服务，还提供人性化的增值服务，让运输更有保障，以下是我们提供的代运增值服务</div>
 					</div>
 					<div class="content">
             <ul class="list clearfix">

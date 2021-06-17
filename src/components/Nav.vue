@@ -59,7 +59,7 @@
                             v-else
                             @click.prevent="$router.push('/')"
                             class="btn btn-back"
-                            >MuluPost</a
+                            >BosuPost</a
                         >
                     </div>
                 </div>

@@ -45,7 +45,7 @@
                 <li>反社会活动相关的物品；</li>
                 <li>淫秽书籍、反动报刊等；</li>
               </ol>
-             <p class="text-success">如无法分辨货物类型，可联系 MuluPost 货运客服，我们将为你提供协助</p>
+             <p class="text-success">如无法分辨货物类型，可联系 BosuPost 货运客服，我们将为你提供协助</p>
              <p><a class="button button-primary"><img src="" alt=""> 联系客服</a></p>
           </div>
         </div>

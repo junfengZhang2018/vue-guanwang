@@ -122,7 +122,7 @@
                         if(res.success){
                           this.$dialog({
                             title: '注册成功',
-                            content: '欢迎使用MuluPost',
+                            content: '欢迎使用BosuPost',
                             onConfirm: () => {
                                 this.$router.push('/signIn');
                             }

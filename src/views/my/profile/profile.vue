@@ -83,7 +83,7 @@ export default {
     bindWechat() {
       this.$dialog({
         title: "微信扫一扫，绑定账户",
-        content: "欢迎使用MuluPost",
+        content: "欢迎使用BosuPost",
       });
      
     },

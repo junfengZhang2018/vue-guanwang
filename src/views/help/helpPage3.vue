@@ -10,14 +10,14 @@
 		    <div class="summary">国内快递单号查询</div>
         <div class="content">
           <h3>淘宝物流单号</h3>
-          <p>物流信息与商品清单一样重要；当您在购物网站订购好商品以后，您需要在MuluPost填写订物流单号。</p>
+          <p>物流信息与商品清单一样重要；当您在购物网站订购好商品以后，您需要在BosuPost填写订物流单号。</p>
           <p>打开淘宝网，点击【已买到的宝贝】点击【查看物流】复制单号</p>
           <div class="img-wraper">
             <img src="https://c.mulupost.com/article/e4dfa977-ad82-4d4b-899c-aa17bfcd4011.png-720.jpg" alt="">
           </div>
           <p>温馨提示：</p>
           <ul>
-            <li>只有正确填写了物流信息的代运订单，我们才能为您验货、入库，商家发货后请及时在MuluPost会员中心填写物流单号。<a href="">查看包裹保管期限>></a></li>
+            <li>只有正确填写了物流信息的代运订单，我们才能为您验货、入库，商家发货后请及时在BosuPost会员中心填写物流单号。<a href="">查看包裹保管期限>></a></li>
           </ul>
         </div>
       </div>

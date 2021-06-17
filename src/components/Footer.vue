@@ -26,7 +26,7 @@
       <!-- 版权信息 -->
       <div class="copyright container">
         <div class="footer-info">
-          <div class="footer-copyright">© 2021 MuluPost.</div>
+          <div class="footer-copyright">© 2021 BosuPost.</div>
           <div class="footer-links">
             <ul>
               <li v-for="(item, i) in navList" :key="i">{{item.title}}</li>
@@ -68,7 +68,7 @@ export default {
           url: ''
       }],
       barList: [{
-          title: 'MuluPost',
+          title: 'BosuPost',
           url: '/',
           iconClass: 'icon-tabbar-home'
       }, {

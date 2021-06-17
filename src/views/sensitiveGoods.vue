@@ -41,7 +41,7 @@
              <h3 class="text-info">九、利器类</h3>
              <p>通常是指比较锋利的工具用品，尺寸及重量都是有一定的限制的，如果尺寸超过 15cm或重量比较大的需要咨询客服确认</p>
              <p>例如：剪刀、水果刀、菜刀等</p>
-             <p class="text-success">如无法分辨货物类型，可联系 MuluPost 货运客服，我们将为你提供协助</p>
+             <p class="text-success">如无法分辨货物类型，可联系 BosuPost 货运客服，我们将为你提供协助</p>
              <p><a class="button button-primary"><img src="" alt=""> 联系客服</a></p>
           </div>
         </div>

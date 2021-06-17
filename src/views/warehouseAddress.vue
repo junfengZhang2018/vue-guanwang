@@ -6,9 +6,9 @@
 					</a>
         </div>
         <div class="main">
-          <h1 class="article-title">MuluPost 仓库地址</h1>
+          <h1 class="article-title">BosuPost 仓库地址</h1>
 					<div class="summary">
-						<div class="text-info">在使用代运服务须将收货地址设置为 MuluPost 仓库地址，包裹才能有效的送往我们的仓库。</div>
+						<div class="text-info">在使用代运服务须将收货地址设置为 BosuPost 仓库地址，包裹才能有效的送往我们的仓库。</div>
 					</div>
 					<div class="content">
             <table>
@@ -25,7 +25,7 @@
                 <tr><td class="text-info text-center">邮<span class="hidden-xs-only">政</span>编<span class="hidden-xs-only">码</span></td><td> 510450</td></tr>
               </tbody>
             </table>
-						<h3>一、注册 MuluPost 会员，获取完善的仓库地址信息</h3>
+						<h3>一、注册 BosuPost 会员，获取完善的仓库地址信息</h3>
 						<p>收货人地址中包含会员ID，用于确认包裹归属，完成自动入库。</p>
 						<h3>二、包裹在送达仓库后自动入库</h3>
             <p>仓库收到包裹后，会识别出收货地址中的会员ID，智能分拣系统将自动为您创建包裹单号及商品信息，无须添加包裹即可提交代运运单。</p>

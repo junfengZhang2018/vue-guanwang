@@ -11,7 +11,7 @@
 						<div class="text-info">智慧物流，更专业、更安全、更可靠的代运服务</div>
 					</div>
 					<div class="content">
-            <p>MuluPost 位于中国广东，致力于打造极致体验的马来西亚中国代运服务与新加坡中国代运服务的国际集运公司，在国际运输的基础上我们为客户提供一站式服务解决方案。多年来我们持续创新，不断铸造高品质服务体验，为客户成功提供坚实有力的支持。</p>
+            <p>BosuPost 位于中国广东，致力于打造极致体验的马来西亚中国代运服务与新加坡中国代运服务的国际集运公司，在国际运输的基础上我们为客户提供一站式服务解决方案。多年来我们持续创新，不断铸造高品质服务体验，为客户成功提供坚实有力的支持。</p>
             <p>我们的服务范围包含仓储物流、空运与海运等增值服务，从清关到快递派送，无需担心一切繁琐的过程。智能化物流系统实时追踪包裹位置信息，精准预测包裹送达时间，安全便捷准时收货，高效快速完成跨境物流派送。</p>
             <p>您可以将中国任意在线商城 <small>（淘宝，天猫，京东等）</small> 选购您的商品，并邮寄到我们的仓库。我们将负责保管您的商品并安全的邮寄到您的手中。您可以选择任意落地配送公司<small>（GDEX，PosLaju，SkyNet，Airpak，DHL，ABX，Kangaroo等）</small> 为您派送。在中国，我们位于广州的 Mulu 仓库将进行操作、配送并妥善管理您的包裹。</p>
             <table>
@@ -26,8 +26,8 @@
                 <tr><td class="text-info text-center">在线客服</td><td><span class="link">立即联系</span></td></tr>
                 <tr>
                   <td class="text-info text-center">电邮地址</td><td>
-                    <div><span class="text-info">商务合作：</span><a href="">business@mulupost.com</a></div>
-                    <div><span class="text-info">投诉建议：</span><a href="">complaint@mulupost.com</a></div>
+                    <div><span class="text-info">商务合作：</span><a href="">business@BosuPost.com</a></div>
+                    <div><span class="text-info">投诉建议：</span><a href="">complaint@BosuPost.com</a></div>
                   </td>
                 </tr>
               </tbody>

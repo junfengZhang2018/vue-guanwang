@@ -8,7 +8,7 @@
         <div class="main">
           <h1 class="article-title">新加坡、马来西亚代运渠道建议</h1>
           <div class="summary">
-            <div class="text-success">MuluPost 提供以下货运选择建议，您也可以根据货运需求选择最合适的运输渠道</div>
+            <div class="text-success">BosuPost 提供以下货运选择建议，您也可以根据货运需求选择最合适的运输渠道</div>
           </div>
           <div class="content">
               <h3>一、空运运输 - 快速送达</h3>

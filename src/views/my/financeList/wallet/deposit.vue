@@ -19,7 +19,7 @@
                     账号：8010580955
                 </div>
                 <div class="value">
-                    账户：Mulupost Trading
+                    账户：BosuPost Trading
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <b>二、马令吉(MYR)淘宝充值</b>
             </div>
             <div class="panel-bd">
-                <div class="remark text-success">淘宝提交订单选择Mulu仓库地址作为收货地址；</div>
+                <div class="remark text-success">淘宝提交订单选择Bosu仓库地址作为收货地址；</div>
                 <a class="btn btn-primary-full">
                     <div class="icon icon-taobao"></div>
                     <strong>打开淘宝充值</strong>

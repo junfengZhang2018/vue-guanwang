@@ -75,7 +75,7 @@
     export default {
         metaInfo() {
             return {
-                title: 'MuluPost',
+                title: 'BosuPost',
                 meta: [
                     {
                         name: "keywords",

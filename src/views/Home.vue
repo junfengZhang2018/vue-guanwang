@@ -4,7 +4,7 @@
     <div id="homeBodyer">
       <div class="home-intro hidden-xs-only">
         <h1>马来西亚，新加坡，中国淘宝代运专家 & 包税清关，免抛重，送货到家</h1>
-        <p>MuluPost 服务范围包含仓储物流、空运与海运等增值服务，从清关到快递派送，无需担心一切繁琐的过程</p>
+        <p>BosuPost 服务范围包含仓储物流、空运与海运等增值服务，从清关到快递派送，无需担心一切繁琐的过程</p>
         <p>智能化物流系统实时追踪包裹位置信息，精准预测包裹送达时间，安全便捷准时收货</p>
         <p>价格优惠，空运每公斤低至 10RM，高效快速，三天完成跨境物流派送</p>
         <div class="home-btn" v-if="!$store.state.userName">
@@ -52,12 +52,12 @@
           <h2>代运流程如何工作</h2>
           <p>
             <router-link  to="">
-              how mulupost works
+              how bosuPost works
             </router-link>
           </p>
         </div>
         <div class="home-portion-bd hidden-xs-only">
-          <p>MuluPost 基于智能化仓储物流技术，助您轻松完成国际货运、中国代运、淘宝集运</p>
+          <p>BosuPost 基于智能化仓储物流技术，助您轻松完成国际货运、中国代运、淘宝集运</p>
           <p>专业服务，价格优惠，效率第一</p>
         </div>
       </div>
@@ -85,7 +85,7 @@
         </div>
         <div class="home-portion-bd hidden-xs-only">
           <p>除了提供基础代运与集运服务，还提供人性化的增值服务，让运输过程中更有保障</p>
-          <p>以下是我们提供的增值服务，MuluPost 致力让整个运输体验更加完善</p>
+          <p>以下是我们提供的增值服务，BosuPost 致力让整个运输体验更加完善</p>
         </div>
       </div>
       <div class="home-services">
@@ -140,7 +140,7 @@ export default {
   name: "home",
   metaInfo() {
     return {
-      title: 'MuluPost',
+      title: 'BosuPost',
       meta: [
         {
           name: "keywords",
@@ -182,7 +182,7 @@ export default {
       },{
           title: '物流查询',
           icon: 'icon-card-tracking',
-          url:'/tracking'
+          url:'/my/myWaybill/search'
       }],
       processList:[{
         title:'1. 包裹入库',

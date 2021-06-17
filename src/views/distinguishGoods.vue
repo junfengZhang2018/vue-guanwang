@@ -38,7 +38,7 @@
                 <tr><td class="text-info text-center">禁运物品</td><td><div>烟草，武器，动物，货币，易燃物，高压气体 (喷雾)，危险物品，酒类，毒品</div><div class="marginTop6" ><a href="">查看敏感货物详细说明</a></div></td></tr>
               </tbody>
             </table>
-            <p class="text-warning">如无法分辨货物类型，可联系 MuluPost 货运客服，我们将为你提供协助</p>
+            <p class="text-warning">如无法分辨货物类型，可联系 BosuPost 货运客服，我们将为你提供协助</p>
              <p><a class="button button-primary"><img src="" alt=""> 联系客服</a></p>
 					</div>
         </div>

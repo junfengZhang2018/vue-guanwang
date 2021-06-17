@@ -7,13 +7,13 @@
       </div>
       <div class="main">
         <h1 class="article-title hidden-xs-only">如何淘宝代运到马来西亚或新加坡</h1>
-		    <div class="summary hidden-xs-only"><div class="text-success">MuluPost 安全仓储、高效运输的系统，从清关到快递派送我们简化了所有流程，以下为马来西亚中国淘宝代运图文教学</div></div>
+		    <div class="summary hidden-xs-only"><div class="text-success">BosuPost 安全仓储、高效运输的系统，从清关到快递派送我们简化了所有流程，以下为马来西亚中国淘宝代运图文教学</div></div>
         <div class="content">
           <div class="wraper">
             <div class="how-step">
               <div class="num">1</div>
               <div class="flex-item">
-                <div class="title">注册或登录 MuluPost</div>
+                <div class="title">注册或登录 BosuPost</div>
                 <div class="desc">前往<a href="">注册 / 登录</a>页面，使用快捷登录或输入账号密码完成登录或注册。</div>
               </div>
             </div>
@@ -23,8 +23,8 @@
             <div class="how-step">
               <div class="num">2</div>
               <div class="flex-item">
-                <div class="title">添加MuluPost仓库地址为 <span class="hidden-xs-only">代运包裹</span>收货地址</div>
-                <div class="desc">前往淘宝等网站的账户管理，设置收货地址，添加 MuluPost 中国代运仓库地址。</div>
+                <div class="title">添加BosuPost仓库地址为 <span class="hidden-xs-only">代运包裹</span>收货地址</div>
+                <div class="desc">前往淘宝等网站的账户管理，设置收货地址，添加 BosuPost 中国代运仓库地址。</div>
               </div>
             </div>
             <div class="how-img"><img src="../assets/images/howToForwarding2.jpg" alt=""></div>
@@ -71,7 +71,7 @@
     export default {
         metaInfo() {
             return {
-                title: 'MuluPost',
+                title: 'BosuPost',
                 meta: [
                     {
                         name: "keywords",
