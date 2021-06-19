@@ -121,8 +121,8 @@
               </div>
             </div>
             <div class="panel-ft flex-align">
-              <span  class="btn btn-sm btn-primary">查看账单</span>
-              <span  class="btn btn-sm btn-primary">下载收据</span>
+              <span class="btn btn-sm btn-primary" @click="$router.push({path: '/my/myWaybill/details/bill', query: $route.query})">查看账单</span>
+              <span class="btn btn-sm btn-primary">下载收据</span>
             </div>
           </div>
           <div class="panel remark">

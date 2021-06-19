@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
+const routerView = () => import('../views/freight')
+
 const routes = [
   {
     // 首页
@@ -99,7 +101,6 @@ const routes = [
       },
       {
         path: 'myWaybill',
-        name: 'myWaybill',
         component: () => import('../views/my/myWaybill/index.vue'),
         meta: { title: '我的运单'},
         children: [
@@ -110,9 +111,21 @@ const routes = [
           },
           {
             path: 'details',
-            name: 'details',
-            component: () => import('../views/my/myWaybill/details.vue'),
+            component: routerView,
             meta: { title: '运单详情'},
+            children: [
+              {
+                path: '',
+                name: 'details',
+                component: () => import('../views/my/myWaybill/details.vue'),
+              },
+              {
+                path: 'bill',
+                name: 'bill',
+                component: () => import('../views/my/myWaybill/bill.vue'),
+                meta: { title: ''},
+              },
+            ]
           },
         ]
       },
