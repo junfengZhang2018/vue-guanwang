@@ -152,8 +152,6 @@
                 }
               }
             }
-            
-           
           }
           .newAdress{
             width: 100%;

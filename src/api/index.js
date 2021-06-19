@@ -17,4 +17,6 @@ export const addMyOrder =  req('/poss/addMyOrder.html');//新增我的包裹
 export const getMyOrders =  req('/poss/getMyOrders.html', 'get');//我的包裹列表
 export const getMyOrderDetail =  req('/poss/getMyOrderDetail.html');//我的包裹详情
 export const addMyBills =  req('/poss/addMyBills.html');//提交运输
-
+export const getMyBills =  req('/poss/getMyBills.html');//获取运单列表
+export const getMyOrdersCount =  req('/poss/getMyOrdersCount.html','get');//我的包裹数量
+export const getMyBillCount =  req('/poss/getMyBillCount.html','get');//我的运单数量

@@ -92,17 +92,31 @@ const routes = [
         ]
       },
       {
-        path: 'myWaybill',
-        name: 'myWaybill',
-        component: () => import('../views/my/myWaybill.vue'),
-        meta: { title: '我的运单'},
-      },
-      {
         path: 'myWaybill/search',
         name: 'myWaybillSearch',
         component: () => import('../views/my/search.vue'),
         meta: { title: '运单搜索'},
       },
+      {
+        path: 'myWaybill',
+        name: 'myWaybill',
+        component: () => import('../views/my/myWaybill/index.vue'),
+        meta: { title: '我的运单'},
+        children: [
+          {
+            path: '',
+            name: 'myWaybill',
+            component: () => import('../views/my/myWaybill/myWaybill.vue'),
+          },
+          {
+            path: 'details',
+            name: 'details',
+            component: () => import('../views/my/myWaybill/details.vue'),
+            meta: { title: '运单详情'},
+          },
+        ]
+      },
+
       {
         path: 'notification',
         name: 'notification',

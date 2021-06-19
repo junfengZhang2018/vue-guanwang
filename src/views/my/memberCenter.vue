@@ -10,7 +10,7 @@
             <div class="card-body">
                 <a class="item" @click="$router.push('/my/package')">
                     <div class="number">
-                        <b>1</b>
+                        <b>{{ordersCount}}</b>
                     </div>
                     <div class="title">我的包裹</div>
                 </a>
@@ -72,6 +72,7 @@
 <script>
     import { mapGetters } from 'vuex'
     import Search from '@/components/Search'
+    import {getMyOrdersCount} from '@/api/index'
     export default {
         metaInfo() {
             return {
@@ -108,7 +109,8 @@
                     { name: '消息通知', icon: 'icon-notification', url: '/my/notification' },
                     { name: '常用地址', icon: 'icon-location', url: '/my/address' }
                 ],
-                searchContent: ''
+                searchContent: '',
+                ordersCount:0
             };
         },
         //监听属性 类似于data概念
@@ -117,9 +119,32 @@
         },
         //监控data中的数据变化
         watch: {},
+        created(){
+            console.log('nbij')
+          this.getMyOrdersCount()
+        },
+        mounted(){
+            console.log('dhfjqpiwuewqhekjh');
+        },
         //方法集合
         methods: {
-        
+            getMyOrdersCount(){
+                console.log('asjhdkqhwjehqkw')
+                let me = this;
+                getMyOrdersCount().then(res =>{
+                    console.log(res)
+                    if(res.success){
+                        // me.ordersCount = 
+                    }
+                })
+            },
+            getMyBillCount(){
+                let me = this;
+                getMyBillCount().then(res =>{
+                    console.log(res)
+
+                })
+            }
         },
         //生命周期 - 创建完成（可以访问当前this实例）
         created() {
