@@ -72,7 +72,7 @@
 <script>
     import { mapGetters } from 'vuex'
     import Search from '@/components/Search'
-    import {getMyOrdersCount} from '@/api/index'
+    import {getMyOrdersCount,getMyBillCount} from '@/api/index'
     export default {
         metaInfo() {
             return {
@@ -120,16 +120,14 @@
         //监控data中的数据变化
         watch: {},
         created(){
-            console.log('nbij')
-          this.getMyOrdersCount()
+          this.getMyOrdersCount();
+          this.getMyBillCount()
         },
         mounted(){
-            console.log('dhfjqpiwuewqhekjh');
         },
         //方法集合
         methods: {
             getMyOrdersCount(){
-                console.log('asjhdkqhwjehqkw')
                 let me = this;
                 getMyOrdersCount().then(res =>{
                     console.log(res)
@@ -142,17 +140,8 @@
                 let me = this;
                 getMyBillCount().then(res =>{
                     console.log(res)
-
                 })
             }
-        },
-        //生命周期 - 创建完成（可以访问当前this实例）
-        created() {
-        
-        },
-        //生命周期 - 挂载完成（可以访问DOM元素）
-        mounted() {
-        
         },
         beforeCreate() {}, //生命周期 - 创建之前
         beforeMount() {}, //生命周期 - 挂载之前

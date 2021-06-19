@@ -10,7 +10,7 @@
         <div class="content">
           <div class="panel waybill">
             <div class="title sticky-top">
-              <div class="text-bold"><img src="" alt="">运输中<span class="mglr5">&nbsp;&nbsp;·&nbsp;&nbsp;</span> <span class="blueC">60850009401109</span> </div>
+              <div class="text-bold"><img src="" alt="">{{details.status}}<span class="mglr5">&nbsp;&nbsp;·&nbsp;&nbsp;</span> <span class="blueC">{{details.id}}</span> </div>
             </div>
             <div class="wraper">
               <div class="row">
@@ -19,7 +19,7 @@
               </div>
               <div class="row">
                 <div class="label">方运输式：</div>
-                <div class="value">西马 - 普货海运 - Best</div>
+                <div class="value">{{details.receive_region}} - {{details.freight_type}} - {{details.channel_company}}</div>
               </div>
               <div class="row">
                 <div class="label">集运包裹：</div>
@@ -27,7 +27,7 @@
               </div>
               <div class="row">
                 <div class="label">商品价值：</div>
-                <div class="value">¥400</div>
+                <div class="value">¥{{details.goods_price}}</div>
               </div>
               <div class="row">
                 <div class="label">包装要求：</div>
@@ -35,7 +35,7 @@
               </div>
               <div class="row">
                 <div class="label">付款方式：</div>
-                <div class="value">包装完成后手动付款</div>
+                <div class="value">{{details.bl_pay_auto==0?'包装完成后手动付款':'包装完成后自动付款'}}</div>
               </div>
               <div class="row">
                 <div class="label">提交时间：</div>
@@ -55,19 +55,19 @@
             <div class="wraper">
               <div class="row">
                 <div class="label">收件姓名：</div>
-                <div class="value">Daria</div>
+                <div class="value">{{details.receive_name}}</div>
               </div>
               <div class="row">
                 <div class="label">联系电话：</div>
-                <div class="value">0172032789</div>
+                <div class="value">{{details.receive_phone}}</div>
               </div>
               <div class="row">
                 <div class="label">邮政编码：</div>
-                <div class="value">52200</div>
+                <div class="value">{{details.receive_zip_code}}</div>
               </div>
               <div class="row">
                 <div class="label">收货地址：</div>
-                <div class="value">2706，the westside one jalan resident utama Desa Park City Kuala Lumpur 52200</div>
+                <div class="value">{{details.receive_address}} - {{details.receive_zip_code}}</div>
               </div>
             </div>
           </div>
@@ -178,7 +178,19 @@
         //这里存放数据
             return {
               hasBill:true,
+              details:{},
+              remark:''
             };
+        },
+        created(){
+          let me = this;
+          let _data = me.$route.query
+          if(JSON.stringify(_data) != "{}"){
+            me.details = _data.details
+            console.log(me.details)
+          }else{
+              me.$router.push('/my/myWaybill')
+          }
         },
     }
 </script>

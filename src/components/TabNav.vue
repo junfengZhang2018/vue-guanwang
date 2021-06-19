@@ -23,7 +23,8 @@ export default {
                 this.$router.push({
                     path: this.url,
                     query: {
-                        state: item.state
+                        state: item.state,
+                        name:item.name
                     }
                 });
             }

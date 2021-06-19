@@ -6,18 +6,18 @@
           </a>
       </div>
       <div class="main">
-        <TabNav :tabsList="tabsList" :url="$route.path"></TabNav>
+        <TabNav :tabsList="tabsList"   :url="$route.path"></TabNav>
         <div class="content">
-          <div class="billList" v-if="hasBill">
-            <div class="item" >
-              <div class="title"><img src="" alt="">运输中<span class="mglr5">&nbsp;&nbsp;·&nbsp;&nbsp;</span>60850009401109</div>
+          <div class="billList" v-if="myBillList.length>0">
+            <div class="item" v-for="(item,index) in myBillList" :key="index" @click="goBillDetails(item)">
+              <div class="title"><img src="" alt="">{{item.status}}<span class="mglr5">&nbsp;&nbsp;·&nbsp;&nbsp;</span>{{item.id}}</div>
                 <div class="info">
                   <div class="left">
                     <div class="row">
-                      Daria（0172032789）
+                      {{item.receive_name}}（{{item.receive_phone}}）
                     </div>
                     <div class="row">
-                      西马 -海运普货 - Best
+                      {{item.receive_region}} -{{item.freight_type}} - {{item.channel_company}}
                     </div>
                     <div class="row gray">
                       <span>Jun 13</span><span>&nbsp;&nbsp;·&nbsp;&nbsp;</span><u>4.50kg</u><span>&nbsp;&nbsp;·&nbsp;&nbsp;</span><u>0.06m³</u>
@@ -40,6 +40,7 @@
    // import 《组件名称》 from '《组件路径》';
     import TabNav from '@/components/TabNav';
     import Default from '@/components/default';
+    import {getMyBills,getMyBillCount} from '@/api/index'
     export default {
         components: {TabNav,Default},
         data() {
@@ -67,8 +68,55 @@
                 num:'0',
               }],
               hasBill:true,
+              myBillList:[]
             };
         },
+        created(){
+          this.getMyBillCount()
+        },
+        watch:{
+          $route: {
+              handler: function(val, oldVal){
+                console.log(val);
+                this.getMyBills(val.query.name) 
+              },
+              // 深度观察监听
+              deep: true
+            }
+        },
+        methods:{
+          getMyBillCount(){
+              let me = this;
+              getMyBillCount().then(res =>{
+                  console.log(res)
+                if(res.success){
+                  
+                }
+              })
+          },
+          getMyBills(status){
+            let me = this;
+            let _data = {
+              status:status||''
+            }
+            getMyBills(_data).then(res =>{
+              console.log(res)
+              if(res.success){
+                me.myBillList = res.obj
+              }
+            })
+          },
+          goBillDetails(item){
+            let me = this;
+              let _data = {
+              details:item
+            }
+            me.$router.push({ 
+              path: '/my/myWaybill/details',
+              query:_data
+            })
+          }
+        }
     }
 </script>
 <style lang='less' scoped>
