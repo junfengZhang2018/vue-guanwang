@@ -13,7 +13,7 @@ Vue.use(Dialog);
 import Default from '@/components/default'
 Vue.component(Default.name, Default);
 // 按需引入element-ui
-import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem, Radio, RadioGroup, Checkbox, Message, Select, Input, Option } from "element-ui";
+import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem, Radio, RadioGroup, Checkbox, Message, Select, Input, Option, Badge } from "element-ui";
 // 首页element-ui轮播图
 Vue.use(Carousel);
 Vue.use(CarouselItem);
@@ -25,6 +25,7 @@ Vue.use(Checkbox);
 Vue.use(Select);
 Vue.use(Input);
 Vue.use(Option);
+Vue.use(Badge);
 Vue.prototype.$message = Message;
 import VueClipBoard from 'vue-clipboard2'
 Vue.use(VueClipBoard);
