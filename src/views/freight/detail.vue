@@ -46,17 +46,12 @@ export default {
                             price: [],
                         };
                         _obj.title = data[0].goodsFreightDetails[0]?.region + " " + data[0].goodsFreightDetails[0]?.freight_type;
-                        // _obj.index = index;
-                        // _obj.region = ["西马", "东马", "新加坡"].indexOf(
-                        //     item.region
-                        // );
                         _obj.goodsFreightDetails = item.goodsFreightDetails || [];
                         _obj.range = [
                             item.weight_section1,
                             item.weight_section2,
                             item.weight_section3,
                         ];
-                        // _obj.desc = item.remark;
                         let priceData = {};
                         priceData.companyList = item.delivery_company;
                         priceData.per = [
@@ -65,7 +60,6 @@ export default {
                             item.price_section3,
                         ];
                         _obj.price.push(priceData);
-
                         priceList.push(_obj);
                     });
                     this.tableData = priceList;
@@ -79,17 +73,6 @@ export default {
     created() {
         scrollTo(0, 0);
         this.getPriceDetail();
-        // let { id } = this.$route.params;
-        // this.tableData = this.tableData[Number(id)];
-        // let tableData = [];
-        // let price = this.tableData.price;
-        // price.forEach((item, i) => {
-        //     tableData.push({
-        //         ...this.tableData,
-        //         price: [item]
-        //     });
-        // });
-        // this.tableData = tableData;
     },
     //生命周期 - 挂载完成（可以访问DOM元素）
     mounted() {},

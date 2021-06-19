@@ -1,6 +1,6 @@
 <template>
     <div class='deposit'>
-        <a @click.prevent="$router.push('/my/wallet/deposit')" class="breadBtn breadBtn-success">
+        <a @click.prevent="$router.push('/help/deposit')" class="breadBtn breadBtn-success">
             <span>如何充值?</span>
         </a>
        <div class="colorTips colorTips-primary">
@@ -11,9 +11,9 @@
                 <b>一、马令吉(MYR)转账充值</b>
             </div>
             <div class="panel-bd">
-                <div class="remark text-success">马币转账请备注您的ID <b class="text-primary">425443</b> 即可自动到账</div>
+                <div class="remark text-success">马币转账请备注您的ID <b class="text-primary">{{$store.state.userInfo.warehouse_code.slice(2)}}</b> 即可自动到账</div>
                 <div class="value">
-                    银行：CIMB<b class="text-warning">（汇率 1.52）</b>
+                    银行：CIMB<b class="text-warning">（汇率 {{exchangeRate}}）</b>
                 </div>
                 <div class="value">
                     账号：8010580955
@@ -35,7 +35,7 @@
                 </a>
                 <ul class="ul">
                     <li>
-                        1. 若无仓库地址请备注您的ID <strong class="text-primary">425443</strong> 即可自动到账;
+                        1. 若无仓库地址请备注您的ID <strong class="text-primary">{{$store.state.userInfo.warehouse_code.slice(2)}}</strong> 即可自动到账;
                     </li>
                     <li>2. 支持 Online Banking, Credit Card；</li>
                     <li>3. 充值金额按照淘宝实时汇率折算为 RMB；</li>
@@ -83,6 +83,7 @@
 
 <script>
     import util from '@/util';
+    import { mapGetters } from 'vuex'
 
     export default {
         components: {},
@@ -110,7 +111,9 @@
             };
         },
         //监听属性 类似于data概念
-        computed: {},
+        computed: {
+            ...mapGetters(['exchangeRate']),
+        },
         //监控data中的数据变化
         watch: {},
         //方法集合

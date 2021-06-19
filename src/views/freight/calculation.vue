@@ -10,13 +10,11 @@
                     <div class="input-wrap">
                         <div class="input-name">
                             <strong>货运地区：</strong>
-                            <!-- <el-radio-group v-model="form.region"> -->
-                                <el-radio >
-                                    <div>
-                                      asdadasdasdadsad
-                                    </div>
+                            <el-radio-group v-model="form.region">
+                                <el-radio v-for="(item, i) in regionList" :key="i" :label="item.id">
+                                    {{item.value}}
                                 </el-radio>
-                            <!-- </el-radio-group> -->
+                            </el-radio-group>
                         </div>
                     </div>
                     <div class="input-wrap">

@@ -44,7 +44,7 @@
             </a>
         </div>
         <div class="card-wrap">
-            <a class="cell">
+            <a class="cell" @click="$router.push('/my/wallet/deposit')">
                 <div class="icon icon-rate"></div>
                 <div class="cell-content">
                     代付汇率
