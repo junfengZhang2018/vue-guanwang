@@ -50,6 +50,7 @@
    // import 《组件名称》 from '《组件路径》';
     import Default from '@/components/default';
     import {getMyOrders,getMyOrderDetail} from '@/api/index'
+    import util from '@/util';
 
     export default {
         components: {Default},
@@ -113,9 +114,9 @@
                 let _data = {
                   packageList:me.checkOrders
                 }
+                util.sessionStorage.set('myPackage',me.checkOrders);
                 me.$router.push({ 
                   path: '/my/package/transport',
-                  query:_data
                 })
             },
             allSelects(){

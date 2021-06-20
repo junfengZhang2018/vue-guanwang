@@ -81,7 +81,6 @@
           getMyBillCount(){
               let me = this;
               getMyBillCount().then(res =>{
-                  console.log(res)
                 if(res.success){
                    this.stateCount = res.obj;
                 }
@@ -93,7 +92,6 @@
               status:status||''
             }
             getMyBills(_data).then(res =>{
-              console.log(res)
               if(res.success){
                 me.myBillList = res.obj
               }
@@ -101,13 +99,14 @@
           },
           goBillDetails(item){
             let me = this;
-            let _data = {
-              details:item
-            }
-            me.$router.push({ 
-              path: '/my/myWaybill/details',
-              query:_data
-            })
+            me.$router.push(`/my/myWaybill/details/${item.id}`)
+            // let _data = {
+            //   details:item
+            // }
+            // me.$router.push({ 
+            //   path: '/my/myWaybill/details',
+            //   query:_data
+            // })
           }
         }
     }

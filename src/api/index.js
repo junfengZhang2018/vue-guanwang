@@ -20,3 +20,4 @@ export const addMyBills =  req('/poss/addMyBills.html');//提交运输
 export const getMyBills =  req('/poss/getMyBills.html');//获取运单列表
 export const getMyOrdersCount =  req('/poss/getMyOrdersCount.html','get');//我的包裹数量
 export const getMyBillCount =  req('/poss/getMyBillCount.html','get');//我的运单数量
+export const getMyBillDetail =  req('/poss/getMyBillDetail.html');//根据id获取运单详情

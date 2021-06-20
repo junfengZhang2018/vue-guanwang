@@ -147,17 +147,17 @@
           </div>
           <div class="panel packInfo">
             <div class="title sticky-top">
-              <span class="text-bold">运单包裹（2）</span>
+              <span class="text-bold">运单包裹（{{details.orders?details.orders.length:0}}）</span>
             </div>
             <div class="wraper">
-              <div class="item" >
+              <div class="item" v-for="(item,index) in details.orders" :key="index">
                 <div class="checkbox">
-                  <span>#1</span>
+                  <span>#{{item.id}}</span>
                 </div>
                 <div class="box">
-                  <div class="packNum">YT5550556677859</div>
+                  <div class="packNum">{{item.bill_code}}</div>
                   <div class="info">
-                    <div class="p-cel text-ellipsis name">书</div>
+                    <div class="p-cel text-ellipsis name">{{item.goods_name}}</div>
                     <div class="p-cel text-ellipsis params"><span>0.85kg</span><span class="mglr5">&nbsp;&nbsp;·&nbsp;&nbsp;</span><span>0.01m³</span></div>
                   </div>
                 </div>
@@ -170,10 +170,10 @@
 </template>
 <script>
    // import 《组件名称》 from '《组件路径》';
-    import TabNav from '@/components/TabNav';
     import Default from '@/components/default';
+    import {getMyBillDetail} from '@/api/index'
     export default {
-        components: {TabNav,Default},
+        components: {Default},
         data() {
         //这里存放数据
             return {
@@ -184,13 +184,7 @@
         },
         created(){
           let me = this;
-          let _data = me.$route.query
-          if(JSON.stringify(_data) != "{}"){
-            me.details = _data.details
-            console.log(me.details)
-          }else{
-              me.$router.push('/my/myWaybill')
-          }
+          me.getBillDetail()
         },
         methods:{
            goBill(){
@@ -198,9 +192,20 @@
               let _data = {
                 details:me.details
               }
-              me.$router.push({ 
-                path: '/my/myWaybill/details/bill',
+              me.$router.push({
+                path:`/my/myWaybill/details/${me.details.id}/bill`,
                 query:_data
+              })
+            },
+            getBillDetail(){
+              let me = this;
+              let _data = {
+                id:this.$route.params.id
+              }
+              getMyBillDetail(_data).then(res =>{
+                if(res.success){
+                  me.details = res.obj
+                }
               })
             }
         }

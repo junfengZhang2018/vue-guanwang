@@ -110,7 +110,7 @@ const routes = [
             component: () => import('../views/my/myWaybill/myWaybill.vue'),
           },
           {
-            path: 'details',
+            path: 'details/:id',
             component: routerView,
             meta: { title: '运单详情'},
             children: [

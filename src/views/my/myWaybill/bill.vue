@@ -74,10 +74,9 @@
 </template>
 <script>
    // import 《组件名称》 from '《组件路径》';
-    import TabNav from '@/components/TabNav';
     import Default from '@/components/default';
     export default {
-        components: {TabNav,Default},
+        components: {Default},
         data() {
         //这里存放数据
             return {
