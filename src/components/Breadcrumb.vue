@@ -34,8 +34,13 @@
             ...mapMutations(['SET_LEVEL_LIST']),
             getBreadcrumb() {
                 let matched = this.$route.matched.filter(item => item.meta && item.meta.title);
-                matched = [{ path: '/', meta: { title: '网站首页' }}].concat(matched);
-                this.levelList = matched.filter(item => item.meta && item.meta.title);
+                this.levelList = [{ path: '/', meta: { title: '网站首页' }}].concat(matched);
+                this.levelList.forEach(item => {
+                    item.params = this.$route.params;
+                    item?.regex?.keys.forEach(val => {
+                        item.path = item.path.replace(new RegExp(`:${val.name}`), item.params[val.name])
+                    })
+                })
                 this.SET_LEVEL_LIST(this.levelList);
             },
             handleLink(item) {
@@ -45,7 +50,7 @@
                     return;
                 }
                 if(item.name === this.$route.name) return;
-                this.$router.push(path);
+                this.$router.push({path, params: item.params});
             },
         },
         //生命周期 - 创建完成（可以访问当前this实例）

@@ -108,7 +108,7 @@
           },
           goBillDetails(item){
             let me = this;
-              let _data = {
+            let _data = {
               details:item
             }
             me.$router.push({ 

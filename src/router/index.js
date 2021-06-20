@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
-
+// router-view空入口
 const routerView = () => import('../views/freight')
 
 const routes = [
@@ -416,7 +416,10 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',//对比hash模式路由更美观无#
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
 
 export default router

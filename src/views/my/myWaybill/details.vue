@@ -300,9 +300,6 @@
         }
       }
       .panel.packInfo{
-        .wraper{
-          padding: 0;
-        }
         .item{
           width: auto;
           height: auto;

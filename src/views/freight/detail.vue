@@ -1,12 +1,11 @@
 <template>
     <div class="freightDetail" v-if="tableData">
-        <a-table
-            :showLink="false"
-            :data="data"
-            v-for="(data, i) in tableData"
-            :key="i"
-        />
-        <b-table :data="data" v-for="(data, i) in tableData[0].goodsFreightDetails" :key="i" />
+        <div>
+            <a-table :showLink="false" :data="data" v-for="(data, i) in tableData" :key="i" />
+        </div>
+        <div>
+            <b-table :data="data" v-for="(data, i) in tableData[0].goodsFreightDetails" :key="i" />
+        </div>
     </div>
 </template>
 
@@ -71,7 +70,6 @@ export default {
     },
     //生命周期 - 创建完成（可以访问当前this实例）
     created() {
-        scrollTo(0, 0);
         this.getPriceDetail();
     },
     //生命周期 - 挂载完成（可以访问DOM元素）
