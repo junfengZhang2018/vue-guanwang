@@ -1,5 +1,5 @@
 <template>
-   <div class='myWaybill'>
+   <div class='details'>
       <div class="subhead-right">
           <a @click.prevent="$router.push('/my/wallet/deposit')" class="breadBtn breadBtn-success">
               <div class="icon icon-balance"></div>
@@ -71,7 +71,7 @@
               </div>
             </div>
           </div>
-          <div class="panel packInfo">
+          <div class="panel packing">
             <div class="title sticky-top">
               <span class="text-bold">包装信息</span>
             </div>
@@ -121,7 +121,7 @@
               </div>
             </div>
             <div class="panel-ft flex-align">
-              <span class="btn btn-sm btn-primary" @click="$router.push({path: '/my/myWaybill/details/bill', query: $route.query})">查看账单</span>
+              <span class="btn btn-sm btn-primary" @click="goBill">查看账单</span>
               <span class="btn btn-sm btn-primary">下载收据</span>
             </div>
           </div>
@@ -192,6 +192,18 @@
               me.$router.push('/my/myWaybill')
           }
         },
+        methods:{
+           goBill(){
+              let me = this;
+              let _data = {
+                details:me.details
+              }
+              me.$router.push({ 
+                path: '/my/myWaybill/details/bill',
+                query:_data
+              })
+            }
+        }
     }
 </script>
 <style lang='less' scoped>
@@ -286,10 +298,10 @@
             justify-content: space-between;
             align-items: center;
             font-size: 14px;
+              margin-bottom: 6px;
             span{
               display: inline-block;
               min-width: 40px;
-              margin-bottom: 6px;
             }
           }
           .total{

@@ -53,5 +53,20 @@ export default {
         remove(key) {
             localStorage.removeItem(key);
         }
-    }
+    },
+    sessionStorage: {
+        //存储
+        set(key, value) {
+            sessionStorage.setItem(key, JSON.stringify(value));
+        },
+        //取出数据
+        get(key) {
+            return sessionStorage.getItem(key) ? JSON.parse(sessionStorage.getItem(key)) : null;
+        },
+        // 删除数据
+        remove(key) {
+            sessionStorage.removeItem(key);
+        }
+    },
+
 }

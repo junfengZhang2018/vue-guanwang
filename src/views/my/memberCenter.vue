@@ -24,7 +24,7 @@
         </div>
         <div class="card-wrap">
             <div class="card-body">
-                <a class="item" v-for="(item, i) in stateList" :key="i" @click="$router.push(`/my/myWaybill?state=${item.state}`)">
+                <a class="item" v-for="(item, i) in stateList" :key="i" @click="goPage(item)">
                     <el-badge :value="item.count" type="primary" :hidden="!item.count">
                         <div class="icon" :class="item.icon"></div>
                         <div class="title">{{item.name}}</div>
@@ -131,7 +131,7 @@
                 getMyOrdersCount().then(res =>{
                     console.log(res)
                     if(res.success){
-                        // me.ordersCount = 
+                        me.ordersCount = res.obj.count 
                     }
                 })
             },
@@ -143,8 +143,20 @@
                         this.stateCount = res.obj;
                     }
                 })
-            }
+            },
+            goPage(item){
+               if(item.state){
+                this.$router.push({
+                    path: '/my/myWaybill',
+                    query: {
+                        state: item.state,
+                        name:item.name
+                    }
+                });
+                }
+            },
         },
+    
         created(){
             this.getMyOrdersCount()
             this.getMyBillCount()

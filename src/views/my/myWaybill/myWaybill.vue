@@ -6,7 +6,7 @@
           </a>
       </div>
       <div class="main">
-        <TabNav :tabsList="tabsList"   :url="$route.path"></TabNav>
+        <TabNav :tabsList="stateList"   :url="$route.path"></TabNav>
         <div class="content">
           <div class="billList" v-if="myBillList.length>0">
             <div class="item" v-for="(item,index) in myBillList" :key="index" @click="goBillDetails(item)">
@@ -46,33 +46,26 @@
         data() {
         //这里存放数据
             return {
-              tabsList:[{
-                name:'待收齐',
-                state: 'receive',
-                num:'0',
-              },{
-                name:'待包装',
-                state: 'package',
-                num:'0',
-              },{
-                name:'待付款',
-                state: 'payment',
-                num:'0',
-              },{
-                name:'运输中',
-                state: 'transport',
-                num:'0',
-              },{
-                name:'已签收',
-                state: 'delivery',
-                num:'0',
-              }],
               hasBill:true,
-              myBillList:[]
+              myBillList:[],
+              stateCount: {}
             };
         },
         created(){
+          this.getMyBills(this.$route.query.name)
           this.getMyBillCount()
+        },
+        computed: {
+            stateList(){
+                const { count_sq, count_bz, count_fk, count_ys, count_qs } = this.stateCount;
+                return [
+                    { name: '待收齐', icon: 'icon-receive', state: 'receive', num: count_sq },
+                    { name: '待包装', icon: 'icon-package', state: 'package', num: count_bz },
+                    { name: '待付款', icon: 'icon-payment', state: 'payment', num: count_fk },
+                    { name: '运输中', icon: 'icon-transport', state: 'transport', num: count_ys },
+                    { name: '已签收', icon: 'icon-delivery', state: 'delivery', num: count_qs }
+                ]
+            }
         },
         watch:{
           $route: {
@@ -90,7 +83,7 @@
               getMyBillCount().then(res =>{
                   console.log(res)
                 if(res.success){
-                  
+                   this.stateCount = res.obj;
                 }
               })
           },
