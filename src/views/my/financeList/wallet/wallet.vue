@@ -6,7 +6,23 @@
                 <span>余额充值</span>
             </a>
         </div>
-        <Default>暂无流水记录</Default>
+        <div class="panel" v-if="data.length">
+            <div class="panel-title flex">
+              <p>资金记录</p>
+              <p>{{data.length}}条记录</p>
+            </div>
+            <ul class="notify">
+              <li>
+                <div class="flex">
+                  <div class="item-title">运费结算-￥72.00</div>
+                  <div class="item-date tr">
+                    <time>15 Jun 2021 16:32</time>
+                  </div>
+                </div>
+              </li>
+            </ul>
+        </div>
+        <Default v-else>暂无流水记录</Default>
    </div>
 </template>
 
@@ -18,7 +34,7 @@
         data() {
         //这里存放数据
             return {
-            
+                data: []
             };
         },
         //监听属性 类似于data概念
@@ -47,5 +63,39 @@
     }
 </script>
 <style lang='less' scoped>
-
+  .flex{
+    justify-content: space-between;
+  }
+  .panel-title{
+    padding: 4px 12px;
+    border-bottom: 1px solid #eeeeee;
+    >p{
+      font-size: 15px;
+      line-height: 24px;
+    }
+  }
+  .notify{
+    li{
+      padding: 12px;
+      border-bottom: 1px dashed #eeeeee;
+      .item-title{
+        font-size: 16px;
+        line-height: 24px;
+      }
+      .item-date{
+        padding-left: 12px;
+        font-size: 14px;
+        line-height: 24px;
+        color: #999;
+      }
+      .item-desc{
+        font-size: 14px;
+        line-height: 18px;
+        color: #333;
+      }
+      &:last-child{
+        border: none;
+      }
+    }
+  }
 </style>
