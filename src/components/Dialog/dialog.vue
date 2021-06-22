@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import util from '@/util'
 export default {
     name: "Dialog",
     data() {
@@ -60,6 +61,9 @@ export default {
                 this.show = val;
             },
             immediate: true
+        },
+        show(val){
+            util[val?'disableBodyScroll':'enableBodyScroll']();
         }
     },
     created() {

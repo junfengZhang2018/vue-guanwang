@@ -122,9 +122,12 @@ pre{
    clear:both;
    visibility: hidden;
  }
- .clearfix{
+.clearfix{
    *zoom: 1;/*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
- }
+}
+#app{
+  min-width: 1000px;
+}
 .mainbody{
   display: flex;
   justify-content: space-between;
@@ -138,6 +141,9 @@ pre{
   }
 }
 @media screen and (max-width: 768px) {
+  #app{
+    min-width: initial;
+  }
   .mainbody{
     min-height: calc(100vh - 60px);
     .view{

@@ -38,8 +38,6 @@ service.interceptors.response.use(response => {
     util.storage.remove('user');
     util.storage.remove('token');
     util.storage.remove('userData');
-    // this.SET_USER_INFO(res.obj);
-    // this.SET_USER_NAME(res.obj.user_name)
     router.push('/signIn')
     return false;
   }else if(response.data.status != 200){
