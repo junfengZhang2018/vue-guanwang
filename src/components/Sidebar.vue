@@ -58,7 +58,7 @@
             <div class="panel">
                 <div class="panel-menu">
                     <div class="menuList">
-                        <a class="routerLink" v-for="(item, i) in stateList" :key="i" @click="$router.push(`/my/myWaybill?state=${item.state}`)">
+                        <a class="routerLink" v-for="(item, i) in stateList" :key="i" @click="goPage(item)">
                             <div class="list-item flex">
                                 <div class="icon" :class="item.icon"></div>
                                 <div class="mlist-bd">{{item.title}}</div>
@@ -175,6 +175,19 @@
             ...mapGetters(['exchangeRate', 'levelList'])
         },
         methods: {
+            goPage(item){
+            if(item.url){
+                this.$router.push(item.url);
+            }else if(item.state){
+                this.$router.push({
+                    path: this.url,
+                    query: {
+                        state: item.state,
+                        name:item.title
+                    }
+                });
+            }
+        },
             initDate() {
                 let hour = new Date().getHours();
                 if (0 <= hour && hour <= 6) this.sayHello = '凌晨好';
