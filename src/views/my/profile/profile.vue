@@ -90,6 +90,7 @@ export default {
       util.storage.remove("user");
       util.storage.remove("userData");
       util.storage.remove("token");
+      util.sessionStorage.remove('myPackage');
       this.SET_USER_INFO(null);
       this.SET_USER_NAME(null);
     },

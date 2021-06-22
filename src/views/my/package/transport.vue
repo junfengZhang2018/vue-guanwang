@@ -129,7 +129,8 @@
 <script>
    // import 《组件名称》 from '《组件路径》';
     import Default from '@/components/default';
-    import {queryMyAddress,addMyBills} from '@/api/index'
+    import {queryMyAddress,addMyBills} from '@/api/index';
+    import util from '@/util';
     export default {
         components: {Default},
         data() {
@@ -166,9 +167,9 @@
         },
         created(){
           let me = this;
-          let _data = me.$route.query
-          if(JSON.stringify(_data) != "{}"){
-            me.myOrders = _data.packageList
+          let _data = util.sessionStorage.get('myPackage');
+          if(_data){
+            me.myOrders = _data
           }else{
              me.$router.push('/my/package')
           }
@@ -246,6 +247,7 @@
               addMyBills(_data).then(res =>{
                 if(res.success){
                   me.$message.success("提交运输成功");
+                  util.sessionStorage.remove('myPackage');
                   setTimeout(()=>{
                     me.$router.go(-1)
                   },1000)
